@@ -31,7 +31,8 @@ before_install:
   - sudo dpkg -i google-chrome*.deb
 
 before_script:
-  - docker run -e PS_INSTALL_AUTO=1 -e PS_COUNTRY=fr -e PS_DEV_MODE=1 -e PS_FOLDER_INSTALL=install-dev -e PS_FOLDER_ADMIN=admin-dev -e PS_HANDLE_DYNAMIC_DOMAIN=1 -p 80:80 -tid --name=prestashop prestashop/$DOCKER_IMG:$TAG
+  - docker run --name=mysql -e MYSQL_ROOT_PASSWORD=doge -tid mysql
+  - docker run --link mysql -e DB_SERVER=mysql -e DB_PASSWD=doge -e PS_INSTALL_AUTO=1 -e PS_COUNTRY=fr -e PS_DEV_MODE=1 -e PS_FOLDER_INSTALL=install-dev -e PS_FOLDER_ADMIN=admin-dev -e PS_HANDLE_DYNAMIC_DOMAIN=1 -p 80:80 -tid --name=prestashop prestashop/$DOCKER_IMG:$TAG
   - npm install selenium-standalone@latest
   - selenium-standalone install --silent && DISPLAY=:10 selenium-standalone start &> /dev/null &
   - npm install

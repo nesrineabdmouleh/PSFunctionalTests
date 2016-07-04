@@ -20,7 +20,8 @@ dist: trusty
 group: edge
 
 env:
-    - PS_VERSION=1.6.1.5
+    - PS_VERSION=1.6 DOCKER_IMG=prestashop TAG=1.6
+    - PS_VERSION=1.7 DOCKER_IMG=prestashop-git TAG=7
 
 matrix:
   fast_finish: true
@@ -30,7 +31,7 @@ before_install:
   - sudo dpkg -i google-chrome*.deb
 
 before_script:
-  - docker run -e PS_INSTALL_AUTO=1 -e PS_COUNTRY=fr -e PS_DEV_MODE=1 -e PS_FOLDER_INSTALL=install-dev -e PS_FOLDER_ADMIN=admin-dev -e PS_HANDLE_DYNAMIC_DOMAIN=1 -p 80:80 -tid --name=prestashop prestashop/prestashop:$PS_VERSION
+  - docker run -e PS_INSTALL_AUTO=1 -e PS_COUNTRY=fr -e PS_DEV_MODE=1 -e PS_FOLDER_INSTALL=install-dev -e PS_FOLDER_ADMIN=admin-dev -e PS_HANDLE_DYNAMIC_DOMAIN=1 -p 80:80 -tid --name=prestashop prestashop/$DOCKER_IMG:$TAG
   - npm install selenium-standalone@latest
   - selenium-standalone install --silent && DISPLAY=:10 selenium-standalone start &> /dev/null &
   - npm install

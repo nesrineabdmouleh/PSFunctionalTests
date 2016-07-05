@@ -45,7 +45,7 @@ module.exports = {
 		order_product_name: '.productName',
 		order_quantity: '.product_quantity_show',
 		order_total: '#total_order > td.amount.text-right.nowrap',
-		order_reference: '#content > div.row > div > div:nth-child(5) > div.col-lg-7 > div:nth-child(1) > div.panel-heading > span:nth-child(2)',
+		order_reference: '#content > div.row > div > div:nth-child(4) > div.col-lg-7 > div:nth-child(1) > div.panel-heading > span:nth-child(2)',
 		
 		
 		modules_menu: '#subtab-AdminParentModulesSf',

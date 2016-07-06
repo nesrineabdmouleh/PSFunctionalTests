@@ -34,12 +34,14 @@ describe('create_product', function(){
 				.click(this.selector.new_product)
 				.waitForExist(this.selector.product_name, 60000)
 				.setValue(this.selector.product_name, 'test_nodejs_' + product_id)
+				.waitForExist('#form_step1_description_short_1_ifr', 60000)
 				.frame(this.selector.summary)
 				.waitForExist('#tinymce', 60000)
 				.setValue('#tinymce', "this the summary")
 				.frameParent()
 				.pause(2000)
 				.click(this.selector.description_button)
+				.waitForExist('#form_step1_description_1_ifr', 60000)
 				.frame(this.selector.description)
 				.waitForExist('#tinymce', 60000)
 				.setValue('#tinymce', "this is the description")
@@ -91,6 +93,7 @@ describe('create_product', function(){
 					var my_name = text;
 					should(my_name).be.equal('test_nodejs_' + product_id);
 				})
+				.waitForExist('#form_step1_description_short_1_ifr', 60000)
 				.frame(this.selector.summary)
 				.getText("#tinymce").then(function(text) {
 					var my_summary = text;
@@ -98,6 +101,7 @@ describe('create_product', function(){
 				})
 				.frameParent()
 				.click(this.selector.description_button)
+				.waitForExist('#form_step1_description_1_ifr', 60000)
 				.frame(this.selector.description)
 				.getText("#tinymce").then(function(text) {
 					var my_description = text;

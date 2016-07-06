@@ -35,7 +35,7 @@ describe('create_product', function(){
 				.waitForExist(this.selector.product_name, 60000)
 				.setValue(this.selector.product_name, 'test_nodejs_' + product_id)
 				.pause(2000)
-				.frame(this.selector.summary, function (err, result){
+				/*.frame(this.selector.summary, function (err, result){
 					if (err) console.log("Issue to switch on the frame: " + err);
 					})
 				.setValue("#tinymce", "this the summary")
@@ -47,7 +47,7 @@ describe('create_product', function(){
 					})
 				.setValue("#tinymce", "this is the description")
 				.frameParent()
-				.pause(2000)
+				.pause(2000)*/
 				.setValue(this.selector.priceTE_shortcut, "5")
 				.addValue(this.selector.quantity_shortcut, "10")
 				.execute(function() {
@@ -94,7 +94,7 @@ describe('create_product', function(){
 					var my_name = text;
 					should(my_name).be.equal('test_nodejs_' + product_id);
 				})
-				.frame(this.selector.summary, function (err, result){
+				/*.frame(this.selector.summary, function (err, result){
 					if (err) console.log(err);
 					})
 				.getText("#tinymce").then(function(text) {
@@ -110,7 +110,7 @@ describe('create_product', function(){
 					var my_description = text;
 					should(my_description).be.equal("this is the description");
 				})
-				.frameParent()
+				.frameParent()*/
 				.getValue(this.selector.priceTE_shortcut).then(function(text) {
 					var my_priceTE = text;
 					should(parseInt(my_priceTE)).be.equal(parseInt("5"));

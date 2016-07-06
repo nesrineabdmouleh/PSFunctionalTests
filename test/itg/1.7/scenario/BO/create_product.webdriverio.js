@@ -120,8 +120,6 @@ describe('create_product', function(){
 				.getAttribute('div[data-id="' + image_data_id + '"] > div ', "style").then(function(text) {
 					var my_picture_url_temp = text[0].split("url(\"");
 					var my_picture_url = my_picture_url_temp[1].split("\")");
-					console.log(my_picture_url[0]);
-					console.log(picture_url);
 					should(my_picture_url[0]).be.equal(picture_url);
 				})
 				.call(done);

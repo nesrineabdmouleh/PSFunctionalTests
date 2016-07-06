@@ -31,9 +31,14 @@ describe('create_account', function(){
 				.call(done);
 		});
 		
-		it('log out and login again', function(done){
+		it('logout FO ...', function(done){
 			this.client
 				.signoutFO()
+				.call(done);
+		});
+		
+		it('... and login again', function(done){
+			this.client
 				.url('http://' + URL)
 				.waitForExist(this.selector.access_loginFO, 60000)
 				.click(this.selector.access_loginFO)

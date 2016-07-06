@@ -34,8 +34,9 @@ describe('create_product', function(){
 				.click(this.selector.new_product)
 				.waitForExist(this.selector.product_name, 60000)
 				.setValue(this.selector.product_name, 'test_nodejs_' + product_id)
+				.pause(2000)
 				.frame(this.selector.summary, function (err, result){
-					if (err) console.log(err);
+					if (err) console.log("Issue to switch on the frame: " + err);
 					})
 				.setValue("#tinymce", "this the summary")
 				.frameParent()
@@ -70,6 +71,7 @@ describe('create_product', function(){
 				.click(this.selector.go_to_catalog)
 				.waitForExist(this.selector.catalogue_filter_by_name, 60000)
 				.setValue(this.selector.catalogue_filter_by_name, 'test_nodejs_' + product_id)
+				.pause(2000)
 				.click(this.selector.catalogue_submit_filter)
 				.waitForExist('//a[text()="test_nodejs_' + product_id + '"]', 60000)
 				.click('//a[text()="test_nodejs_' + product_id + '"]')

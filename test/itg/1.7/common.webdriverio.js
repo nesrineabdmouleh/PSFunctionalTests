@@ -7,9 +7,10 @@ var options = {
     logLevel: 'silent',
     waitForTimeout: 30000,
     desiredCapabilities: {
-        browserName: 'chrome'
+        browserName: 'chrome',
+		caps: true
 	},
-	port: 4444
+	port: 4445
 };
 
 function initCommands(client) {

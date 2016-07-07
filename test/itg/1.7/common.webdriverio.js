@@ -8,7 +8,7 @@ var options = {
     waitForTimeout: 30000,
     desiredCapabilities: {
         browserName: 'chrome',
-		caps: true
+		'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
 	},
 	port: 4445
 };

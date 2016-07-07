@@ -44,6 +44,7 @@ describe('create_product', function(){
 				.getAttribute('.dz-preview.dz-image-preview.ui-sortable-handle.dz-complete', "data-id").then(function(text) {
 					global.image_data_id = text;
 				})
+				.scroll(this.selector.summary_button)
 				.click(this.selector.summary_button)
 				.frame(this.selector.description)
 				.setValue('#tinymce', "this is the description")

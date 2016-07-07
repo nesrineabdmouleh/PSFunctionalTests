@@ -10,6 +10,8 @@ var options = {
         browserName: 'chrome',
 		'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
 	},
+    username: process.env.SAUCE_USERNAME,
+    access_key: process.env.SAUCE_ACCESS_KEY,
 	port: 4445
 };
 
@@ -24,7 +26,7 @@ function initCommands(client) {
             .click(this.selector.login_btn)
 			.call(cb);
     });
-	
+
 	client.addCommand('signinFO', function(cb) {
 		this.selector = globals.selector;
         client
@@ -44,14 +46,14 @@ function initCommands(client) {
 			.deleteCookie()
 			.call(cb);
 	});
-	
+
 	client.addCommand('signoutBO2', function(cb) {
 		this.selector = globals.selector;
 		client
 			.deleteCookie()
 			.call(cb);
 	});
-	
+
 	client.addCommand('signoutFO', function(cb) {
 		this.selector = globals.selector;
         client
@@ -61,8 +63,8 @@ function initCommands(client) {
 			.deleteCookie()
 			.call(cb);
 	});
-	
-		
+
+
 }
 module.exports = {
     getClient: function () {
@@ -72,7 +74,7 @@ module.exports = {
             client = webdriverio
                 .remote(options)
                 .init()
-				.windowHandleMaximize()			
+				.windowHandleMaximize()
 
             initCommands(client);
 

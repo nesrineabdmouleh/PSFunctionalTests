@@ -9,7 +9,7 @@ var options = {
     desiredCapabilities: {
         browserName: 'chrome'
 	},
-	port: 4444
+	port: 4445
 };
 
 function initCommands(client) {

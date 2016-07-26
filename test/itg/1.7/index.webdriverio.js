@@ -9,7 +9,7 @@ describe('Allscenario', function(){
 	before(function (done) {
 		this.client = common.getClient();
 		this.client.call(done);
-	});
+	}); 
 	
 	after(function (done) {
 		this.client

@@ -26,7 +26,7 @@ matrix:
   fast_finish: true
 
 before_install:
-  - wget https://ftp.mozilla.org/pub/firefox/releases/49.0/linux-x86_64/en-US/firefox-49.0.tar.bz2 && tar xjf firefox-49.0.tar.bz2 && rm firefox-49.0.tar.bz2 && mv firefox /opt/firefox49 && ln -s /opt/firefox49/firefox /usr/bin/firefox
+  - sudo wget https://ftp.mozilla.org/pub/firefox/releases/49.0/linux-x86_64/en-US/firefox-49.0.tar.bz2 && tar xjf firefox-49.0.tar.bz2 && rm firefox-49.0.tar.bz2 && mv firefox /opt/firefox49 && ln -s /opt/firefox49/firefox /usr/bin/firefox
 
 before_script:
   - docker run --name=mysql -e MYSQL_ROOT_PASSWORD=doge -e MYSQL_DATABASE=prestashop -tid mysql

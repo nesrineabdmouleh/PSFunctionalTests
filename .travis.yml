@@ -2,13 +2,21 @@ language: php
 
 services:
   - docker
+  - mysql
 
+addons:
+    apt:
+      packages:
+        - postfix
+        - libappindicator1
+        - fonts-liberation
 cache:
   directories:
     - $HOME/.npm
 
 sudo: required
 dist: trusty
+group: edge
 
 env:
     - PS_VERSION=1.6 DOCKER_IMG=prestashop TAG=1.6 MODULE_TECHNICAL_NAME=None SAUCELABS=None
@@ -16,6 +24,12 @@ env:
 
 matrix:
   fast_finish: true
+
+before_install:
+  - wget ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/49.0/linux-x86_64/fr/firefox-49.0.tar.bz2 \
+    && tar -xjvf firefox-49.0.tar.bz2 \
+    && mv firefox /opt/firefox-49.0 \
+    && ln -sf /opt/firefox-49.0/firefox /usr/bin/firefox
 
 before_script:
   - docker run --name=mysql -e MYSQL_ROOT_PASSWORD=doge -e MYSQL_DATABASE=prestashop -tid mysql

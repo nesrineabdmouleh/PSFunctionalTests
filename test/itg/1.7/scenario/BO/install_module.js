@@ -3,7 +3,7 @@ var should = require('should');
 var common = require('../../common.webdriverio');
 var globals = require('../../globals.webdriverio.js');
 var test_green_validation = false;
-var test_red_validation = false;
+
 
 describe('The Install of a Module', function(){
 	common.initMocha.call(this);
@@ -43,7 +43,7 @@ describe('The Install of a Module', function(){
 				.pause(2000)
 				.isVisible(this.selector.red_validation).then(function(isVisible) {
 			        console.log("red validation : ",isVisible);
-			        test_red_validation = isVisible;
+			        global.test_red_validation = isVisible;
 				})
 				.pause(1000)
                 .isVisible(this.selector.green_validation).then(function(isVisible) {

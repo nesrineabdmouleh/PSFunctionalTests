@@ -3,7 +3,6 @@ var should = require('should');
 var common = require('../../common.webdriverio');
 var globals = require('../../globals.webdriverio.js');
 var test_green_validation = false;
-var test_red_validation = false;
 var test_proceed_install_anyway = false ;
 
 describe('The Install of a Module', function(){
@@ -35,16 +34,15 @@ describe('The Install of a Module', function(){
     });
 
 
-    describe('Install module', function(done){
+   describe('Install module', function(done){
         it('sould go to modules page', function(done){
             this.client
-                .waitForExist(this.selector.menu, 60000)
                 .click(this.selector.modules_menu)
                 .waitForExist(this.selector.modules_search, 60000)
                 .call(done);
         });
 
-         it('should search the module', function(done){
+       it('should search the module', function(done){
                 this.client
                 /*.isExisting("//*[@class=\"alert alert-danger\"]").then(function(present) {
                     should(present).be.equal(false);
@@ -70,19 +68,22 @@ describe('The Install of a Module', function(){
 				this.client
 				.pause(2000)
                 .isVisible('//div[@class="alert alert-danger"]').then(function(isVisible) {
-                    test_red_validation = isVisible;
+                    global.test_red_validation = isVisible;
+                })
+                .pause(1000)
+                .isVisible('//div[@class="alert alert-success"]').then(function(isVisible) {
+                    test_green_validation = isVisible;
                     if (test_red_validation == true)
                     {
                         done(new Error("red validation exist"));
                     }
+                    else if (test_green_validation == true)
+                    {
+                        done();
+                    }
                     else
                     {
-                        this.client
-                        .pause(60000)
-                        .isVisible('//div[@class="alert alert-success"]').then(function(isVisible) {
-                            console.log("green validation yes");
-                            done();
-                        })
+                        done();
                     }
                 })
         });

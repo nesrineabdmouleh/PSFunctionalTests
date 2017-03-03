@@ -12,9 +12,6 @@ describe('The Install of a Module and its Uninstall', function(){
 	before(function(done){
 		this.selector = globals.selector;
 		this.client.call(done);
-	process.on('uncaughtException', function(err) {
-        console.log("My error handler... " + err);
-    });
 	});
 
 	after(common.after);
@@ -71,18 +68,21 @@ describe('The Install of a Module and its Uninstall', function(){
 				.pause(2000)
                 .isVisible('//div[@class="alert alert-danger"]').then(function(isVisible) {
                     test_red_validation = isVisible;
+                })
+                .pause(1000)
+                .isVisible('//div[@class="alert alert-success"]').then(function(isVisible) {
+                    test_green_validation = isVisible;
                     if (test_red_validation == true)
                     {
                         done(new Error("red validation exist"));
                     }
+                    else if (test_green_validation == true)
+                    {
+                        done();
+                    }
                     else
                     {
-                        this.client
-                        .pause(60000)
-                        .isVisible('//div[@class="alert alert-success"]').then(function(isVisible) {
-                            console.log("green validation yes");
-                            done();
-                        })
+                        done();
                     }
                 })
         });

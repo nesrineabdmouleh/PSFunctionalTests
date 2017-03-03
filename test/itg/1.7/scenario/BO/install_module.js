@@ -42,23 +42,19 @@ describe('The Install of a Module', function(){
 				.click('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//a[@data-confirm_modal="module-modal-confirm-' + module_tech_name + '-install"]')
 				.pause(2000)
 				.isVisible(this.selector.red_validation).then(function(isVisible) {
-			        console.log("red validation : ",isVisible);
 			        global.test_red_validation = isVisible;
 				})
 				.pause(1000)
                 .isVisible(this.selector.green_validation).then(function(isVisible) {
-				    console.log("green validation : ",isVisible)
 				    test_green_validation = isVisible;
 				    if (test_red_validation == true)
 				    {
 				        done(new Error("red validation exist"));
 				    }
 				    else if (test_green_validation == true){
-				        console.log("yessss");
 				        done();
 				    }
 				    else {
-				        console.log("no alert validation")
 				        done();}
 				 })
 		});

@@ -2,18 +2,20 @@
 var should = require('should');
 var common = require('../../common.webdriverio');
 var globals = require('../../globals.webdriverio.js');
-
+var test_green_validation = false;
+var test_red_validation = false;
 
 describe('The Install of a Module', function(){
 	common.initMocha.call(this);
-	
+
 	before(function(done){
 		this.selector = globals.selector;
 		this.client.call(done);
+
 	});
 	after(common.after);
 
-	
+
 	describe('Log in in Back Office', function(done){
         it('should log in successfully in BO', function(done){
 			this.client
@@ -23,7 +25,7 @@ describe('The Install of a Module', function(){
 		});
 	});
 
-		
+
 	describe('Install module', function(done){
         it('sould go to the module', function(done){
 			this.client
@@ -31,15 +33,34 @@ describe('The Install of a Module', function(){
 				.waitForExist(this.selector.modules_page_loaded, 90000)
 				.call(done);
 		});
-		
+
 		it('should install the module', function(done){
 				this.client
 				.setValue(this.selector.modules_search, module_tech_name)
 				.click(this.selector.modules_search_button)
 				.waitForExist('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]', 90000)
 				.click('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//a[@data-confirm_modal="module-modal-confirm-' + module_tech_name + '-install"]')
-				.waitForExist(this.selector.green_validation, 90000)
-				.call(done);
+				.pause(2000)
+				.isVisible(this.selector.red_validation).then(function(isVisible) {
+			        console.log("red validation : ",isVisible);
+			        test_red_validation = isVisible;
+				})
+				.pause(1000)
+                .isVisible(this.selector.green_validation).then(function(isVisible) {
+				    console.log("green validation : ",isVisible)
+				    test_green_validation = isVisible;
+				    if (test_red_validation == true)
+				    {
+				        done(new Error("red validation exist"));
+				    }
+				    else if (test_green_validation == true){
+				        console.log("yessss");
+				        done();
+				    }
+				    else {
+				        console.log("no alert validation")
+				        done();}
+				 })
 		});
 	});
 		

@@ -2,13 +2,19 @@
 var should = require('should');
 var common = require('../../common.webdriverio');
 var globals = require('../../globals.webdriverio.js');
+var test_green_validation = false;
+var test_red_validation = false;
+var test_proceed_install_anyway = false ;
 
 describe('The Install of a Module', function(){
 	common.initMocha.call(this);
-	
+
 	before(function(done){
 		this.selector = globals.selector;
 		this.client.call(done);
+	process.on('uncaughtException', function(err) {
+        console.log("My error handler... " + err);
+    });
 	});
 	after(common.after);
 
@@ -38,16 +44,47 @@ describe('The Install of a Module', function(){
                 .call(done);
         });
 
-        it('should install the module', function(done){
+         it('should search the module', function(done){
                 this.client
                 /*.isExisting("//*[@class=\"alert alert-danger\"]").then(function(present) {
                     should(present).be.equal(false);
                 })*/
                 .setValue(this.selector.modules_search, module_tech_name)
                 .waitForExist('//table[@id="module-list"]/tbody/tr[not(@style)]//span[text()="' + module_tech_name+ '"]', 60000)
-                .click('//i[@class="icon-plus-sign-alt" and ancestor::tr[not(@style)]//span[text()="' + module_tech_name+ '"]]')
-                .waitForExist('//div[@class="alert alert-success"]', 60000)
                 .call(done);
+        });
+        it('should click on install button',function(done){
+                this.client
+                .click('//i[@class="icon-plus-sign-alt" and ancestor::tr[not(@style)]//span[text()="' + module_tech_name+ '"]]')
+                .pause(2000)
+				.isVisible('//div[@id="moduleNotTrusted"]//a[@id="proceed-install-anyway"]').then(function(isVisible){
+                    test_proceed_install_anyway = isVisible;
+				})
+				.call(done);
+		});
+		it('should check the installation',function(done){
+		        if (test_proceed_install_anyway == true)
+				    {
+				        this.client.click('//div[@id="moduleNotTrusted"]//a[@id="proceed-install-anyway"]');
+				    }
+				this.client
+				.pause(2000)
+                .isVisible('//div[@class="alert alert-danger"]').then(function(isVisible) {
+                    test_red_validation = isVisible;
+                    if (test_red_validation == true)
+                    {
+                        done(new Error("red validation exist"));
+                    }
+                    else
+                    {
+                        this.client
+                        .pause(60000)
+                        .isVisible('//div[@class="alert alert-success"]').then(function(isVisible) {
+                            console.log("green validation yes");
+                            done();
+                        })
+                    }
+                })
         });
     });
 

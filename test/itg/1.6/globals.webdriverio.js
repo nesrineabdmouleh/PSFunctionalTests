@@ -66,7 +66,6 @@ module.exports = {
 		modules_menu: '.icon-AdminParentModules',
 		modules_search: '#moduleQuicksearch',
 
-
 	//FO
 		access_loginFO:'.login',
 		loginFO: '#email',
@@ -104,7 +103,7 @@ module.exports = {
 		command_price_step5_amout: '#amount',
 		command_confirm_button: '#cart_navigation > button',
 		command_success_alert: '.alert.alert-success',
-		command_success_price: '.price > strong',		
+		command_success_price: '.price > strong',
 		search_product: '#search_query_top',
 		search_product_button: '[name="submit_search"]',
 		search_product_result_image: '[itemprop="image"]',

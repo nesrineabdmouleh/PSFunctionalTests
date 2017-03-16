@@ -2,6 +2,7 @@
 var client;
 var webdriverio = require('webdriverio');
 var globals = require('./globals.webdriverio');
+var only_filename = __filename.slice(__dirname.length + 1, -3);
 
 var options = {
     logLevel: 'silent',
@@ -83,8 +84,6 @@ function initCommands(client) {
 			.deleteCookie()
 			.call(cb);
 	});
-	
-		
 }
 module.exports = {
     getClient: function () {
@@ -109,6 +108,9 @@ module.exports = {
     },
     after: function (done) {
             done();
+    },
+    take_screenshot: function (done) {
+        client.saveScreenshot(__dirname +'/screenshots/' + client.desiredCapabilities.browserName + '-Exception' + '_' + fctname + '.png');
     },
     initMocha: function () {
         this.timeout(900000000);

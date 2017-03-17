@@ -96,7 +96,7 @@ describe('The Purchase of a product', function(){
 				.call(done);
 		});
 		it('should click checkout button', function(done){
-		    lobal.fctname= this.test.title;
+		    global.fctname= this.test.title;
 			this.client
 				.click(this.selector.command_button_checkout)
 				.call(done);

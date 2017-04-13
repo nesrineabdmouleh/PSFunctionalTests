@@ -10,10 +10,13 @@ describe('The Uninstall of a Module', function(){
 		this.selector = globals.selector;
 		this.client.call(done);
 	});
+	process.on('uncaughtException', common.take_screenshot);
+	process.on('ReferenceError', common.take_screenshot);
 	after(common.after);
 
 	describe('Log in in Back Office', function(done){
         it('should log in successfully in BO', function(done){
+            global.fctname= this.test.title;
             this.client
                 //.signinBO()
                 .url('http://' + URL + '/admin-dev')
@@ -30,6 +33,7 @@ describe('The Uninstall of a Module', function(){
 
 	describe('Uninstall module', function(done){
         it('should go to modules page', function(done){
+            global.fctname= this.test.title;
             this.client
                 .waitForExist(this.selector.menu, 60000)
                 .click(this.selector.modules_menu)
@@ -38,6 +42,7 @@ describe('The Uninstall of a Module', function(){
         });
 
         it('should uninstall the module', function(done){
+            global.fctname= this.test.title;
             if(red_validation_is_visible == true) {
                 done(new Error("Unavailable module"));
             }else {
@@ -60,6 +65,7 @@ describe('The Uninstall of a Module', function(){
 
     describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){
+            global.fctname= this.test.title;
             this.client
                 //.signoutBO()
                 .deleteCookie()

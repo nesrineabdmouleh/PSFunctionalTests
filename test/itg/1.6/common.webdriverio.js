@@ -101,11 +101,6 @@ function initCommands(client) {
 		client.call(done);
 	});
 
-	client.addCommand('takeScreenshot', function(n){
-	    var date_time = new Date().getTime();
-	    client.saveScreenshot(__dirname + '/screenshots/' + date_time + '_'+n+'.png');
-	});
-
 }
 module.exports = {
     getClient: function () {
@@ -130,6 +125,9 @@ module.exports = {
     },
     after: function (done) {
             done();
+    },
+    take_screenshot: function (done) {
+        client.saveScreenshot(__dirname +'/screenshots/' + client.desiredCapabilities.browserName + '-Exception' + '_' + fctname + '.png');
     },
     initMocha: function () {
         this.timeout(100000);

@@ -20,6 +20,7 @@ dist: trusty
 group: edge
 
 env:
+    - PS_VERSION=1.6 DOCKER_IMG=prestashop TAG=1.6 MODULE_TECHNICAL_NAME=None SAUCELABS=None
     - PS_VERSION=1.7 DOCKER_IMG=prestashop TAG=1.7 MODULE_TECHNICAL_NAME=None SAUCELABS=None
 
 matrix:
@@ -35,8 +36,8 @@ before_script:
   - docker exec prestashop rm -f /var/www/html/app/config/parameters.yml
   - npm install selenium-standalone@latest
   - cd node_modules/selenium-standalone/bin/
-  - ./selenium-standalone install --drivers.chrome.version=2.29 --drivers.chrome.baseURL=https://chromedriver.storage.googleapis.com
-  - ./nohup selenium-standalone start &
+  - ./selenium-standalone install
+  - DISPLAY=:10 ./selenium-standalone start -- -debug &> /dev/null &
   - cd ../../..
   - npm install
   - export CHROME_BIN=/usr/bin/google-chrome
@@ -52,11 +53,7 @@ script:
 
 after_script:
   - docker logs prestashop
-  - pwd
-  - cd ../../..
-  - chmod 777 bin/upload.sh
-  - ./bin/upload.sh
+  - cd ../../.. && chmod 777 bin/upload.sh && ./bin/upload.sh
   - google-chrome --version
 
 after_failure:
-

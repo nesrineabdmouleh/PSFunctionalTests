@@ -123,7 +123,7 @@ module.exports = {
 		layer_cart_price_details: '//div[@id="blockcart-modal"]/div/div/div[2]/div/div[1]/div/div[2]/p[1]',
 		layer_cart_quantity_details: '//div[@id="blockcart-modal"]/div/div/div[2]/div/div[1]/div/div[2]/p[2]',
 		layer_cart_command_button: '//*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a',
-		                            //*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a
+		                            //*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/a
 		//for 1.7.1.0
 		//layer_cart_command_button: '//div[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a',
 		//command_product_quantity: '//div[@class="product-line-grid-body col-md-5 col-xs-5"]/div[5]',

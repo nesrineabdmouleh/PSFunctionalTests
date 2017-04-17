@@ -115,7 +115,7 @@ module.exports = {
 		add_to_cart: '.btn.btn-primary.add-to-cart',
 		first_product_home_page_name: '[itemprop="name"]',
 		product_image: '#content',
-		product_name_details: '[itemprop="name"]',
+		product_name_details: '//*[@id="main"]/div[1]/div[2]/h1',
 		product_price_details: '[itemprop="price"]',
 		product_quantity_details: '#quantity_wanted',
 		layer_cart: '//div[@id="blockcart-modal" and @style="display: block;"]',
@@ -147,7 +147,7 @@ module.exports = {
 		search_product: '.ui-autocomplete-input',
 		search_product_button: '.material-icons.search',
 		search_product_result_image: '.thumbnail.product-thumbnail',
-		search_product_result_name: '.h3.product-title > a',
+		search_product_result_name: '//*[@id="js-product-list"]/div[1]/article[1]/div/div[1]/h1/a',
 		search_product_result_price: '[itemprop="price"]',
 		close_error:'//*[@id="error-modal"]/div/div/button',
 

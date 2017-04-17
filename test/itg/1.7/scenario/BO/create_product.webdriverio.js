@@ -41,7 +41,6 @@ describe('The Product Creation', function(){
 				    .click(this.selector.exit_welcome);
 			}
 			this.client
-			    .pause(5000)
 				.waitForExist(this.selector.menu, 90000)
 				.click(this.selector.products)
 				.waitForExist(this.selector.new_product, 90000)

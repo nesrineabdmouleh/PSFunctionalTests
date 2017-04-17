@@ -32,7 +32,7 @@ describe('Allscenario', function(){
 	require('./scenario/FO/check_product.webdriverio');
 
 	//create an order in FO and check it in BO
-	/*require('./scenario/FO/buy_product.webdriverio');
+	require('./scenario/FO/buy_product.webdriverio');
 	require('./scenario/BO/check_order.webdriverio');
 
 	//create an account in FO
@@ -40,6 +40,6 @@ describe('Allscenario', function(){
 
 	if (typeof module_tech_name !== 'undefined' && module_tech_name != "None"){
 		require('./scenario/BO/uninstall_module.js');
-	}*/
+	}
 
 });

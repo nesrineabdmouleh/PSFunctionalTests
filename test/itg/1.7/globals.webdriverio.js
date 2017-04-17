@@ -99,9 +99,9 @@ module.exports = {
 
 	//FO
 		access_loginFO:'div.user-info > a',
-		loginFO: '[name="email"]',
-		passwordFO: '[name="password"]',
-		login_btnFO: '//footer[@class="form-footer text-xs-center clearfix"]/button[@type="submit" and @class="btn btn-primary"]',
+		loginFO: '//*[@id="login-form"]/section/div[1]/div[1]/input',
+		passwordFO: '//*[@id="login-form"]/section/div[2]/div[1]/div/input',
+		login_btnFO: '//*[@id="login-form"]/footer/button',
 		logoutFO: '.logout',
 		//create_account: '#email_create',
 		create_account_button: '[data-link-action="display-register-form"]',

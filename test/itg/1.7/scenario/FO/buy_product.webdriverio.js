@@ -24,6 +24,7 @@ describe('The Purchase of a product', function(){
                 .setValue(this.selector.loginFO, 'pub@prestashop.com')
                 .setValue(this.selector.passwordFO, '123456789')
                 .click(this.selector.login_btnFO)
+                .pause(3000)
                 .call(done);
 			
 		});
@@ -32,6 +33,7 @@ describe('The Purchase of a product', function(){
 		it('should go to the product details', function(done){
 		    global.fctname= this.test.title;
 			this.client
+			    .waitForExist(this.selector.logo_home_pageFO, 90000)
 				.click(this.selector.logo_home_pageFO)
 				.waitForExist(this.selector.first_product_home_page, 90000)
 				.getText(this.selector.first_product_home_page_name).then(function(text) {
@@ -39,9 +41,10 @@ describe('The Purchase of a product', function(){
 				})
 				.click(this.selector.first_product_home_page)
 				.waitForExist(this.selector.product_image, 90000)
+				.pause(2000)
 				.getText(this.selector.product_name_details).then(function(text) {
 					var my_name_check = text;
-					my_name_check.pop(-1).toLowerCase().should.containEql(my_name.toLowerCase());
+					my_name_check.toLowerCase().should.containEql(my_name.toLowerCase());
 				})
 				.getText(this.selector.product_price_details).then(function(text) {
 					global.my_price = text;

@@ -7,6 +7,7 @@ var argv = require('minimist')(process.argv.slice(2));
 global.date_time = new Date().getTime();
 global.URL = argv.URL;
 global.module_tech_name = argv.MODULE;
+global.browser = argv.browser;
 global.saucelabs = argv.SAUCELABS;
 global._projectdir = path.join(__dirname, '..', '..');
 global.product_id=new Date().getTime();
@@ -65,9 +66,9 @@ module.exports = {
 		product_name: '#form_step1_name_1',
 		save_product: '//*[@id="form"]/div[4]/div[2]/div/button[1]',
 		catalog_list: '#product_catalog_list',
-		green_validation: '#main-div > div.content-div > div.row > div > div.flash-message-list.alert.alert-success > ul > li',
+		//green_validation: '#main-div > div.content-div > div.row > div > div.flash-message-list.alert.alert-success > ul > li',
 		//for 1.7.1.0
-		//green_validation: '#growls > div > div.growl-message',
+		green_validation: '#growls > div > div.growl-message',
 		close_green_validation: '.growl-close',
 		red_validation:'#main-div > div.content-div > div > div > div.flash-message-list.alert.alert-danger > ul > li',
 		summary_button: '[href="#description_short"]',
@@ -123,7 +124,6 @@ module.exports = {
 		layer_cart_price_details: '//div[@id="blockcart-modal"]/div/div/div[2]/div/div[1]/div/div[2]/p[1]',
 		layer_cart_quantity_details: '//div[@id="blockcart-modal"]/div/div/div[2]/div/div[1]/div/div[2]/p[2]',
 		layer_cart_command_button: '//*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a',
-		                            //*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/a
 		//for 1.7.1.0
 		//layer_cart_command_button: '//div[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a',
 		//command_product_quantity: '//div[@class="product-line-grid-body col-md-5 col-xs-5"]/div[5]',

@@ -6,5 +6,5 @@ echo "Creating archive $ARCHIVE"
 tar -cjf $ARCHIVE -C test/itg/$PS_VERSION/screenshots .
 FILESIZE=$(stat -c%s "$ARCHIVE")
 echo "Finished archive (size $FILESIZE), starting Google Drive upload"
-./bin/gdrive-linux-x64 upload --refresh-token 4/IVymN1aT8FO50aUkxzJarQo-ONzVOnuO0bvwvgud4m0 --parent 0B8aUS4G55NjTTjkwSFhIS3hJQnM "$ARCHIVE"
+./bin/gdrive-linux-x64 upload --refresh-token $GDRIVE_REFRESH_TOKEN --parent $GDRIVE_DIR "$ARCHIVE"
 echo "Finished Google Drive upload"

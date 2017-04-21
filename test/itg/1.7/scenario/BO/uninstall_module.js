@@ -74,7 +74,7 @@ describe('The Uninstall of a Module', function(){
                         .click('//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]')
                 }
                 this.client
-                    .pause(5000)
+                    .pause(3000)
                     .isVisible(this.selector.red_validation).then(function(isVisible) {
                         uninstall_red_validation_is_visible = isVisible;
                     })

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 FIXED_BRANCH=$(echo $TRAVIS_BRANCH | sed 's/\//-/g')
-ARCHIVE=$FIXED_BRANCH-$(date +%Y-%m-%d_%H_%M_%S)-$TRAVIS_COMMIT.zip
+ARCHIVE=$FIXED_BRANCH-$(date +%Y-%m-%d_%H_%M_%S)-$TRAVIS_COMMIT.tar.gz
 echo "Creating archive $ARCHIVE"
 tar -cjf $ARCHIVE -C test/itg/$PS_VERSION/screenshots .
 FILESIZE=$(stat -c%s "$ARCHIVE")

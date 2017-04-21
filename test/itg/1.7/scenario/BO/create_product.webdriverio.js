@@ -76,7 +76,7 @@ describe('The Product Creation', function(){
 			this.client
 				.waitForExist(this.selector.quantity_shortcut, 90000)
 				.clearElement(this.selector.quantity_shortcut)
-				.addValue(this.selector.quantity_shortcut, "11")
+				.addValue(this.selector.quantity_shortcut, "10")
 			    .call(done);
 		});
 
@@ -87,7 +87,7 @@ describe('The Product Creation', function(){
 				.execute(function() {
 					document.querySelector('#form_step1_price_shortcut').value="";
 					})
-				.setValue(this.selector.priceTE_shortcut, "4")
+				.setValue(this.selector.priceTE_shortcut, "5")
 				.call(done);
 		});
 

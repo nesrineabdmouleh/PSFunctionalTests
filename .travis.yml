@@ -21,7 +21,7 @@ group: edge
 
 env:
     - PS_VERSION=1.6 DOCKER_IMG=prestashop TAG=1.6 MODULE_TECHNICAL_NAME=None SAUCELABS=None
-    - PS_VERSION=1.7 DOCKER_IMG=prestashop TAG=1.7 MODULE_TECHNICAL_NAME=None SAUCELABS=None
+    - PS_VERSION=1.7 DOCKER_IMG=prestashop TAG=1.7 MODULE_TECHNICAL_NAME=ps_emailalerts SAUCELABS=None
 
 
 matrix:
@@ -49,7 +49,7 @@ before_script:
 
 script:
   - mkdir screenshots
-  - $TRAVIS_BUILD_DIR/node_modules/mocha/bin/mocha index.webdriverio.js -c --URL=localhost --MODULE=$MODULE_TECHNICAL_NAME --SAUCELABS=$SAUCELABS -t 300000
+  - $TRAVIS_BUILD_DIR/node_modules/mocha/bin/mocha index.webdriverio.js -c --browser=chrome --URL=localhost --MODULE=$MODULE_TECHNICAL_NAME --SAUCELABS=$SAUCELABS -t 300000
   - curl http://localhost/
 
 after_script:

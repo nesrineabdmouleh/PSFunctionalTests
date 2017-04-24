@@ -41,7 +41,6 @@ describe('The Install of a Module and its Uninstall', function(){
 	describe('Install module', function(done){
         it('sould go to the module', function(done){
             global.fctname= this.test.title;
-
             if (exit_welcome){
 		        this.client
 				    .waitForExist(this.selector.exit_welcome, 90000)
@@ -114,7 +113,7 @@ describe('The Install of a Module and its Uninstall', function(){
 		    global.fctname= this.test.title;
 		    if (modal_confirm_uninstall_is_visible){
                 this.client
-                    .click('//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]')
+                    .click('//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]');
             }
             this.client
                 .pause(3000)

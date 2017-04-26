@@ -48,10 +48,6 @@ describe('The Uninstall of a Module', function(){
 		        done(new Error("Unavailable module"));
 		    }else{
                 this.client
-                    .click(this.selector.modules_installed)
-                    .waitForExist(this.selector.modules_page_loaded, 90000)
-                    .setValue(this.selector.modules_search, module_tech_name)
-                    .click(this.selector.modules_search_button)
                     .waitForExist('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]', 90000)
                     .click('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="btn btn-primary-outline  dropdown-toggle light-button"]')
                     .waitForExist('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="dropdown-item module_action_menu_uninstall"]', 90000)

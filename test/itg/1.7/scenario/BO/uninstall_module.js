@@ -43,57 +43,44 @@ describe('The Uninstall of a Module', function(){
 		});
 
 		it('should click on uninstall button', function(done){
-		    global.fctname= this.test.title;
-            if (red_validation_is_visible){
-		        done(new Error("Unavailable module"));
-		    }else{
-                this.client
-                    .waitForExist('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]', 90000)
-                    .click('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="btn btn-primary-outline  dropdown-toggle light-button"]')
-                    .waitForExist('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="dropdown-item module_action_menu_uninstall"]', 90000)
-                    .click('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="dropdown-item module_action_menu_uninstall"]')
-                    .pause(2000)
-                    .isVisible('//*[@id="module-modal-confirm-'+ module_tech_name  +'-uninstall"and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]').then(function(isVisible) {
-				    	modal_confirm_uninstall_is_visible = isVisible;
-				    })
-                    .call(done);
-		    }
+            this.client
+                .waitForExist('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]', 90000)
+                .click('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="btn btn-primary-outline  dropdown-toggle light-button"]')
+                .waitForExist('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="dropdown-item module_action_menu_uninstall"]', 90000)
+                .click('//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="dropdown-item module_action_menu_uninstall"]')
+                .pause(2000)
+                .isVisible('//*[@id="module-modal-confirm-'+ module_tech_name  +'-uninstall"and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]').then(function(isVisible) {
+                    modal_confirm_uninstall_is_visible = isVisible;
+                })
+                .call(done);
 		});
 
 		it('should check green/red validation', function(done){
 		global.fctname= this.test.title;
-            if(red_validation_is_visible){
-                done(new Error("Unavailable module"));
-            }else{
-                if (modal_confirm_uninstall_is_visible){
-                    this.client
-                        .click('//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]')
-                }
+            if (modal_confirm_uninstall_is_visible){
                 this.client
-                    .pause(3000)
-                    .isVisible(this.selector.red_validation).then(function(isVisible) {
-                        uninstall_red_validation_is_visible = isVisible;
-                    })
-                    .isVisible(this.selector.green_validation).then(function(isVisible) {
-                        green_validation_is_visible = isVisible;
-                    })
-                    .call(done);
+                    .click('//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]')
             }
+            this.client
+                .pause(3000)
+                .isVisible(this.selector.red_validation).then(function(isVisible) {
+                    uninstall_red_validation_is_visible = isVisible;
+                })
+                .isVisible(this.selector.green_validation).then(function(isVisible) {
+                    green_validation_is_visible = isVisible;
+                })
+                .call(done);
         });
 
 		it('should validate the uninstall', function(done){
             global.fctname= this.test.title;
-            if(red_validation_is_visible){
-                done(new Error("Unavailable module"));
-            }else{
-                if (uninstall_red_validation_is_visible){
-                    this.client
-                        .getText(this.selector.red_validation).then(function(text) {
-                            done(new Error(text));
-                        })
-                }else if (green_validation_is_visible){
-                    done();
-                }
+            if (uninstall_red_validation_is_visible){
+                this.client
+                    .getText(this.selector.red_validation).then(function(text) {
+                        done(new Error(text));
+                    })
+            }else if (green_validation_is_visible){
+                done();
             }
 		});
 	});
@@ -106,4 +93,4 @@ describe('The Uninstall of a Module', function(){
 				.call(done);
 		});
 	});
-});	
+});

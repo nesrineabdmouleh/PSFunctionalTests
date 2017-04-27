@@ -64,10 +64,12 @@ describe('The Install of a Module and its Uninstall', function(){
 				.pause(2000)
 				.isVisible(this.selector.red_validation).then(function(isVisible) {
 			        red_validation_is_visible = isVisible;
+			        console.log(red_validation_is_visible);
 				})
 				.pause(1000)
                 .isVisible(this.selector.green_validation).then(function(isVisible) {
 				    green_validation_is_visible = isVisible;
+				    console.log(green_validation_is_visible);
 				})
 				.call(done);
 		});
@@ -87,7 +89,7 @@ describe('The Install of a Module and its Uninstall', function(){
             });
 	});
 
-    if (red_validation_is_visible==false){
+    if (red_validation_is_visible){
 	describe('Uninstall module', function(done){
         it('should go to the module and click on uninstall button', function(done){
             global.fctname= this.test.title;

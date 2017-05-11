@@ -8,6 +8,7 @@ var green_validation_is_visible = false;
 var modal_confirm_uninstall_is_visible = false;
 var uninstall_red_validation_is_visible = false;
 var only_filename = __filename.slice(__dirname.length + 1, -3);
+global.nbr = '-1'
 
 
 describe('The Install of a Module and its Uninstall', function () {
@@ -60,9 +61,9 @@ describe('The Install of a Module and its Uninstall', function () {
                 .getText(this.selector.nbr_module).then(function (text) {
                     global.nbr = text[0];
                     console.log(global.nbr)
-                    if (global.nbr == "0")
+                    if (global.nbr == '0')
                     {
-                        done(new Error("Unavailable module"));
+                        done(new Error('Unavailable module'));
                     }
                     else
                         done();

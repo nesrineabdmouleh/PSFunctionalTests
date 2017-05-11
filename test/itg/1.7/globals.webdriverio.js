@@ -69,7 +69,7 @@ module.exports = {
         close_green_validation: '.growl-close',
         red_validation: '[class="growl growl-error growl-medium"]',
         growl_msg : '//*[@id="growls"]/div/div[3]',
-        nbr_module:'//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[7]/div/div[1]/div/span[1]',
+        nbr_module:'[class="module-sorting-search-wording"]',
         summary_button: '[href="#description_short"]',
         summary: 'form_step1_description_short_1_ifr', //not declare than an id because using into function "frame" that not need this information;
         description_button: '[href="#description"]',

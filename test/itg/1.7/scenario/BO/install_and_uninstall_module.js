@@ -65,31 +65,30 @@ describe('The Install of a Module and its Uninstall', function () {
                     if (global.nbr == '0'){
                         done(new Error('Unavailable module'));
                     }
-                    else
-                        done();
                     })
-        });
+            it('should click on install button', function (done) {
+                global.fctname = this.test.title;
+                if (global.nbr == "0"){
+                    done(new Error("Unavailable module"));
+                }
+                else
+                {
+                    this.client
+                        .waitForExist(this.selector.module_tech_name, 90000)
+                        .click(this.selector.install_module_btn)
+                        .waitForExist(this.selector.close_green_validation, 90000)
+                        .isVisible(this.selector.red_validation).then(function (isVisible) {
+                            red_validation_is_visible = isVisible;
+                        })
+                        .isVisible(this.selector.green_validation).then(function (isVisible) {
+                            green_validation_is_visible = isVisible;
+                        })
+                        .call(done);
+                }
+                });
+         });
 
-        it('should click on install button', function (done) {
-            global.fctname = this.test.title;
-            if (global.nbr == "0"){
-                done(new Error("Unavailable module"));
-            }
-            else
-            {
-                this.client
-                    .waitForExist(this.selector.module_tech_name, 90000)
-                    .click(this.selector.install_module_btn)
-                    .waitForExist(this.selector.close_green_validation, 90000)
-                    .isVisible(this.selector.red_validation).then(function (isVisible) {
-                        red_validation_is_visible = isVisible;
-                    })
-                    .isVisible(this.selector.green_validation).then(function (isVisible) {
-                        green_validation_is_visible = isVisible;
-                    })
-                    .call(done);
-            }
-        });
+
 
         it('should check the installation', function (done) {
             global.fctname = this.test.title;
@@ -140,7 +139,7 @@ describe('The Install of a Module and its Uninstall', function () {
             if (global.nbr == "0"){
                 done(new Error("Unavailable module"));
             }
-            if (red_validation_is_visible) {
+            else if (red_validation_is_visible) {
                 done(new Error("Unavailable module"));
             }
             else {

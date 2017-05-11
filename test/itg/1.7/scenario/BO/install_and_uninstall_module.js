@@ -58,15 +58,16 @@ describe('The Install of a Module and its Uninstall', function () {
 
         it('should go to the module', function (done) {
             global.fctname = this.test.title;
-            .waitForExist(this.selector.nbr_module, 90000)
-             .getText(this.selector.nbr_module).then(function (text) {
-                global.nbr = text[0];
-                if (global.nbr == '0'){
-                    done(new Error('Unavailable module'));
-                }
-                else
-                    done();
-                })
+            this.client
+                .waitForExist(this.selector.nbr_module, 90000)
+                 .getText(this.selector.nbr_module).then(function (text) {
+                    global.nbr = text[0];
+                    if (global.nbr == '0'){
+                        done(new Error('Unavailable module'));
+                    }
+                    else
+                        done();
+                    })
         });
 
         it('should click on install button', function (done) {

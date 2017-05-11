@@ -156,7 +156,7 @@ describe('The Install of a Module and its Uninstall', function () {
                 .isVisible(this.selector.green_validation).then(function (isVisible) {
                     green_validation_is_visible = isVisible;
                 })
-                    .call(done);
+                .call(done);
             }
         });
 

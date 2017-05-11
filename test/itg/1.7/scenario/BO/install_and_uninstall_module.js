@@ -53,6 +53,7 @@ describe('The Install of a Module and its Uninstall', function () {
                 .waitForExist(this.selector.modules_page_loaded, 90000)
                 .setValue(this.selector.modules_search, module_tech_name)
                 .click(this.selector.modules_search_button)
+                .waitForExist(this.selector.nbr_module, 90000)
                 .getText(this.selector.nbr_module).then(function (text) {
                     global.nbr = text[0];
                     console.log(global.nbr)

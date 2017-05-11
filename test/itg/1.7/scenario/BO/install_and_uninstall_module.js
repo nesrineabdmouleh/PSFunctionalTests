@@ -51,23 +51,23 @@ describe('The Install of a Module and its Uninstall', function () {
                 .pause(5000)
                 .click(this.selector.modules_menu)
                 .waitForExist(this.selector.modules_page_loaded, 90000)
-                .call(done);
-        });
-
-        it('should go to the module', function (done) {
-            this.client
                 .setValue(this.selector.modules_search, module_tech_name)
                 .click(this.selector.modules_search_button)
                 .getText(this.selector.nbr_module).then(function (text) {
                     global.nbr = text[0];
                     console.log(global.nbr)
-                    if (global.nbr == '0')
-                    {
-                        done(new Error('Unavailable module'));
-                    }
-                    else
-                        done();
                 })
+                .call(done);
+        });
+
+        it('should go to the module', function (done) {
+            global.fctname = this.test.title;
+            if (global.nbr == '0')
+            {
+                done(new Error('Unavailable module'));
+            }
+            else
+                done();
         });
 
         /*it('should click on install button', function (done) {

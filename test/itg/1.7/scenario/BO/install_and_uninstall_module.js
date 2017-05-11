@@ -50,7 +50,6 @@ describe('The Install of a Module and its Uninstall', function () {
                 .pause(5000)
                 .click(this.selector.modules_menu)
                 .waitForExist(this.selector.modules_page_loaded, 90000)
-
                 .call(done);
         });
 
@@ -60,6 +59,7 @@ describe('The Install of a Module and its Uninstall', function () {
                 .click(this.selector.modules_search_button)
                 .getText(this.selector.nbr_module).then(function (text) {
                     global.nbr = text[0];
+                    console.log(global.nbr)
                     if (global.nbr == "0")
                     {
                         done(new Error("Unavailable module"));
@@ -69,7 +69,7 @@ describe('The Install of a Module and its Uninstall', function () {
                 })
         });
 
-        it('should click on install button', function (done) {
+        /*it('should click on install button', function (done) {
             global.fctname = this.test.title;
             if (global.nbr == "0"){
                 done(new Error("Unavailable module"));
@@ -105,10 +105,10 @@ describe('The Install of a Module and its Uninstall', function () {
             {
                 done(new Error('No validation'));
             }
-        });
+        });*/
     })
 
-    describe('Uninstall module', function (done) {
+    /*describe('Uninstall module', function (done) {
         it('should go to the module and click on uninstall button', function (done) {
             global.fctname = this.test.title;
             if (global.nbr == "0"){
@@ -183,7 +183,7 @@ describe('The Install of a Module and its Uninstall', function () {
             }
         });
     })
-
+*/
     describe('Log out in Back Office', function (done) {
         it('should log out successfully in BO', function (done) {
             global.fctname = this.test.title;

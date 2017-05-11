@@ -53,25 +53,23 @@ describe('The Install of a Module and its Uninstall', function () {
                 .waitForExist(this.selector.modules_page_loaded, 90000)
                 .setValue(this.selector.modules_search, module_tech_name)
                 .click(this.selector.modules_search_button)
-                .waitForExist(this.selector.nbr_module, 90000)
-                .getText(this.selector.nbr_module).then(function (text) {
-                    global.nbr = text[0];
-                    console.log(global.nbr)
-                })
                 .call(done);
         });
 
         it('should go to the module', function (done) {
             global.fctname = this.test.title;
-            if (global.nbr == '0')
-            {
-                done(new Error('Unavailable module'));
-            }
-            else
-                done();
+            .waitForExist(this.selector.nbr_module, 90000)
+             .getText(this.selector.nbr_module).then(function (text) {
+                global.nbr = text[0];
+                if (global.nbr == '0'){
+                    done(new Error('Unavailable module'));
+                }
+                else
+                    done();
+                })
         });
 
-        /*it('should click on install button', function (done) {
+        it('should click on install button', function (done) {
             global.fctname = this.test.title;
             if (global.nbr == "0"){
                 done(new Error("Unavailable module"));
@@ -107,10 +105,10 @@ describe('The Install of a Module and its Uninstall', function () {
             {
                 done(new Error('No validation'));
             }
-        });*/
+        });
     })
 
-    /*describe('Uninstall module', function (done) {
+    describe('Uninstall module', function (done) {
         it('should go to the module and click on uninstall button', function (done) {
             global.fctname = this.test.title;
             if (global.nbr == "0"){
@@ -185,7 +183,7 @@ describe('The Install of a Module and its Uninstall', function () {
             }
         });
     })
-*/
+
     describe('Log out in Back Office', function (done) {
         it('should log out successfully in BO', function (done) {
             global.fctname = this.test.title;

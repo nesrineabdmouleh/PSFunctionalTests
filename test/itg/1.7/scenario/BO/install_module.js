@@ -40,25 +40,35 @@ describe('The Install of a Module', function () {
 
         it('sould go to the module', function (done) {
             global.fctname = this.test.title;
-            this.client
-                .setValue(this.selector.modules_search, module_tech_name)
-                .click(this.selector.modules_search_button)
-                .waitForExist(this.selector.module_tech_name, 90000)
-                .call(done);
+            if (global.nbr == "0"){
+                done(new Error("Unavailable module"));
+            }else{
+                this.client
+                    .setValue(this.selector.modules_search, module_tech_name)
+                    .click(this.selector.modules_search_button)
+                    .call(done);
+            }
         });
 
         it('should click on install button', function (done) {
             global.fctname = this.test.title;
-            this.client
-                .click(this.selector.install_module_btn)
-                .waitForExist(this.selector.close_green_validation, 90000)
-                .isVisible(this.selector.red_validation).then(function (isVisible) {
-                    global.red_validation_is_visible = isVisible;
-                })
-                .isVisible(this.selector.green_validation).then(function (isVisible) {
-                    green_validation_is_visible = isVisible;
-                })
-                .call(done);
+            if (global.nbr == "0"){
+                done(new Error("Unavailable module"));
+            }
+            else
+            {
+                this.client
+                    .waitForExist(this.selector.module_tech_name, 90000)
+                    .click(this.selector.install_module_btn)
+                    .waitForExist(this.selector.close_green_validation, 90000)
+                    .isVisible(this.selector.red_validation).then(function (isVisible) {
+                        global.red_validation_is_visible = isVisible;
+                    })
+                    .isVisible(this.selector.green_validation).then(function (isVisible) {
+                        green_validation_is_visible = isVisible;
+                    })
+                    .call(done);
+            }
         });
 
         it('should check the installation', function (done) {

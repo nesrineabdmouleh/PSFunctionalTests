@@ -69,6 +69,7 @@ module.exports = {
         close_green_validation: '.growl-close',
         red_validation: '[class="growl growl-error growl-medium"]',
         growl_msg : '//*[@id="growls"]/div/div[3]',
+        nbr_module:'//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[7]/div/div[1]/div/span[1]',
         summary_button: '[href="#description_short"]',
         summary: 'form_step1_description_short_1_ifr', //not declare than an id because using into function "frame" that not need this information;
         description_button: '[href="#description"]',
@@ -131,7 +132,7 @@ module.exports = {
         //layer_cart_command_button: '//div[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a',
         //command_product_quantity: '//div[@class="product-line-grid-body col-md-5 col-xs-5"]/div[5]',
         command_product_name: '(//div[@class="product-line-info"])[1]/a',
-        command_product_price: '(//div[@class="product-line-info"])[2]/span',
+        command_product_price: '//*[@id="main"]/div/div[1]/div/div[2]/ul/li/div/div[2]/div[2]/div/span',
         command_button_checkout: '//*[@id="main"]/div/div[2]/div[1]/div[2]/div/a',
         check_out_step1: '#checkout-personal-information-step',
         check_out_step2: '#checkout-addresses-step',

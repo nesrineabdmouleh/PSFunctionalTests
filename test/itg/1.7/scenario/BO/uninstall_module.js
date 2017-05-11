@@ -42,7 +42,10 @@ describe('The Uninstall of a Module', function () {
 
         it('sould go to the module', function (done) {
             global.fctname = this.test.title;
-            if (red_validation_is_visible) {
+            if (global.nbr == "0"){
+                done(new Error("Unavailable module"));
+            }
+            else if (red_validation_is_visible) {
                 done(new Error("Unavailable module"));
             } else {
                 this.client
@@ -55,7 +58,10 @@ describe('The Uninstall of a Module', function () {
 
         it('should click on uninstall button', function (done) {
             global.fctname = this.test.title;
-            if (red_validation_is_visible) {
+            if (global.nbr == "0"){
+                done(new Error("Unavailable module"));
+            }
+            else if (red_validation_is_visible) {
                 done(new Error("Unavailable module"));
             } else {
                 this.client
@@ -73,7 +79,10 @@ describe('The Uninstall of a Module', function () {
 
         it('should check modal confirm uninstall', function (done) {
             global.fctname = this.test.title;
-            if (red_validation_is_visible) {
+            if (global.nbr == "0"){
+                done(new Error("Unavailable module"));
+            }
+            else if (red_validation_is_visible) {
                 done(new Error("Unavailable module"));
             }
             else {
@@ -95,7 +104,7 @@ describe('The Uninstall of a Module', function () {
 
         it('should validate the uninstall', function (done) {
             global.fctname = this.test.title;
-            if (red_validation_is_visible) {
+           if (red_validation_is_visible) {
                 done(new Error("Unavailable module"));
             }
             else {

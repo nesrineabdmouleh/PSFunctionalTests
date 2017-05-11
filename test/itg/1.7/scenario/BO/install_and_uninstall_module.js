@@ -60,7 +60,7 @@ describe('The Install of a Module and its Uninstall', function () {
                 .click(this.selector.modules_search_button)
                 .getText(this.selector.nbr_module).then(function (text) {
                     global.nbr = text[0];
-                    if (nbr == "0")
+                    if (global.nbr == "0")
                     {
                         done(new Error("Unavailable module"));
                     }
@@ -71,7 +71,7 @@ describe('The Install of a Module and its Uninstall', function () {
 
         it('should click on install button', function (done) {
             global.fctname = this.test.title;
-            if (nbr == "0"){
+            if (global.nbr == "0"){
                 done(new Error("Unavailable module"));
             }
             else
@@ -111,7 +111,7 @@ describe('The Install of a Module and its Uninstall', function () {
     describe('Uninstall module', function (done) {
         it('should go to the module and click on uninstall button', function (done) {
             global.fctname = this.test.title;
-            if (nbr == "0"){
+            if (global.nbr == "0"){
                 done(new Error("Unavailable module"));
             }
             else if (red_validation_is_visible) {
@@ -136,7 +136,7 @@ describe('The Install of a Module and its Uninstall', function () {
 
         it('should check modal confirm uninstall', function (done) {
             global.fctname = this.test.title;
-            if (nbr == "0"){
+            if (global.nbr == "0"){
                 done(new Error("Unavailable module"));
             }
             if (red_validation_is_visible) {

@@ -8,12 +8,11 @@ var options = {
     waitForTimeout: 30000,
     desiredCapabilities: {
         browserName: 'chrome',
+        //screenResolution: "1280x1024",
+        //handlesAlerts: true,
     },
     port: 4444
 };
-if (typeof global.selenium_url !== 'undefined') {
-    options.host = global.selenium_url;
-}
 
 var options2 = {
     logLevel: 'silent',
@@ -80,9 +79,6 @@ function initCommands(client) {
     client.addCommand('signoutFO', function (cb) {
         this.selector = globals.selector;
         client
-        /*.waitForExist(this.selector.logoutFO, 90000)
-         .click(this.selector.logoutFO)
-         .waitForExist(this.selector.access_loginFO, 90000)*/
             .deleteCookie()
             .call(cb);
     });
@@ -103,6 +99,7 @@ module.exports = {
                 client = webdriverio
                     .remote(options)
                     .init()
+                    .windowHandleSize({width: 1430, height: 1050})
                     .windowHandleMaximize()
             }
             initCommands(client);

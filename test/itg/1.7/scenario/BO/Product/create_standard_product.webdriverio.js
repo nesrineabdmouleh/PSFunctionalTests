@@ -1,19 +1,19 @@
 'use strict';
 var should = require('should');
-var common = require('../../common.webdriverio');
-var globals = require('../../globals.webdriverio.js');
-var standard_product = require('../../datas/standard_product');
+var common = require('../../../common.webdriverio');
+var globals = require('../../../globals.webdriverio.js');
+var standard_product = require('../../../datas/standard_product');
 
 var path = require('path');
-var toUpload = path.join(__dirname, '../..', 'datas', 'image_test.jpg');
-var newFile = path.join(__dirname, '../..', 'datas', 'bleue.jpg');
+var toUpload = path.join(__dirname, '../../..', 'datas', 'image_test.jpg');
+var newFile = path.join(__dirname, '../../..', 'datas', 'bleue.jpg');
 
 function getPicture(name) {
-    return path.join(__dirname, '../..', 'datas', name);
+    return path.join(__dirname, '../../..', 'datas', name);
 }
 
 
-describe('Test case n°1 = Add new standard product', function(){
+describe('Add new standard product', function(){
     common.initMocha.call(this);
 
     before(function(done){
@@ -54,7 +54,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it("should click on the add new product button", function (done) {
+        it("should click on add new product button", function (done) {
             this.client
                 .waitForExist(this.selector.new_product, 120000)
                 .click(this.selector.new_product)
@@ -153,7 +153,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should click on category create button', function (done) {
+        it('should click on create category button', function (done) {
             this.client
                 .scroll(0, 600)
                 .waitForExist(this.selector.category_create_btn, 90000)
@@ -181,7 +181,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should click on add a related product button', function (done) {
+        it('should click on add related product button', function (done) {
             this.client
                 .waitForExist(this.selector.add_related_product_btn, 90000)
                 .click(this.selector.add_related_product_btn)
@@ -189,7 +189,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should search and add a related product', function (done) {
+        it('should add a related product', function (done) {
             var search_products = standard_product.search_related_products.split('//');
             this.client
                 .waitForExist(this.selector.search_add_related_product_input, 90000)
@@ -266,6 +266,7 @@ describe('Test case n°1 = Add new standard product', function(){
 
         it('should add feature compositions', function (done) {
             this.client
+                .scroll(0, 600)
                 .waitForExist(this.selector.product_add_feature_btn, 90000)
                 .click(this.selector.product_add_feature_btn)
                 .pause(2000)
@@ -337,7 +338,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should switch the product online', function (done) {
+        it('should select product online', function (done) {
             this.client
                 .waitForExist(this.selector.product_online, 60000)
                 .click(this.selector.product_online)
@@ -354,7 +355,7 @@ describe('Test case n°1 = Add new standard product', function(){
         });
     });
 
-    describe('Create combinations of product ', function (done) {
+    describe('Create product combinations ', function (done) {
         it('should go to the product combinations form', function (done) {
             this.client
                 .waitForExist(this.selector.product_combinations_tab, 60000)
@@ -362,7 +363,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should create variation ', function (done) {
+        it('should create first variation', function (done) {
             this.client
                 .waitForExist(this.selector.combination_size_s, 60000)
                 .click(this.selector.combination_size_s)
@@ -376,7 +377,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should create variation ', function (done) {
+        it('should create second variation', function (done) {
             this.client
                 .waitForExist(this.selector.combination_size_m, 60000)
                 .click(this.selector.combination_size_m)
@@ -455,7 +456,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should click on edit the first combination ', function (done) {
+        it('should click on edit the second combination ', function (done) {
             this.client
                 .waitForExist(this.selector.combination_edit_second_variation, 60000)
                 .click(this.selector.combination_edit_second_variation)
@@ -558,7 +559,7 @@ describe('Test case n°1 = Add new standard product', function(){
         });
     });
 
-    describe('Create shipping of product', function(done){
+    describe('Create product shipping', function(done){
         it('should go to the product shipping form ', function(done){
             this.client
                 .scroll(800, 0)
@@ -629,7 +630,7 @@ describe('Test case n°1 = Add new standard product', function(){
         });
     });
 
-    describe('Edit pricing of product', function(done){
+    describe('Edit product pricing', function(done){
         it('should go to the product pricing form ', function(done){
             this.client
                 .waitForExist(this.selector.product_pricing_tab, 90000)
@@ -751,8 +752,8 @@ describe('Test case n°1 = Add new standard product', function(){
         });
     });
 
-    describe('Edit the options of product', function(done){
-        it('should go to the product option form ', function(done){
+    describe('Edit the product options', function(done){
+        it('should go to the product options form ', function(done){
             this.client
                 .waitForExist(this.selector.product_options_tab, 90000)
                 .click(this.selector.product_options_tab)
@@ -777,7 +778,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should select the condition ', function(done){
+        it('should select condition ', function(done){
             this.client
                 .waitForExist(this.selector.options_condition_select, 90000)
                 .click(this.selector.options_condition_select)
@@ -814,7 +815,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should click on the customization button ', function(done){
+        it('should click on customization button ', function(done){
             this.client
                 .scroll(0,800)
                 .waitForExist(this.selector.options_add_customization_field_button, 90000)
@@ -838,7 +839,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should click on the add a customization field button ', function(done){
+        it('should click on add customization field button ', function(done){
             this.client
                 .scroll(0,400)
                 .waitForExist(this.selector.options_add_customization_field_button, 90000)
@@ -859,19 +860,28 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should click on the attach a new file button ', function(done){
+        it('should click on attach new file button ', function(done){
             this.client
-                .scroll(0,800)
+                .scroll(0,1200)
                 .waitForExist(this.selector.options_add_new_file_button, 90000)
                 .click(this.selector.options_add_new_file_button)
                 .pause(2000)
                 .call(done);
         });
 
-        it('should add a file ', function(done){
+        it('should add file ', function(done){
             this.client
+                .scroll(0,1200)
+                .pause(2000)
                 .waitForExist(this.selector.options_select_file, 90000)
                 .chooseFile(this.selector.options_select_file, newFile)
+                .pause(2000)
+                .call(done);
+        });
+
+        it('should enter the name and description of file ', function(done){
+            this.client
+                .scroll(0,1200)
                 .pause(2000)
                 .waitForExist(this.selector.options_file_name, 90000)
                 .click(this.selector.options_file_name)
@@ -904,7 +914,7 @@ describe('Test case n°1 = Add new standard product', function(){
                 .call(done);
         });
 
-        it('should go to catalog list of product ', function (done) {
+        it('should go to catalog product list ', function (done) {
             this.client
                 .waitForExist(this.selector.go_to_catalog, 90000)
                 .click(this.selector.go_to_catalog)
@@ -913,8 +923,8 @@ describe('Test case n°1 = Add new standard product', function(){
         });
     });
 
-    describe('should check the previous product ', function(done){
-        it('should enter the filter name ', function (done) {
+    describe('Check product ', function(done){
+        it('should check the product name ', function (done) {
             this.client
                 .waitForExist(this.selector.catalogue_filter_by_name, 90000)
                 .click(this.selector.catalogue_filter_by_name)
@@ -922,17 +932,9 @@ describe('Test case n°1 = Add new standard product', function(){
                 .setValue(this.selector.catalogue_filter_by_name, standard_product.name + product_id)
                 .pause(2000)
                 .click(this.selector.click_outside)
-                .call(done);
-        });
-        it('should click on the filter apply button ', function (done) {
-            this.client
                 .waitForExist(this.selector.catalogue_submit_filter, 60000)
                 .click(this.selector.catalogue_submit_filter)
                 .pause(3000)
-                .call(done);
-        });
-        it('should check the product name ', function (done) {
-            this.client
                 .waitForExist(this.selector.catalog_product_name, 60000)
                 .getText(this.selector.catalog_product_name).then(function (name) {
                     should(name).be.equal(standard_product.name + product_id)

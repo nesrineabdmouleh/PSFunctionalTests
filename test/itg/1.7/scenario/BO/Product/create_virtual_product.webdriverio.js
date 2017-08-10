@@ -1,19 +1,18 @@
 'use strict';
 var should = require('should');
-var common = require('../../common.webdriverio');
-var globals = require('../../globals.webdriverio.js');
-var virtual_product = require('../../datas/virtual_product');
+var common = require('../../../common.webdriverio');
+var globals = require('../../../globals.webdriverio.js');
+var virtual_product = require('../../../datas/virtual_product');
 
 var path = require('path');
-var toUpload = path.join(__dirname, '../..', 'datas', 'image_test.jpg');
-var newFile = path.join(__dirname, '../..', 'datas', 'bleue.jpg');
+var newFile = path.join(__dirname, '../../..', 'datas', 'bleue.jpg');
 
 function getPicture(name) {
-    return path.join(__dirname, '../..', 'datas', name);
+    return path.join(__dirname, '../../..', 'datas', name);
 }
 
 
-describe('Test case n°3 = Add new virtual product', function(){
+describe('Add new virtual product', function(){
     common.initMocha.call(this);
 
     before(function(done){
@@ -23,19 +22,6 @@ describe('Test case n°3 = Add new virtual product', function(){
     process.on('uncaughtException', common.take_screenshot);
     process.on('ReferenceError', common.take_screenshot);
     after(common.after);
-
-    function uploadFile(browser, fileSelector, fileName, done) {
-        browser
-            .execute(function () {
-                document.getElementsByClassName("dz-hidden-input").style = "";
-            })
-            .chooseFile(fileSelector, getPicture(fileName))
-            .getAttribute('.dz-preview.dz-image-preview.ui-sortable-handle.dz-complete', "data-id").then(function (text) {
-                global.image_data_id = text;
-            })
-            .pause(2000)
-            .call(done);
-    }
 
     describe('Log in in Back Office', function(done){
         it('should log in successfully in BO', function(done){
@@ -54,7 +40,7 @@ describe('Test case n°3 = Add new virtual product', function(){
                 .call(done);
         });
 
-        it("should click on the add new product button", function (done) {
+        it("should click on add new product button", function (done) {
             this.client
                 .waitForExist(this.selector.new_product, 120000)
                 .click(this.selector.new_product)
@@ -70,12 +56,12 @@ describe('Test case n°3 = Add new virtual product', function(){
                 .call(done);
         });
 
-        it('should choose virtual product', function (done) {
+        it('should choose virtual product type', function (done) {
             this.client
-                .waitForExist(this.selector.product_type, 90000)
-                .click(this.selector.product_type)
+                .waitForExist(this.selector.virtual_product_type, 90000)
+                .click(this.selector.virtual_product_type)
                 .pause(3000)
-                .selectByIndex(this.selector.product_type, 2)
+                .selectByIndex(this.selector.virtual_product_type, 2)
                 .pause(3000)
                 .call(done);
         });
@@ -222,7 +208,7 @@ describe('Test case n°3 = Add new virtual product', function(){
         });
     });
 
-    describe('Edit pricing of product', function(done){
+    describe('Edit product pricing', function(done){
         it('should go to the product pricing form ', function(done){
             this.client
                 .waitForExist(this.selector.product_pricing_tab, 90000)
@@ -344,8 +330,8 @@ describe('Test case n°3 = Add new virtual product', function(){
         });
     });
 
-    describe('Edit the options of product', function(done){
-        it('should go to the product option form ', function(done){
+    describe('Edit the product options', function(done){
+        it('should go to the product options form ', function(done){
             this.client
                 .waitForExist(this.selector.product_options_tab, 90000)
                 .click(this.selector.product_options_tab)
@@ -407,7 +393,7 @@ describe('Test case n°3 = Add new virtual product', function(){
                 .call(done);
         });
 
-        it('should click on the customization button ', function(done){
+        it('should click on customization button ', function(done){
             this.client
                 .scroll(0,800)
                 .waitForExist(this.selector.options_add_customization_field_button, 90000)
@@ -431,7 +417,7 @@ describe('Test case n°3 = Add new virtual product', function(){
                 .call(done);
         });
 
-        it('should click on the add a customization field button ', function(done){
+        it('should click on add a customization field button ', function(done){
             this.client
                 .scroll(0,400)
                 .waitForExist(this.selector.options_add_customization_field_button, 90000)
@@ -452,9 +438,9 @@ describe('Test case n°3 = Add new virtual product', function(){
                 .call(done);
         });
 
-        it('should click on the attach a new file button ', function(done){
+        it('should click on attach a new file button ', function(done){
             this.client
-                .scroll(0,800)
+                .scroll(0,1200)
                 .waitForExist(this.selector.options_add_new_file_button, 90000)
                 .click(this.selector.options_add_new_file_button)
                 .pause(2000)
@@ -463,6 +449,7 @@ describe('Test case n°3 = Add new virtual product', function(){
 
         it('should add a file ', function(done){
             this.client
+                .scroll(0,1200)
                 .waitForExist(this.selector.options_select_file, 90000)
                 .chooseFile(this.selector.options_select_file, newFile)
                 .pause(2000)
@@ -506,8 +493,8 @@ describe('Test case n°3 = Add new virtual product', function(){
         });
     });
 
-    describe('should check the previous product ', function(done){
-        it('should enter the filter name ', function (done) {
+    describe('check the product name ', function(done){
+        it('should check the product name ', function (done) {
             this.client
                 .waitForExist(this.selector.catalogue_filter_by_name, 90000)
                 .click(this.selector.catalogue_filter_by_name)
@@ -515,17 +502,9 @@ describe('Test case n°3 = Add new virtual product', function(){
                 .setValue(this.selector.catalogue_filter_by_name, virtual_product.name + product_id)
                 .pause(2000)
                 .click(this.selector.click_outside)
-                .call(done);
-        });
-        it('should click on the filter apply button ', function (done) {
-            this.client
                 .waitForExist(this.selector.catalogue_submit_filter, 60000)
                 .click(this.selector.catalogue_submit_filter)
                 .pause(3000)
-                .call(done);
-        });
-        it('should check the product name ', function (done) {
-            this.client
                 .waitForExist(this.selector.catalog_product_name, 60000)
                 .getText(this.selector.catalog_product_name).then(function (name) {
                     should(name).be.equal(virtual_product.name + product_id)

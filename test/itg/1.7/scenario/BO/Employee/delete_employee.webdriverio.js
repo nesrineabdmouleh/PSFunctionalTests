@@ -11,12 +11,13 @@ describe('Delete employee ', function(){
         this.selector = globals.selector;
         this.client.call(done);
     });
-    /*process.on('uncaughtException', common.take_screenshot);
-    process.on('ReferenceError', common.take_screenshot);*/
+    process.on('uncaughtException', common.take_screenshot);
+    process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
     describe('Log in in Back Office', function(done){
         it('should log in successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signinBO()
                 .waitForExist(this.selector.menu, 90000)
@@ -26,6 +27,7 @@ describe('Delete employee ', function(){
 
     describe('Delete employee in Back Office', function (done) {
         it('should go to the advanced parameters > team', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .moveToObject(this.selector.advanced_parameters)
                 .pause(5000)
@@ -35,6 +37,7 @@ describe('Delete employee ', function(){
         });
 
         it('should search the employee by email', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.customer_filter_by_email, 90000)
                 .setValue(this.selector.customer_filter_by_email, 'testgmqa@testgmaqa.fr')
@@ -45,6 +48,7 @@ describe('Delete employee ', function(){
         });
 
         it('should select the employee id', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .pause(1000)
                 .waitForExist(this.selector.customers_select_customer, 90000)
@@ -53,6 +57,7 @@ describe('Delete employee ', function(){
         });
 
         it('should select the action to delete employee', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .pause(1000)
                 .waitForExist(this.selector.customer_bulk_action_button, 90000)
@@ -65,6 +70,7 @@ describe('Delete employee ', function(){
         });
 
         it("should check delete employee", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.customer_green_block_validation, 90000)
                 .getText(this.selector.customer_green_block_validation).then(function (text) {
@@ -76,6 +82,7 @@ describe('Delete employee ', function(){
 
     describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signoutBO()
                 .call(done);

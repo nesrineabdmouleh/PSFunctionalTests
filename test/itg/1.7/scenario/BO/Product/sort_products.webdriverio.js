@@ -10,8 +10,8 @@ describe('Sort products', function(){
         this.selector = globals.selector;
         this.client.call(done);
     });
-    /*process.on('uncaughtException', common.take_screenshot);
-    process.on('ReferenceError', common.take_screenshot);*/
+    process.on('uncaughtException', common.take_screenshot);
+    process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
     /****************************Sort product by id**********************************/
@@ -176,6 +176,7 @@ describe('Sort products', function(){
 
     describe('Log in in Back Office', function(done){
         it('should log in successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signinBO()
                 .waitForExist(this.selector.menu, 90000)
@@ -183,7 +184,7 @@ describe('Sort products', function(){
         });
 
         it("should go to the products page", function (done) {
-
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.products, 90000)
                 .click(this.selector.products)
@@ -197,11 +198,13 @@ describe('Sort products', function(){
 
     describe('sort product by id', function (done) {
         it("should get All product ids before sort", function (done) {
+            global.fctname = this.test.title;
             countProduct(this.client, done);
             getProductsId(this.client, 'DESC', done);
         });
 
         it("should click on sort by desc", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.sort_id_desc, 90000)
                 .click(this.selector.sort_id_desc)
@@ -210,14 +213,17 @@ describe('Sort products', function(){
         });
 
         it("should check the products sorted by desc", function (done) {
+            global.fctname = this.test.title;
             getProductsIdAfterSort(this.client, done)
         });
 
         it("should get All product ids before sort", function (done) {
+            global.fctname = this.test.title;
             getProductsId(this.client, 'ASC', done);
         });
 
         it("should click on sort by asc", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.sort_id_asc, 90000)
                 .click(this.selector.sort_id_asc)
@@ -226,18 +232,20 @@ describe('Sort products', function(){
         });
 
         it("should check the products sorted by asc", function (done) {
+            global.fctname = this.test.title;
             getProductsIdAfterSort(this.client, done)
         });
 
     });
 
     describe('sort product by name', function (done) {
-
         it("should get All product names before sort", function (done) {
+            global.fctname = this.test.title;
             getProductsName(this.client, 'DESC', done);
         });
 
         it("should click on sort by desc", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.sort_name_desc, 90000)
                 .click(this.selector.sort_name_desc)
@@ -246,14 +254,17 @@ describe('Sort products', function(){
         });
 
         it("should check the products name sorted by desc", function (done) {
+            global.fctname = this.test.title;
             getProductsNameAfterSort(this.client, done)
         });
 
         it("should get All product names before sort", function (done) {
+            global.fctname = this.test.title;
             getProductsName(this.client, 'ASC', done);
         });
 
         it("should click on sort by asc", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.sort_name_asc, 90000)
                 .click(this.selector.sort_name_asc)
@@ -262,6 +273,7 @@ describe('Sort products', function(){
         });
 
         it("should check the product names sorted by asc", function (done) {
+            global.fctname = this.test.title;
             getProductsNameAfterSort(this.client, done)
         });
 
@@ -269,10 +281,12 @@ describe('Sort products', function(){
 
     describe('sort product by reference', function (done) {
         it("should get All product references before sort", function (done) {
+            global.fctname = this.test.title;
             getProductsReference(this.client, 'DESC', done);
         });
 
         it("should click on sort by desc", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.sort_reference_desc, 90000)
                 .click(this.selector.sort_reference_desc)
@@ -281,14 +295,17 @@ describe('Sort products', function(){
         });
 
         it("should check the products reference sorted by desc", function (done) {
+            global.fctname = this.test.title;
             getProductsReferenceAfterSort(this.client, done)
         });
 
         it("should get All product references before sort", function (done) {
+            global.fctname = this.test.title;
             getProductsReference(this.client, 'ASC', done);
         });
 
         it("should click on sort by asc", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.sort_reference_asc, 90000)
                 .click(this.selector.sort_reference_asc)
@@ -297,6 +314,7 @@ describe('Sort products', function(){
         });
 
         it("should check the product references sorted by asc", function (done) {
+            global.fctname = this.test.title;
             getProductsReferenceAfterSort(this.client, done)
         });
 
@@ -304,6 +322,7 @@ describe('Sort products', function(){
 
     describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signoutBO()
                 .call(done);

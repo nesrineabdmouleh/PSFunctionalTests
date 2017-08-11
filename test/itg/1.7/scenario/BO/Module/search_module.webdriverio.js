@@ -10,8 +10,8 @@ describe('Search module', function(){
         this.selector = globals.selector;
         this.client.call(done);
     });
-    /*process.on('uncaughtException', common.take_screenshot);
-    process.on('ReferenceError', common.take_screenshot);*/
+    process.on('uncaughtException', common.take_screenshot);
+    process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
     /*****************************************************************************************************************************/
@@ -99,6 +99,7 @@ describe('Search module', function(){
 
     describe('Log in in Back Office', function(done){
         it('should log in successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signinBO()
                 .waitForExist(this.selector.menu, 90000)
@@ -108,6 +109,7 @@ describe('Search module', function(){
 
     describe('Go to module page', function (done) {
         it('should go to modules page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .pause(5000)
                 .click(this.selector.modules_menu)
@@ -119,6 +121,7 @@ describe('Search module', function(){
 
     describe('search module', function (done) {
         it('should search the module', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.modules_search, 90000)
                 .setValue(this.selector.modules_search, 'contact form')
@@ -135,6 +138,7 @@ describe('Search module', function(){
         });
 
         it('should check the search of modules', function (done) {
+            global.fctname = this.test.title;
             if (global.nbr == 0) {
                 done(new Error('The module does not exist!'));
             }
@@ -147,6 +151,7 @@ describe('Search module', function(){
 
     describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signoutBO()
                 .call(done);

@@ -10,12 +10,13 @@ describe('Add employee ', function(){
         this.selector = globals.selector;
         this.client.call(done);
     });
-    /*process.on('uncaughtException', common.take_screenshot);
-    process.on('ReferenceError', common.take_screenshot);*/
+    process.on('uncaughtException', common.take_screenshot);
+    process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
     describe('Log in in Back Office', function(done){
         it('should log in successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signinBO()
                 .waitForExist(this.selector.menu, 90000)
@@ -25,6 +26,7 @@ describe('Add employee ', function(){
 
     describe('Add employee in Back Office', function (done) {
         it('should go to the advanced parameters > team', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .moveToObject(this.selector.advanced_parameters)
                 .pause(5000)
@@ -34,6 +36,7 @@ describe('Add employee ', function(){
         });
 
         it('should click on add new employee button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.add_new_employee_button, 90000)
                 .click(this.selector.add_new_employee_button)
@@ -42,6 +45,7 @@ describe('Add employee ', function(){
         });
 
         it('should enter the first name ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.employee_first_name, 90000)
                 .setValue(this.selector.employee_first_name, 'testfirstname')
@@ -49,6 +53,7 @@ describe('Add employee ', function(){
         });
 
         it('should enter the last name ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.employee_last_name, 90000)
                 .setValue(this.selector.employee_last_name, 'testlastname')
@@ -56,6 +61,7 @@ describe('Add employee ', function(){
         });
 
         it('should enter the email ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.employee_email, 90000)
                 .setValue(this.selector.employee_email, 'testgmqa@testgmaqa.fr')
@@ -63,6 +69,7 @@ describe('Add employee ', function(){
         });
 
         it('should enter the password ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.employee_passwd, 90000)
                 .setValue(this.selector.employee_passwd, 'presta1234')
@@ -70,6 +77,7 @@ describe('Add employee ', function(){
         });
 
         it('should disable the subscribe to prestashop newsletter ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.employee_subscribe_newsletter, 90000)
                 .click(this.selector.employee_subscribe_newsletter)
@@ -77,6 +85,7 @@ describe('Add employee ', function(){
         });
 
         it('should select a profile ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.employee_profile_select, 90000)
                 .selectByValue(this.selector.employee_profile_select, 1)
@@ -84,6 +93,7 @@ describe('Add employee ', function(){
         });
 
         it('should click on save button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.employee_save_button, 90000)
                 .click(this.selector.employee_save_button)
@@ -92,6 +102,7 @@ describe('Add employee ', function(){
         });
 
         it("should check the previous customer added", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.employees_firstname, 90000)
                 .getText(this.selector.employees_firstname).then(function (first_name) {
@@ -111,6 +122,7 @@ describe('Add employee ', function(){
 
     describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signoutBO()
                 .call(done);

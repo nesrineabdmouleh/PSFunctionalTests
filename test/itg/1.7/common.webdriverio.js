@@ -94,13 +94,14 @@ module.exports = {
                 client = webdriverio
                     .remote(options2)
                     .init()
+                    .windowHandleSize({width: 1680, height: 1050})
                     //.windowHandleMaximize()
             } else {
                 client = webdriverio
                     .remote(options)
                     .init()
-                    /*.windowHandleSize({width: 1430, height: 1050})
-                    .windowHandleMaximize()*/
+                    .windowHandleSize({width: 1680, height: 1050})
+                    /*.windowHandleMaximize()*/
             }
             initCommands(client);
 
@@ -110,9 +111,9 @@ module.exports = {
     after: function (done) {
         done();
     },
-    /*take_screenshot: function (done) {
+    take_screenshot: function (done) {
         client.saveScreenshot(__dirname + '/screenshots/' + client.desiredCapabilities.browserName + '_exception' + '_' + global.date_time + '_' + global.fctname + '.png');
-    },*/
+    },
     initMocha: function () {
         this.timeout(900000000);
         this.slow(45000);

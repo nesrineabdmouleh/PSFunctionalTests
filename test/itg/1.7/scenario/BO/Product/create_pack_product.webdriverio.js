@@ -15,12 +15,13 @@ describe('Add new pack product', function(){
         this.selector = globals.selector;
         this.client.call(done);
     });
-    /*process.on('uncaughtException', common.take_screenshot);
-    process.on('ReferenceError', common.take_screenshot);*/
+    process.on('uncaughtException', common.take_screenshot);
+    process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
     describe('Log in in Back Office', function(done){
         it('should log in successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signinBO()
                 .waitForExist(this.selector.menu, 90000)
@@ -30,6 +31,7 @@ describe('Add new pack product', function(){
 
     describe('Create new product', function (done) {
         it("should go to the products page", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .click(this.selector.products)
                 .waitForExist(this.selector.new_product, 120000)
@@ -37,6 +39,7 @@ describe('Add new pack product', function(){
         });
 
         it("should click on add new product button", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.new_product, 120000)
                 .click(this.selector.new_product)
@@ -45,6 +48,7 @@ describe('Add new pack product', function(){
         });
 
         it('should select the product type', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_type, 90000)
                 .click(this.selector.product_type)
@@ -56,6 +60,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the product name', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_name, 90000)
                 .setValue(this.selector.product_name, pack_product.name + product_id)
@@ -64,6 +69,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the product summary', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .frame(this.selector.summary, function (err, result) {
                     if (err) console.log(err);
@@ -75,6 +81,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the product description', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.description_button, 90000)
                 .click(this.selector.description_button)
@@ -88,6 +95,7 @@ describe('Add new pack product', function(){
         });
 
         it('should upload the picture of product', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .execute(function () {
                     document.getElementsByClassName("dz-hidden-input").style = "";
@@ -102,6 +110,7 @@ describe('Add new pack product', function(){
         });
 
         it('should click on create category button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(0, 600)
                 .waitForExist(this.selector.product_create_category_btn, 90000)
@@ -111,6 +120,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the category name', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_category_name_input, 90000)
                 .setValue(this.selector.product_category_name_input, pack_product.new_category_name + product_id)
@@ -119,6 +129,7 @@ describe('Add new pack product', function(){
         });
 
         it('should click on category create button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(0, 600)
                 .waitForExist(this.selector.category_create_btn, 90000)
@@ -128,6 +139,7 @@ describe('Add new pack product', function(){
         });
 
         it('should click on add brand button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_add_brand_btn, 90000)
                 .click(this.selector.product_add_brand_btn)
@@ -136,6 +148,7 @@ describe('Add new pack product', function(){
         });
 
         it('should select a brand', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_brand_select, 90000)
                 .click(this.selector.product_brand_select)
@@ -147,6 +160,7 @@ describe('Add new pack product', function(){
         });
 
         it('should click on add a related product button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.add_related_product_btn, 90000)
                 .click(this.selector.add_related_product_btn)
@@ -156,6 +170,7 @@ describe('Add new pack product', function(){
 
         it('should search and add a related product', function (done) {
             var search_products = pack_product.search_related_products.split('//');
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.search_add_related_product_input, 90000)
                 .setValue(this.selector.search_add_related_product_input,search_products[0])
@@ -170,6 +185,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the product price tax excluded', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(800, 0)
                 .waitForExist(this.selector.priceTE_shortcut, 60000)
@@ -180,6 +196,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the product reference', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_reference, 60000)
                 .click(this.selector.product_reference)
@@ -188,6 +205,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the product quantity', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_quantity_shortcut, 60000)
                 .click(this.selector.product_quantity_shortcut)
@@ -196,6 +214,7 @@ describe('Add new pack product', function(){
         });
 
         it('should search product item for pack ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.search_product_pack, 60000)
                 .click(this.selector.search_product_pack)
@@ -209,6 +228,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the product quantity for pack ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_pack_item_quantity, 60000)
                 .click(this.selector.product_pack_item_quantity)
@@ -218,6 +238,7 @@ describe('Add new pack product', function(){
         });
 
         it('should click on add the product item for pack ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_pack_add_button, 60000)
                 .click(this.selector.product_pack_add_button)
@@ -226,6 +247,7 @@ describe('Add new pack product', function(){
         });
 
         it('should search product item for pack ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.search_product_pack, 60000)
                 .click(this.selector.search_product_pack)
@@ -239,6 +261,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the product quantity for pack ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_pack_item_quantity, 60000)
                 .click(this.selector.product_pack_item_quantity)
@@ -248,6 +271,7 @@ describe('Add new pack product', function(){
         });
 
         it('should click on add the product item for pack ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_pack_add_button, 60000)
                 .click(this.selector.product_pack_add_button)
@@ -256,6 +280,7 @@ describe('Add new pack product', function(){
         });
 
         it('should select product online', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_online, 60000)
                 .click(this.selector.product_online)
@@ -264,6 +289,7 @@ describe('Add new pack product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -274,6 +300,7 @@ describe('Add new pack product', function(){
 
     describe('Edit quantities of pack product ', function (done) {
         it('should go to the product quantities form', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_quantities_tab, 60000)
                 .click(this.selector.product_quantities_tab)
@@ -281,6 +308,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the product quantity ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_quantity_input, 60000)
                 .click(this.selector.product_quantity_input)
@@ -289,6 +317,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the minimum quantity for sale ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.minimum_quantity_sale, 60000)
                 .click(this.selector.minimum_quantity_sale)
@@ -297,6 +326,7 @@ describe('Add new pack product', function(){
         });
 
         it('should select the pack quantities ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pack_stock_type, 60000)
                 .click(this.selector.pack_stock_type)
@@ -308,6 +338,7 @@ describe('Add new pack product', function(){
         });
 
         it('should select the availability preferences ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pack_availability_preferences, 60000)
                 .click(this.selector.pack_availability_preferences)
@@ -316,6 +347,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the available label in stock ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pack_label_in_stock, 90000)
                 .click(this.selector.pack_label_in_stock)
@@ -326,6 +358,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the available label out of stock ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pack_label_out_stock, 90000)
                 .click(this.selector.pack_label_out_stock)
@@ -336,6 +369,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the availability date ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pack_availability_date, 90000)
                 .click(this.selector.pack_availability_date)
@@ -346,6 +380,7 @@ describe('Add new pack product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -356,6 +391,7 @@ describe('Add new pack product', function(){
 
     describe('Create product shipping', function(done){
         it('should go to the product shipping form ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(800, 0)
                 .waitForExist(this.selector.product_shipping_tab, 90000)
@@ -364,6 +400,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the shipping width ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_width, 90000)
                 .click(this.selector.shipping_width)
@@ -373,6 +410,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the shipping height ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_height, 90000)
                 .click(this.selector.shipping_height)
@@ -382,6 +420,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the shipping depth ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_depth, 90000)
                 .click(this.selector.shipping_depth)
@@ -391,6 +430,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the shipping weight ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_weight, 90000)
                 .click(this.selector.shipping_weight)
@@ -400,6 +440,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the additional shipping costs ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_fees, 90000)
                 .click(this.selector.shipping_fees)
@@ -409,6 +450,7 @@ describe('Add new pack product', function(){
         });
 
         it('should select the available carrier ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_available_carriers, 90000)
                 .click(this.selector.shipping_available_carriers)
@@ -417,6 +459,7 @@ describe('Add new pack product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -427,6 +470,7 @@ describe('Add new pack product', function(){
 
     describe('Edit product pricing', function(done){
         it('should go to the product pricing form ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_pricing_tab, 90000)
                 .click(this.selector.product_pricing_tab)
@@ -434,6 +478,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the unit price', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pack_unit_price, 60000)
                 .click(this.selector.pack_unit_price)
@@ -442,6 +487,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the pricing unity', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pricing_unity, 60000)
                 .execute(function () {
@@ -452,6 +498,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the pricing tax rule', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pricing_tax_rule_select, 60000)
                 .click(this.selector.pricing_tax_rule_select)
@@ -463,6 +510,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the pricing wholesale', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pricing_wholesale, 60000)
                 .click(this.selector.pricing_wholesale)
@@ -472,6 +520,7 @@ describe('Add new pack product', function(){
         });
 
         it('should select the pricing priorities', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(0, 250)
                 .waitForExist(this.selector.pricing_first_priorities_select, 60000)
@@ -502,6 +551,7 @@ describe('Add new pack product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -512,6 +562,7 @@ describe('Add new pack product', function(){
 
     describe('Edit the search engine optimization', function(done){
         it('should go to the product SEO form ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(800, 0)
                 .waitForExist(this.selector.product_SEO_tab, 90000)
@@ -520,6 +571,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the meta title ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.SEO_meta_title, 90000)
                 .click(this.selector.SEO_meta_title)
@@ -529,6 +581,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the meta description ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.SEO_meta_description, 90000)
                 .click(this.selector.SEO_meta_description)
@@ -538,6 +591,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the friendly url ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.SEO_friendly_url, 90000)
                 .click(this.selector.SEO_friendly_url)
@@ -547,6 +601,7 @@ describe('Add new pack product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -557,6 +612,7 @@ describe('Add new pack product', function(){
 
     describe('Edit the product options', function(done){
         it('should go to the product options form ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_options_tab, 90000)
                 .click(this.selector.product_options_tab)
@@ -564,6 +620,7 @@ describe('Add new pack product', function(){
         });
 
         it('should select the visibility ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_visibility, 90000)
                 .click(this.selector.options_visibility)
@@ -575,6 +632,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enable the web only visibility ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_online_only, 90000)
                 .click(this.selector.options_online_only)
@@ -582,6 +640,7 @@ describe('Add new pack product', function(){
         });
 
         it('should select the condition ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_condition_select, 90000)
                 .click(this.selector.options_condition_select)
@@ -592,6 +651,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the ISBN ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_isbn, 90000)
                 .click(this.selector.options_isbn)
@@ -601,6 +661,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the EAN-13 ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_ean13, 90000)
                 .click(this.selector.options_ean13)
@@ -610,6 +671,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the UPC ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_upc, 90000)
                 .click(this.selector.options_upc)
@@ -619,6 +681,7 @@ describe('Add new pack product', function(){
         });
 
         it('should click on customization button ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,800)
                 .waitForExist(this.selector.options_add_customization_field_button, 90000)
@@ -628,6 +691,7 @@ describe('Add new pack product', function(){
         });
 
         it('should create new custom field ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_first_custom_field_label, 90000)
                 .click(this.selector.options_first_custom_field_label)
@@ -643,6 +707,7 @@ describe('Add new pack product', function(){
         });
 
         it('should click on add a customization field button ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,400)
                 .waitForExist(this.selector.options_add_customization_field_button, 90000)
@@ -652,6 +717,7 @@ describe('Add new pack product', function(){
         });
 
         it('should create new custom field ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_second_custom_field_label, 90000)
                 .click(this.selector.options_second_custom_field_label)
@@ -664,6 +730,7 @@ describe('Add new pack product', function(){
         });
 
         it('should click on attach a new file button ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1200)
                 .pause(2000)
@@ -674,6 +741,7 @@ describe('Add new pack product', function(){
         });
 
         it('should add file ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1200)
                 .pause(2000)
@@ -684,6 +752,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the name and description of file ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1200)
                 .pause(2000)
@@ -701,6 +770,7 @@ describe('Add new pack product', function(){
         });
 
         it('should select the previous added file ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1200)
                 .waitForExist(this.selector.options_file_add_button, 90000)
@@ -710,6 +780,7 @@ describe('Add new pack product', function(){
         });
 
         it('should choose the supplier ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1600)
                 .pause(2000)
@@ -720,6 +791,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enable the default supplier ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_default_supplier, 90000)
                 .click(this.selector.options_default_supplier)
@@ -728,6 +800,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the supplier reference ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1800)
                 .pause(2000)
@@ -739,6 +812,7 @@ describe('Add new pack product', function(){
         });
 
         it('should enter the product price ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_supplier_price, 90000)
                 .click(this.selector.options_supplier_price)
@@ -748,6 +822,7 @@ describe('Add new pack product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -756,6 +831,7 @@ describe('Add new pack product', function(){
         });
 
         it('should go to catalog list of product ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.go_to_catalog, 60000)
                 .click(this.selector.go_to_catalog)
@@ -766,6 +842,7 @@ describe('Add new pack product', function(){
 
     describe('check product ', function(done){
         it('should check the product name ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.catalogue_filter_by_name, 60000)
                 .click(this.selector.catalogue_filter_by_name)
@@ -787,6 +864,7 @@ describe('Add new pack product', function(){
 
     describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signoutBO()
                 .call(done);

@@ -15,8 +15,8 @@ describe('The Product Creation', function(){
 		this.selector = globals.selector;
 		this.client.call(done);
 	});
-	process.on('uncaughtException', common.take_screenshot);
-	process.on('ReferenceError', common.take_screenshot);
+	/*process.on('uncaughtException', common.take_screenshot);
+	process.on('ReferenceError', common.take_screenshot);*/
 	after(common.after);
 
     describe('Log in in Back Office', function(done){
@@ -200,7 +200,7 @@ describe('The Product Creation', function(){
 		    global.fctname= this.test.title;
 			global.picture_url = "/img/p";
 			for (var i = 0, len = image_data_id.length; i < len; i++) {
-				picture_url= picture_url + "/" + image_data_id[i];
+                global.picture_url= picture_url + "/" + image_data_id[i];
 			}
 			picture_url = picture_url + "/" + image_data_id + "-home_default.jpg";
 			this.client.call(done);

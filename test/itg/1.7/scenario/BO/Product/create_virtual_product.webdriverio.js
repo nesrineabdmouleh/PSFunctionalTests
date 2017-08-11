@@ -19,8 +19,8 @@ describe('Add new virtual product', function(){
         this.selector = globals.selector;
         this.client.call(done);
     });
-    process.on('uncaughtException', common.take_screenshot);
-    process.on('ReferenceError', common.take_screenshot);
+    /*process.on('uncaughtException', common.take_screenshot);
+    process.on('ReferenceError', common.take_screenshot);*/
     after(common.after);
 
     describe('Log in in Back Office', function(done){

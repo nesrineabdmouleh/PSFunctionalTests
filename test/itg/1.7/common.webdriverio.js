@@ -22,8 +22,8 @@ var options2 = {
         'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
         username: process.env.SAUCE_USERNAME,
         access_key: process.env.SAUCE_ACCESS_KEY,
-        screenResolution: "1680x1050",
-        platform: "Windows 7",
+        //screenResolution: "1680x1050",
+        //platform: "Windows 7",
     },
     port: 4445
 };
@@ -94,13 +94,13 @@ module.exports = {
                 client = webdriverio
                     .remote(options2)
                     .init()
-                    .windowHandleMaximize()
+                    //.windowHandleMaximize()
             } else {
                 client = webdriverio
                     .remote(options)
                     .init()
-                    .windowHandleSize({width: 1430, height: 1050})
-                    .windowHandleMaximize()
+                    //.windowHandleSize({width: 1430, height: 1050})
+                    //.windowHandleMaximize()
             }
             initCommands(client);
 

@@ -108,7 +108,6 @@ module.exports = {
                     .windowHandleSize({width: 1680, height: 1050})
             }
             initCommands(client);
-
             return client;
         }
     },

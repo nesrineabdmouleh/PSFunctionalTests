@@ -10,8 +10,8 @@ describe('The Check of the Product in Front Office', function () {
         this.selector = globals.selector;
         this.client.call(done);
     });
-    /*process.on('uncaughtException', common.take_screenshot);
-    process.on('ReferenceError', common.take_screenshot);*/
+    process.on('uncaughtException', common.take_screenshot);
+    process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
     describe('Open the shop', function (done) {

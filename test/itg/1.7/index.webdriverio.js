@@ -47,8 +47,8 @@ describe('Allscenario', function () {
     require('./scenario/BO/Employee/delete_employee.webdriverio');
 
     //create a product in BO and check it in FO
-    /*require('./scenario/BO/Product/create_product.webdriverio');
-    require('./scenario/FO/Product/check_product.webdriverio');*/
+    require('./scenario/BO/Product/create_product.webdriverio');
+    require('./scenario/FO/check_product.webdriverio');
 
     //create an order in FO and check it in BO
     require('./scenario/FO/buy_product.webdriverio');

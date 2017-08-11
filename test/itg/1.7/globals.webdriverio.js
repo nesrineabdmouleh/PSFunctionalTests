@@ -115,15 +115,22 @@ module.exports = {
         //order_reference: '#content > div.row > div > div:nth-child(5) > div.col-lg-7 > div:nth-child(1) > div.panel-heading > span:nth-child(2)',
         order_reference: '((//div[@class="panel-heading"])[1]/span)[1]',
         modules_menu: '#subtab-AdminParentModulesSf',
-        modules_search: '//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[4]/div/div[1]/div/div/div[2]/input',
-        modules_search_button: '.btn.btn-primary.pull-right.search-button',
+        //For 1.7.2.0
+        modules_search: '.pstaggerAddTagInput.module-tags-input',
+        modules_search_button: '.input-group-addon.module-search-icon',
+        //For 1.7.2.1
+        /*modules_search: '//!*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[4]/div/div[1]/div/div/div[2]/input',
+        modules_search_button: '.btn.btn-primary.pull-right.search-button',*/
         modules_page_loaded: '.module-search-result-wording',
         modules_installed: '(//div[@class="page-head-tabs"]/a)[2]',
         modules_validate_uninstall: '//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]',
         close_sf_toolbar: '//a[@class="hide-button"]',
         module_tech_name: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]',
         install_module_btn: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@data-confirm_modal="module-modal-confirm-' + module_tech_name + '-install"]',
-        uninstall_module_list: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="btn btn-primary-outline  dropdown-toggle"]',
+        //For 1.7.2.0
+        uninstall_module_list: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="btn btn-primary-outline  dropdown-toggle light-button"]',
+        //For 1.7.2.1
+        //uninstall_module_list: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="btn btn-primary-outline  dropdown-toggle"]',
         uninstall_module_btn: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="dropdown-item module_action_menu_uninstall"]',
         modal_confirm_uninstall : '//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]',
         catalogue_select_product: '//input[@name="bulk_action_selected_products[]"]',
@@ -149,7 +156,10 @@ module.exports = {
         customer_delete_mode: '#deleteMode_deleted',
         customer_delete_button: '//div[@class="alert alert-warning"]/input[@type="submit" and @value="Delete"]',
         customer_green_block_validation: '//*[@id="content"]/div[4]/div',
-        sort_module: '//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[7]/div/div[2]/div/select',
+        //For 1.7.2.0
+        sort_module: '//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[7]/div/div[2]/div[2]/select',
+        //For 1.7.2.1
+        //sort_module: '//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[7]/div/div[2]/div/select',
         view_list: '//*[@id="module-sort-list"]',
         advanced_parameters: '#subtab-AdminAdvancedParameters',
         team: '#subtab-AdminParentEmployees',

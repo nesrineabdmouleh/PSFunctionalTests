@@ -20,8 +20,8 @@ describe('Add new standard product', function(){
         this.selector = globals.selector;
         this.client.call(done);
     });
-    /*process.on('uncaughtException', common.take_screenshot);
-    process.on('ReferenceError', common.take_screenshot);*/
+    process.on('uncaughtException', common.take_screenshot);
+    process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
     function uploadFile(browser, fileSelector, fileName, done) {
@@ -39,6 +39,7 @@ describe('Add new standard product', function(){
 
     describe('Log in in Back Office', function(done){
         it('should log in successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signinBO()
                 .waitForExist(this.selector.menu, 90000)
@@ -48,6 +49,7 @@ describe('Add new standard product', function(){
 
     describe('Create new product', function (done) {
         it("should go to the products page", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .click(this.selector.products)
                 .waitForExist(this.selector.new_product, 120000)
@@ -55,6 +57,7 @@ describe('Add new standard product', function(){
         });
 
         it("should click on add new product button", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.new_product, 120000)
                 .click(this.selector.new_product)
@@ -63,6 +66,7 @@ describe('Add new standard product', function(){
         });
 
         it('should select the product combinations', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_combinations, 90000)
                 .click(this.selector.product_combinations)
@@ -71,6 +75,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the product name', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_name, 90000)
                 .setValue(this.selector.product_name, standard_product.name + product_id)
@@ -79,6 +84,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the product summary', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .frame(this.selector.summary, function (err, result) {
                     if (err) console.log(err);
@@ -90,6 +96,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the product description', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.description_button, 90000)
                 .click(this.selector.description_button)
@@ -103,6 +110,7 @@ describe('Add new standard product', function(){
         });
 
         it('should upload the picture one of product', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .execute(function () {
                     document.getElementsByClassName("dz-hidden-input").style = "";
@@ -117,22 +125,27 @@ describe('Add new standard product', function(){
         });
 
         it('should upload the picture two of product', function (done) {
+            global.fctname = this.test.title;
             uploadFile(this.client, this.selector.picture, '2.jpg', done);
         });
 
         it('should upload the picture three of product', function (done) {
+            global.fctname = this.test.title;
             uploadFile(this.client, this.selector.picture, '3.jpg', done);
         });
 
         it('should upload the picture fore of product', function (done) {
+            global.fctname = this.test.title;
             uploadFile(this.client, this.selector.picture, '4.gif', done);
         });
 
         it('should upload the picture five of product', function (done) {
+            global.fctname = this.test.title;
             uploadFile(this.client, this.selector.picture, '5.jpg', done);
         });
 
         it('should upload the picture six of product', function (done) {
+            global.fctname = this.test.title;
             uploadFile(this.client, this.selector.picture, '6.jpg', done);
         });
 
@@ -146,6 +159,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the category name', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_category_name_input, 90000)
                 .setValue(this.selector.product_category_name_input, standard_product.new_category_name + product_id)
@@ -154,6 +168,7 @@ describe('Add new standard product', function(){
         });
 
         it('should click on create category button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(0, 600)
                 .waitForExist(this.selector.category_create_btn, 90000)
@@ -163,6 +178,7 @@ describe('Add new standard product', function(){
         });
 
         it('should click on add brand button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_add_brand_btn, 90000)
                 .click(this.selector.product_add_brand_btn)
@@ -171,6 +187,7 @@ describe('Add new standard product', function(){
         });
 
         it('should select a brand', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_brand_select, 90000)
                 .click(this.selector.product_brand_select)
@@ -182,6 +199,7 @@ describe('Add new standard product', function(){
         });
 
         it('should click on add related product button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.add_related_product_btn, 90000)
                 .click(this.selector.add_related_product_btn)
@@ -191,6 +209,7 @@ describe('Add new standard product', function(){
 
         it('should add a related product', function (done) {
             var search_products = standard_product.search_related_products.split('//');
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.search_add_related_product_input, 90000)
                 .setValue(this.selector.search_add_related_product_input,search_products[0])
@@ -205,6 +224,7 @@ describe('Add new standard product', function(){
         });
 
         it('should add feature height', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_add_feature_btn, 90000)
                 .click(this.selector.product_add_feature_btn)
@@ -220,6 +240,7 @@ describe('Add new standard product', function(){
         });
 
         it('should add feature width', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_add_feature_btn, 90000)
                 .click(this.selector.product_add_feature_btn)
@@ -235,6 +256,7 @@ describe('Add new standard product', function(){
         });
 
         it('should add feature depth', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_add_feature_btn, 90000)
                 .click(this.selector.product_add_feature_btn)
@@ -250,6 +272,7 @@ describe('Add new standard product', function(){
         });
 
         it('should add feature weight', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_add_feature_btn, 90000)
                 .click(this.selector.product_add_feature_btn)
@@ -265,6 +288,7 @@ describe('Add new standard product', function(){
         });
 
         it('should add feature compositions', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(0, 600)
                 .waitForExist(this.selector.product_add_feature_btn, 90000)
@@ -284,6 +308,7 @@ describe('Add new standard product', function(){
         });
 
         it('should add feature styles', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_add_feature_btn, 90000)
                 .click(this.selector.product_add_feature_btn)
@@ -302,6 +327,7 @@ describe('Add new standard product', function(){
         });
 
         it('should add feature properties', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_add_feature_btn, 90000)
                 .click(this.selector.product_add_feature_btn)
@@ -321,6 +347,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the product price tax excluded', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(800, 0)
                 .waitForExist(this.selector.priceTE_shortcut, 60000)
@@ -331,6 +358,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the product reference', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_reference, 60000)
                 .click(this.selector.product_reference)
@@ -339,6 +367,7 @@ describe('Add new standard product', function(){
         });
 
         it('should select product online', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_online, 60000)
                 .click(this.selector.product_online)
@@ -347,6 +376,7 @@ describe('Add new standard product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -357,6 +387,7 @@ describe('Add new standard product', function(){
 
     describe('Create product combinations ', function (done) {
         it('should go to the product combinations form', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_combinations_tab, 60000)
                 .click(this.selector.product_combinations_tab)
@@ -364,6 +395,7 @@ describe('Add new standard product', function(){
         });
 
         it('should create first variation', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.combination_size_s, 60000)
                 .click(this.selector.combination_size_s)
@@ -378,6 +410,7 @@ describe('Add new standard product', function(){
         });
 
         it('should create second variation', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.combination_size_m, 60000)
                 .click(this.selector.combination_size_m)
@@ -392,6 +425,7 @@ describe('Add new standard product', function(){
         });
 
         it('should click on edit the first combination ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.combination_edit_first_variation, 60000)
                 .click(this.selector.combination_edit_first_variation)
@@ -400,6 +434,7 @@ describe('Add new standard product', function(){
         });
 
         it('should edit the first combination', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.combination_first_details_qty, 60000)
                 .click(this.selector.combination_first_details_qty)
@@ -449,6 +484,7 @@ describe('Add new standard product', function(){
         });
 
         it('should click on back to product button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.combination_first_details_back_to_product_btn, 60000)
                 .click(this.selector.combination_first_details_back_to_product_btn)
@@ -457,6 +493,7 @@ describe('Add new standard product', function(){
         });
 
         it('should click on edit the second combination ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.combination_edit_second_variation, 60000)
                 .click(this.selector.combination_edit_second_variation)
@@ -465,6 +502,7 @@ describe('Add new standard product', function(){
         });
 
         it('should edit the second combination', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.combination_second_details_qty, 60000)
                 .click(this.selector.combination_second_details_qty)
@@ -514,6 +552,7 @@ describe('Add new standard product', function(){
         });
 
         it('should click on back to product button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.combination_second_details_back_to_product_btn, 60000)
                 .click(this.selector.combination_second_details_back_to_product_btn)
@@ -522,6 +561,7 @@ describe('Add new standard product', function(){
         });
 
         it('should select the availability preferences ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(0, 600)
                 .waitForExist(this.selector.combination_availability_preferences, 90000)
@@ -531,6 +571,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the available label in stock ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.combination_label_in_stock, 90000)
                 .click(this.selector.combination_label_in_stock)
@@ -541,6 +582,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the available label out of stock ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.combination_label_out_stock, 90000)
                 .click(this.selector.combination_label_out_stock)
@@ -551,6 +593,7 @@ describe('Add new standard product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -561,6 +604,7 @@ describe('Add new standard product', function(){
 
     describe('Create product shipping', function(done){
         it('should go to the product shipping form ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(800, 0)
                 .waitForExist(this.selector.product_shipping_tab, 90000)
@@ -569,6 +613,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the shipping width ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_width, 90000)
                 .click(this.selector.shipping_width)
@@ -578,6 +623,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the shipping height ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_height, 90000)
                 .click(this.selector.shipping_height)
@@ -587,6 +633,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the shipping depth ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_depth, 90000)
                 .click(this.selector.shipping_depth)
@@ -596,6 +643,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the shipping weight ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_weight, 90000)
                 .click(this.selector.shipping_weight)
@@ -605,6 +653,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the additional shipping costs ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_fees, 90000)
                 .click(this.selector.shipping_fees)
@@ -614,6 +663,7 @@ describe('Add new standard product', function(){
         });
 
         it('should select the available carrier ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.shipping_available_carriers, 90000)
                 .click(this.selector.shipping_available_carriers)
@@ -622,6 +672,7 @@ describe('Add new standard product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -632,6 +683,7 @@ describe('Add new standard product', function(){
 
     describe('Edit product pricing', function(done){
         it('should go to the product pricing form ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_pricing_tab, 90000)
                 .click(this.selector.product_pricing_tab)
@@ -639,6 +691,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the pricing unity', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pricing_unity, 60000)
                 .execute(function () {
@@ -649,6 +702,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the pricing tax rule', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pricing_tax_rule_select, 60000)
                 .click(this.selector.pricing_tax_rule_select)
@@ -660,6 +714,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the pricing wholesale', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pricing_wholesale, 60000)
                 .click(this.selector.pricing_wholesale)
@@ -669,6 +724,7 @@ describe('Add new standard product', function(){
         });
 
         it('should select the pricing priorities', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(0, 250)
                 .waitForExist(this.selector.pricing_first_priorities_select, 60000)
@@ -699,6 +755,7 @@ describe('Add new standard product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -709,6 +766,7 @@ describe('Add new standard product', function(){
 
     describe('Edit the search engine optimization', function(done){
         it('should go to the product SEO form ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(800, 0)
                 .waitForExist(this.selector.product_SEO_tab, 90000)
@@ -717,6 +775,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the meta title ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.SEO_meta_title, 90000)
                 .click(this.selector.SEO_meta_title)
@@ -726,6 +785,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the meta description ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.SEO_meta_description, 90000)
                 .click(this.selector.SEO_meta_description)
@@ -735,6 +795,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the friendly url ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.SEO_friendly_url, 90000)
                 .click(this.selector.SEO_friendly_url)
@@ -744,6 +805,7 @@ describe('Add new standard product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -754,6 +816,7 @@ describe('Add new standard product', function(){
 
     describe('Edit the product options', function(done){
         it('should go to the product options form ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_options_tab, 90000)
                 .click(this.selector.product_options_tab)
@@ -761,6 +824,7 @@ describe('Add new standard product', function(){
         });
 
         it('should select the visibility ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_visibility, 90000)
                 .click(this.selector.options_visibility)
@@ -772,6 +836,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enable the web only visibility ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_online_only, 90000)
                 .click(this.selector.options_online_only)
@@ -779,6 +844,7 @@ describe('Add new standard product', function(){
         });
 
         it('should select condition ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_condition_select, 90000)
                 .click(this.selector.options_condition_select)
@@ -789,6 +855,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the ISBN ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_isbn, 90000)
                 .click(this.selector.options_isbn)
@@ -798,6 +865,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the EAN-13 ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_ean13, 90000)
                 .click(this.selector.options_ean13)
@@ -807,6 +875,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the UPC ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_upc, 90000)
                 .click(this.selector.options_upc)
@@ -816,6 +885,7 @@ describe('Add new standard product', function(){
         });
 
         it('should click on customization button ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,800)
                 .waitForExist(this.selector.options_add_customization_field_button, 90000)
@@ -825,6 +895,7 @@ describe('Add new standard product', function(){
         });
 
         it('should create new custom field ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_first_custom_field_label, 90000)
                 .click(this.selector.options_first_custom_field_label)
@@ -840,6 +911,7 @@ describe('Add new standard product', function(){
         });
 
         it('should click on add customization field button ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,400)
                 .waitForExist(this.selector.options_add_customization_field_button, 90000)
@@ -849,6 +921,7 @@ describe('Add new standard product', function(){
         });
 
         it('should create new custom field ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_second_custom_field_label, 90000)
                 .click(this.selector.options_second_custom_field_label)
@@ -861,6 +934,7 @@ describe('Add new standard product', function(){
         });
 
         it('should click on attach new file button ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1200)
                 .waitForExist(this.selector.options_add_new_file_button, 90000)
@@ -870,6 +944,7 @@ describe('Add new standard product', function(){
         });
 
         it('should add file ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1200)
                 .pause(2000)
@@ -880,6 +955,7 @@ describe('Add new standard product', function(){
         });
 
         it('should enter the name and description of file ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1200)
                 .pause(2000)
@@ -897,6 +973,7 @@ describe('Add new standard product', function(){
         });
 
         it('should select the previous added file ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1200)
                 .moveToObject(this.selector.options_file_add_button)
@@ -907,6 +984,7 @@ describe('Add new standard product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 90000)
                 .click(this.selector.save_product_btn)
@@ -915,6 +993,7 @@ describe('Add new standard product', function(){
         });
 
         it('should go to catalog product list ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.go_to_catalog, 90000)
                 .click(this.selector.go_to_catalog)
@@ -925,6 +1004,7 @@ describe('Add new standard product', function(){
 
     describe('Check product ', function(done){
         it('should check the product name ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.catalogue_filter_by_name, 90000)
                 .click(this.selector.catalogue_filter_by_name)
@@ -946,6 +1026,7 @@ describe('Add new standard product', function(){
 
     describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signoutBO()
                 .call(done);

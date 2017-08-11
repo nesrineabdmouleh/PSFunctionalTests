@@ -1,9 +1,9 @@
 'use strict';
 var should = require('should');
-var common = require('../../common.webdriverio');
-var globals = require('../../globals.webdriverio.js');
+var common = require('../../../common.webdriverio');
+var globals = require('../../../globals.webdriverio.js');
 var path = require('path');
-var toUpload = path.join(__dirname, '../..', 'datas', 'image_test.jpg');
+var toUpload = path.join(__dirname, '../../..', 'datas', 'image_test.jpg');
 var devMode = false;
 var exit_welcome = false;
 
@@ -15,8 +15,8 @@ describe('The Product Creation', function(){
 		this.selector = globals.selector;
 		this.client.call(done);
 	});
-	/*process.on('uncaughtException', common.take_screenshot);
-	process.on('ReferenceError', common.take_screenshot);*/
+	process.on('uncaughtException', common.take_screenshot);
+	process.on('ReferenceError', common.take_screenshot);
 	after(common.after);
 
     describe('Log in in Back Office', function(done){
@@ -202,7 +202,7 @@ describe('The Product Creation', function(){
 			for (var i = 0, len = image_data_id.length; i < len; i++) {
                 global.picture_url= picture_url + "/" + image_data_id[i];
 			}
-			picture_url = picture_url + "/" + image_data_id + "-home_default.jpg";
+            global.picture_url = picture_url + "/" + image_data_id + "-home_default.jpg";
 			this.client.call(done);
 		});
 	 });

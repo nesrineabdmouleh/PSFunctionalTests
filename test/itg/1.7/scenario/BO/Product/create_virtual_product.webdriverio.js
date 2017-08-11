@@ -19,12 +19,13 @@ describe('Add new virtual product', function(){
         this.selector = globals.selector;
         this.client.call(done);
     });
-    /*process.on('uncaughtException', common.take_screenshot);
-    process.on('ReferenceError', common.take_screenshot);*/
+    process.on('uncaughtException', common.take_screenshot);
+    process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
     describe('Log in in Back Office', function(done){
         it('should log in successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signinBO()
                 .waitForExist(this.selector.menu, 90000)
@@ -34,6 +35,7 @@ describe('Add new virtual product', function(){
 
     describe('Create new product', function (done) {
         it("should go to the products page", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .click(this.selector.products)
                 .waitForExist(this.selector.new_product, 120000)
@@ -41,6 +43,7 @@ describe('Add new virtual product', function(){
         });
 
         it("should click on add new product button", function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.new_product, 120000)
                 .click(this.selector.new_product)
@@ -49,6 +52,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the product name', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_name, 90000)
                 .setValue(this.selector.product_name, virtual_product.name + product_id)
@@ -57,6 +61,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should choose virtual product type', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.virtual_product_type, 90000)
                 .click(this.selector.virtual_product_type)
@@ -67,6 +72,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the product summary', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .frame(this.selector.summary, function (err, result) {
                     if (err) console.log(err);
@@ -78,6 +84,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the product description', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.description_button, 90000)
                 .click(this.selector.description_button)
@@ -91,6 +98,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should upload the picture one of product', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .execute(function () {
                     document.getElementsByClassName("dz-hidden-input").style = "";
@@ -106,6 +114,7 @@ describe('Add new virtual product', function(){
 
 
         it('should click on create category button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(0, 600)
                 .waitForExist(this.selector.product_create_category_btn, 90000)
@@ -115,6 +124,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the category name', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_category_name_input, 90000)
                 .setValue(this.selector.product_category_name_input, virtual_product.new_category_name + product_id)
@@ -123,6 +133,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should click on category create button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(0, 600)
                 .waitForExist(this.selector.category_create_btn, 90000)
@@ -132,6 +143,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should click on add brand button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_add_brand_btn, 90000)
                 .click(this.selector.product_add_brand_btn)
@@ -140,6 +152,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should select a brand', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_brand_select, 90000)
                 .click(this.selector.product_brand_select)
@@ -151,6 +164,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should click on add a related product button', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.add_related_product_btn, 90000)
                 .click(this.selector.add_related_product_btn)
@@ -159,6 +173,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should search and add a related product', function (done) {
+            global.fctname = this.test.title;
             var search_products = virtual_product.search_related_products.split('//');
             this.client
                 .waitForExist(this.selector.search_add_related_product_input, 90000)
@@ -174,6 +189,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the product price tax excluded', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(800, 0)
                 .waitForExist(this.selector.priceTE_shortcut, 60000)
@@ -184,6 +200,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the product reference', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_reference, 60000)
                 .click(this.selector.product_reference)
@@ -192,6 +209,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should switch the product online', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_online, 60000)
                 .click(this.selector.product_online)
@@ -200,6 +218,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -210,6 +229,7 @@ describe('Add new virtual product', function(){
 
     describe('Edit product pricing', function(done){
         it('should go to the product pricing form ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_pricing_tab, 90000)
                 .click(this.selector.product_pricing_tab)
@@ -217,6 +237,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the pricing unity', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pricing_unity, 60000)
                 .execute(function () {
@@ -227,6 +248,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the pricing tax rule', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pricing_tax_rule_select, 60000)
                 .click(this.selector.pricing_tax_rule_select)
@@ -238,6 +260,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the pricing wholesale', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.pricing_wholesale, 60000)
                 .click(this.selector.pricing_wholesale)
@@ -247,6 +270,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should select the pricing priorities', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .scroll(0, 250)
                 .waitForExist(this.selector.pricing_first_priorities_select, 60000)
@@ -277,6 +301,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -287,6 +312,7 @@ describe('Add new virtual product', function(){
 
     describe('Edit the search engine optimization', function(done){
         it('should go to the product SEO form ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(800, 0)
                 .waitForExist(this.selector.product_SEO_tab, 90000)
@@ -295,6 +321,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the meta title ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.SEO_meta_title, 90000)
                 .click(this.selector.SEO_meta_title)
@@ -304,6 +331,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the meta description ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.SEO_meta_description, 90000)
                 .click(this.selector.SEO_meta_description)
@@ -313,6 +341,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the friendly url ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.SEO_friendly_url, 90000)
                 .click(this.selector.SEO_friendly_url)
@@ -322,6 +351,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 60000)
                 .click(this.selector.save_product_btn)
@@ -332,6 +362,7 @@ describe('Add new virtual product', function(){
 
     describe('Edit the product options', function(done){
         it('should go to the product options form ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_options_tab, 90000)
                 .click(this.selector.product_options_tab)
@@ -339,6 +370,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should select the visibility ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_visibility, 90000)
                 .click(this.selector.options_visibility)
@@ -350,6 +382,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enable the web only visibility ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_online_only, 90000)
                 .click(this.selector.options_online_only)
@@ -357,6 +390,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should select the condition ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_condition_select, 90000)
                 .click(this.selector.options_condition_select)
@@ -367,6 +401,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the ISBN ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_isbn, 90000)
                 .click(this.selector.options_isbn)
@@ -376,6 +411,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the EAN-13 ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_ean13, 90000)
                 .click(this.selector.options_ean13)
@@ -385,6 +421,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should enter the UPC ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_upc, 90000)
                 .click(this.selector.options_upc)
@@ -394,6 +431,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should click on customization button ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,800)
                 .waitForExist(this.selector.options_add_customization_field_button, 90000)
@@ -403,6 +441,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should create new custom field ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_first_custom_field_label, 90000)
                 .click(this.selector.options_first_custom_field_label)
@@ -418,6 +457,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should click on add a customization field button ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,400)
                 .waitForExist(this.selector.options_add_customization_field_button, 90000)
@@ -427,6 +467,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should create new custom field ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.options_second_custom_field_label, 90000)
                 .click(this.selector.options_second_custom_field_label)
@@ -439,6 +480,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should click on attach a new file button ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1200)
                 .waitForExist(this.selector.options_add_new_file_button, 90000)
@@ -448,6 +490,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should add a file ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1200)
                 .waitForExist(this.selector.options_select_file, 90000)
@@ -467,6 +510,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should select the previous added file ', function(done){
+            global.fctname = this.test.title;
             this.client
                 .scroll(0,1200)
                 .moveToObject(this.selector.options_file_add_button)
@@ -477,6 +521,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should save and stay in the product page', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.save_product_btn, 90000)
                 .click(this.selector.save_product_btn)
@@ -485,6 +530,7 @@ describe('Add new virtual product', function(){
         });
 
         it('should go to catalog list of product ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.go_to_catalog, 90000)
                 .click(this.selector.go_to_catalog)
@@ -495,6 +541,7 @@ describe('Add new virtual product', function(){
 
     describe('check the product name ', function(done){
         it('should check the product name ', function (done) {
+            global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.catalogue_filter_by_name, 90000)
                 .click(this.selector.catalogue_filter_by_name)
@@ -516,6 +563,7 @@ describe('Add new virtual product', function(){
 
     describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){
+            global.fctname = this.test.title;
             this.client
                 .signoutBO()
                 .call(done);

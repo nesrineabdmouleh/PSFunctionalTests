@@ -151,8 +151,8 @@ describe('The Product Creation', function(){
 		it('should save product', function(done){
 		    global.fctname= this.test.title;
 	        this.client
-			    .waitForExist(this.selector.save_product, 90000)
-			    .click(this.selector.save_product)
+			    .waitForExist(this.selector.save_product_btn, 90000)
+			    .click(this.selector.save_product_btn)
 			    .call(done);
 	    });
 	    it('should close green validation', function(done){
@@ -168,8 +168,8 @@ describe('The Product Creation', function(){
             global.fctname= this.test.title;
 			this.client
 			    .pause(5000)
-			    .waitForExist(this.selector.more_option, 90000)
-                .click(this.selector.more_option)
+			    /*.waitForExist(this.selector.more_option, 90000)
+                .click(this.selector.more_option)*/
 			    .waitForExist(this.selector.go_to_catalog, 90000)
                 .click(this.selector.go_to_catalog)
                 .call(done);

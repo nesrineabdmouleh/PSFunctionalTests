@@ -66,9 +66,10 @@ describe('The Purchase of a product', function () {
                 .call(done);
         });
 
-        it('should click add to cart button ', function (done) {
+        it('should click on checkout button ', function (done) {
             global.fctname = this.test.title;
             this.client
+                .waitForExist(this.selector.layer_cart_command_button, 90000)
                 .click(this.selector.layer_cart_command_button)
                 .call(done);
         });

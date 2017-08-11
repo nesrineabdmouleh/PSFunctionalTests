@@ -104,7 +104,6 @@ module.exports = {
                     /*.windowHandleMaximize()*/
             }
             initCommands(client);
-
             return client;
         }
     },

@@ -21,7 +21,7 @@ describe('Allscenario', function () {
     //require('./install_prestashop.js');
 
     //install and uninstall module
-    if (typeof module_tech_name !== 'undefined' && module_tech_name != "None") {
+    /*if (typeof module_tech_name !== 'undefined' && module_tech_name != "None") {
         require('./scenario/BO/Module/install_and_uninstall_module.js');
         require('./scenario/BO/Module/install_module.js');
     }
@@ -44,7 +44,7 @@ describe('Allscenario', function () {
     require('./scenario/BO/Employee/create_employee.webdriverio');
 
     //delete employee
-    require('./scenario/BO/Employee/delete_employee.webdriverio');
+    require('./scenario/BO/Employee/delete_employee.webdriverio');*/
 
     //create a product in BO and check it in FO
     require('./scenario/BO/Product/create_product.webdriverio');
@@ -54,11 +54,11 @@ describe('Allscenario', function () {
     require('./scenario/FO/buy_product.webdriverio');
     require('./scenario/BO/Order/check_order.webdriverio');
 
-    //create an account in FO
+    /*//create an account in FO
     require('./scenario/FO/create_account.webdriverio');
 
     if (typeof module_tech_name !== 'undefined' && module_tech_name != "None") {
         require('./scenario/BO/Module/uninstall_module.js');
-    }
+    }*/
 
 });

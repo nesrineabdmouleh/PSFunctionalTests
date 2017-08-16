@@ -155,7 +155,7 @@ module.exports = {
         customer_bulk_action_delete_option: '//div[@class="btn-group bulk-actions dropup open"]/ul/li[7]/a',
         customer_delete_mode: '#deleteMode_deleted',
         customer_delete_button: '//div[@class="alert alert-warning"]/input[@type="submit" and @value="Delete"]',
-        customer_green_block_validation: '//*[@id="content"]/div[4]/div',
+        customer_green_block_validation: '#content > div:nth-child(6) > div',
         //For 1.7.2.0
         sort_module: '#main-div > div.content-div > div.row > div > div.row > div > div.module-sorting-menu > div > div:nth-child(2) > div.module-sorting.module-sorting-author.pull-right > select',
 

@@ -73,9 +73,6 @@ describe('Delete employee ', function(){
             global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.customer_green_block_validation, 90000)
-                .getText(this.selector.customer_green_block_validation).then(function (text) {
-                    should(text).be.equal("×\nThe selection has been successfully deleted.");
-                })
                 .call(done);
         });
     });

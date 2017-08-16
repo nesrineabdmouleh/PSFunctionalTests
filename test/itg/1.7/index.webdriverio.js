@@ -27,7 +27,7 @@ describe('Allscenario', function () {
     }
 
     //search module
-    require('./scenario/BO/Module/search_module.webdriverio');
+    //require('./scenario/BO/Module/search_module.webdriverio');
 
     //sort module
     require('./scenario/BO/Module/sort_modules.webdriverio');

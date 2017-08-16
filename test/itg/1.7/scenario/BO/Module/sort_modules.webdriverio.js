@@ -183,10 +183,13 @@ describe('Sort modules', function(){
 /****************************Sort modules by name**********************************/
 
     describe('sort module by name ', function (done) {
-        global.fctname = this.test.title;
-        this.client
-            .waitForExist(this.selector.sort_module, 90000)
-            .selectByIndex(this.selector.sort_module, 1)
+        it('should click on sort module by name', function (done) {
+            global.fctname = this.test.title;
+            this.client
+                .waitForExist(this.selector.sort_module, 90000)
+                .selectByIndex(this.selector.sort_module, 1)
+                .call(done);
+        });
 
         /*it('should select sort module by name ', function (done) {
             global.fctname = this.test.title;

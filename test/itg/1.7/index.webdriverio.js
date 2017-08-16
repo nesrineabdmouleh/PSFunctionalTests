@@ -27,13 +27,13 @@ describe('Allscenario', function () {
     }
 
     //search module
-    //require('./scenario/BO/Module/search_module.webdriverio');
+    require('./scenario/BO/Module/search_module.webdriverio');
 
     //sort module
     require('./scenario/BO/Module/sort_modules.webdriverio');
 
     //sort product
-   /* require('./scenario/BO/Product/sort_products.webdriverio');
+    require('./scenario/BO/Product/sort_products.webdriverio');
 
     //create product
     require('./scenario/BO/Product/create_standard_product.webdriverio');
@@ -44,7 +44,7 @@ describe('Allscenario', function () {
     require('./scenario/BO/Employee/create_employee.webdriverio');
 
     //delete employee
-    require('./scenario/BO/Employee/delete_employee.webdriverio');*/
+    require('./scenario/BO/Employee/delete_employee.webdriverio');
 
     //create a product in BO and check it in FO
     /*require('./scenario/BO/Product/create_product.webdriverio');

@@ -97,7 +97,7 @@ describe('Add new virtual product', function(){
                 .call(done);
         });
 
-        it('should upload the picture one of product', function (done) {
+        it('should upload the picture of product', function (done) {
             global.fctname = this.test.title;
             this.client
                 .execute(function () {

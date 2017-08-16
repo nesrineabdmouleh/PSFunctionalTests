@@ -32,8 +32,7 @@ describe('Sort modules', function(){
                 });
             }, 100000)
             .waitForExist(pathSortModule, 90000)
-            //.selectByIndex(pathSortModule, 1)
-            .click(pathSortModule)
+            .selectByIndex(pathSortModule, 1)
             .pause(2000)
             .call(done);
     }
@@ -186,7 +185,7 @@ describe('Sort modules', function(){
     describe('sort module by name ', function (done) {
         it('should select sort module by name ', function (done) {
             global.fctname = this.test.title;
-            getAllModulesName(this.client, "#main-div > div.content-div > div.row > div > div.row > div > div.module-sorting-menu > div > div:nth-child(2) > div.module-sorting.module-sorting-author.pull-right > select > option:nth-child(2)", done)
+            getAllModulesName(this.client,this.selector.sort_module , done)
         });
 
         it('should check sort modules by name ', function (done) {
@@ -197,7 +196,7 @@ describe('Sort modules', function(){
 
 /****************************Sort modules by increasing price**********************************/
 
-   /* describe('sort module by increasing price ', function (done) {
+    describe('sort module by increasing price ', function (done) {
         it('should select sort module by increasing price ', function (done) {
             global.fctname = this.test.title;
             getAllModulesIncreasingPrice(this.client, this.selector.sort_module, done)
@@ -207,11 +206,11 @@ describe('Sort modules', function(){
             global.fctname = this.test.title;
             getAllModulesIncreasingPriceAfterSort(this.client, done);
         });
-    });*/
+    });
 
 /****************************Sort modules by decreasing price**********************************/
 
-   /* describe('sort module by decreasing price ', function (done) {
+    describe('sort module by decreasing price ', function (done) {
         it('should select sort module by decreasing price ', function (done) {
             global.fctname = this.test.title;
             getAllModulesDecreasingPrice(this.client, this.selector.sort_module, done);
@@ -221,7 +220,7 @@ describe('Sort modules', function(){
             global.fctname = this.test.title;
             getAllModulesDecreasingPriceAfterSort(this.client, done);
         });
-    });*/
+    });
 
     describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){

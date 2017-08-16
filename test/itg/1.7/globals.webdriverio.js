@@ -157,7 +157,8 @@ module.exports = {
         customer_delete_button: '//div[@class="alert alert-warning"]/input[@type="submit" and @value="Delete"]',
         customer_green_block_validation: '//*[@id="content"]/div[4]/div',
         //For 1.7.2.0
-        sort_module: '//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[7]/div/div[2]/div[2]/select',
+        sort_module: '#main-div > div.content-div > div.row > div > div.row > div > div.module-sorting-menu > div > div:nth-child(2) > div.module-sorting.module-sorting-author.pull-right > select',
+
         //For 1.7.2.1
         //sort_module: '//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[7]/div/div[2]/div/select',
         view_list: '//*[@id="module-sort-list"]',

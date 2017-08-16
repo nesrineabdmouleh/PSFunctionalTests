@@ -32,7 +32,8 @@ describe('Sort modules', function(){
                 });
             }, 100000)
             .waitForExist(pathSortModule, 90000)
-            .selectByIndex(pathSortModule, 1)
+            //.selectByIndex(pathSortModule, 1)
+            .click(pathSortModule)
             .pause(2000)
             .call(done);
     }
@@ -183,23 +184,15 @@ describe('Sort modules', function(){
 /****************************Sort modules by name**********************************/
 
     describe('sort module by name ', function (done) {
-        it('should click on sort module by name', function (done) {
+        it('should select sort module by name ', function (done) {
             global.fctname = this.test.title;
-            this.client
-                .waitForExist(this.selector.sort_module, 90000)
-                .selectByIndex(this.selector.sort_module, 1)
-                .call(done);
+            getAllModulesName(this.client, "//*[@id='main-div']/div[3]/div[2]/div/div[2]/div/div[7]/div/div[2]/div[2]/select/option[2]", done)
         });
 
-        /*it('should select sort module by name ', function (done) {
-            global.fctname = this.test.title;
-            getAllModulesName(this.client, this.selector.sort_module, done)
-        });*/
-
-        /*it('should check sort modules by name ', function (done) {
+        it('should check sort modules by name ', function (done) {
             global.fctname = this.test.title;
             getAllModulesNameAfterSort(this.client, done);
-        });*/
+        });
     });
 
 /****************************Sort modules by increasing price**********************************/

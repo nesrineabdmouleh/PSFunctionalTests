@@ -45,7 +45,7 @@ function initCommands(client) {
             .waitForExist(this.selector.login, 90000)
             .setValue(this.selector.login, 'demo@prestashop.com')
             .setValue(this.selector.password, 'prestashop_demo')
-            .click(this.selector.sort_module)
+            .click(this.selector.login_btn)
             .waitForExist(this.selector.menu, 90000)
             .call(cb);
     });

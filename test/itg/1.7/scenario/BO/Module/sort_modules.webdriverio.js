@@ -10,7 +10,7 @@ describe('Sort modules', function(){
         this.selector = globals.selector;
         this.client.call(done);
     });
-  process.on('uncaughtException', common.take_screenshot);
+    process.on('uncaughtException', common.take_screenshot);
     process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
@@ -183,20 +183,25 @@ describe('Sort modules', function(){
 /****************************Sort modules by name**********************************/
 
     describe('sort module by name ', function (done) {
-        it('should select sort module by name ', function (done) {
+        global.fctname = this.test.title;
+        this.client
+            .waitForExist(this.selector.sort_module, 90000)
+            .selectByIndex(this.selector.sort_module, 1)
+
+        /*it('should select sort module by name ', function (done) {
             global.fctname = this.test.title;
             getAllModulesName(this.client, this.selector.sort_module, done)
-        });
+        });*/
 
-        it('should check sort modules by name ', function (done) {
+        /*it('should check sort modules by name ', function (done) {
             global.fctname = this.test.title;
             getAllModulesNameAfterSort(this.client, done);
-        });
+        });*/
     });
 
 /****************************Sort modules by increasing price**********************************/
 
-    describe('sort module by increasing price ', function (done) {
+   /* describe('sort module by increasing price ', function (done) {
         it('should select sort module by increasing price ', function (done) {
             global.fctname = this.test.title;
             getAllModulesIncreasingPrice(this.client, this.selector.sort_module, done)
@@ -206,11 +211,11 @@ describe('Sort modules', function(){
             global.fctname = this.test.title;
             getAllModulesIncreasingPriceAfterSort(this.client, done);
         });
-    });
+    });*/
 
 /****************************Sort modules by decreasing price**********************************/
 
-    describe('sort module by decreasing price ', function (done) {
+   /* describe('sort module by decreasing price ', function (done) {
         it('should select sort module by decreasing price ', function (done) {
             global.fctname = this.test.title;
             getAllModulesDecreasingPrice(this.client, this.selector.sort_module, done);
@@ -220,7 +225,7 @@ describe('Sort modules', function(){
             global.fctname = this.test.title;
             getAllModulesDecreasingPriceAfterSort(this.client, done);
         });
-    });
+    });*/
 
     describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){

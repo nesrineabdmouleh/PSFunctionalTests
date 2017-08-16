@@ -186,7 +186,7 @@ describe('Sort modules', function(){
     describe('sort module by name ', function (done) {
         it('should select sort module by name ', function (done) {
             global.fctname = this.test.title;
-            getAllModulesName(this.client, "//*[@id='main-div']/div[3]/div[2]/div/div[2]/div/div[7]/div/div[2]/div[2]/select/option[2]", done)
+            getAllModulesName(this.client, "#main-div > div.content-div > div.row > div > div.row > div > div.module-sorting-menu > div > div:nth-child(2) > div.module-sorting.module-sorting-author.pull-right > select > option:nth-child(2)", done)
         });
 
         it('should check sort modules by name ', function (done) {

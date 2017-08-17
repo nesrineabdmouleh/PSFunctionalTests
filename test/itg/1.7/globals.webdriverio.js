@@ -10,7 +10,7 @@ global.module_tech_name = argv.MODULE;
 global.saucelabs = argv.SAUCELABS;
 global._projectdir = path.join(__dirname, '..', '..');
 global.product_id = new Date().getTime();
-global.new_employee_email = 'pub' + date_time + '@prestashop.com';
+global.new_customer_email = 'pub' + date_time + '@prestashop.com';
 global.name_table= [];
 global.nameTableAfterSort= [];
 global.price_table= [];
@@ -186,7 +186,7 @@ module.exports = {
         create_account_lastname: '[name="lastname"]',
         create_account_email: '[name="email"]',
         create_account_password: '[name="password"]',
-        create_account_info_validate: '[data-link-action="save-employee"]',
+        create_account_info_validate: '[data-link-action="save-customer"]',
         logo_home_pageFO: '.logo.img-responsive',
         first_product_home_page: '.thumbnail.product-thumbnail',
         add_to_cart: '.btn.btn-primary.add-to-cart',
@@ -199,7 +199,7 @@ module.exports = {
         layer_cart_name_details: '//div[@id="blockcart-modal"]/div/div/div[2]/div/div[1]/div/div[2]/h6',
         layer_cart_price_details: '//div[@id="blockcart-modal"]/div/div/div[2]/div/div[1]/div/div[2]/p[1]',
         layer_cart_quantity_details: '//div[@id="blockcart-modal"]/div/div/div[2]/div/div[1]/div/div[2]/p[2]',
-        layer_cart_command_button: '//*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/a',
+        layer_cart_command_button: '//*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a',
         //*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/a
         //for 1.7.1.0
         //layer_cart_command_button: '//div[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a',

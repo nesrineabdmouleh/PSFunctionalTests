@@ -10,7 +10,7 @@ global.module_tech_name = argv.MODULE;
 global.saucelabs = argv.SAUCELABS;
 global._projectdir = path.join(__dirname, '..', '..');
 global.product_id = new Date().getTime();
-global.new_customer_email = 'pub' + date_time + '@prestashop.com';
+global.new_employee_email = 'pub' + date_time + '@prestashop.com';
 global.name_table= [];
 global.nameTableAfterSort= [];
 global.price_table= [];
@@ -148,14 +148,14 @@ module.exports = {
         employees_firstname: '//*[@id="form-employee"]/div/div[2]/table/tbody/tr[2]/td[3]',
         employees_lastname: '//*[@id="form-employee"]/div/div[2]/table/tbody/tr[2]/td[4]',
         employees_email: '//*[@id="form-employee"]/div/div[2]/table/tbody/tr[2]/td[5]',
-        customer_filter_by_email: '//input[@name="employeeFilter_email"]',
-        customer_submit_filter: '//button[@id="submitFilterButtonemployee"]',
-        customers_select_customer: '//input[@name="employeeBox[]"]',
-        customer_bulk_action_button: '//div[@class="btn-group bulk-actions dropup"]/button',
-        customer_bulk_action_delete_option: '//div[@class="btn-group bulk-actions dropup open"]/ul/li[7]/a',
-        customer_delete_mode: '#deleteMode_deleted',
-        customer_delete_button: '//div[@class="alert alert-warning"]/input[@type="submit" and @value="Delete"]',
-        customer_green_block_validation: '//div[@class="alert alert-success"]',
+        employee_filter_by_email: '//input[@name="employeeFilter_email"]',
+        employee_submit_filter: '//button[@id="submitFilterButtonemployee"]',
+        employees_select_employee: '//input[@name="employeeBox[]"]',
+        employee_bulk_action_button: '//div[@class="btn-group bulk-actions dropup"]/button',
+        employee_bulk_action_delete_option: '//div[@class="btn-group bulk-actions dropup open"]/ul/li[7]/a',
+        employee_delete_mode: '#deleteMode_deleted',
+        employee_delete_button: '//div[@class="alert alert-warning"]/input[@type="submit" and @value="Delete"]',
+        employee_green_block_validation: '//div[@class="alert alert-success"]',
         //For 1.7.2.0
         sort_module: '#main-div > div.content-div > div.row > div > div.row > div > div.module-sorting-menu > div > div:nth-child(2) > div.module-sorting.module-sorting-author.pull-right > select',
 
@@ -163,8 +163,8 @@ module.exports = {
         //sort_module: '//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[7]/div/div[2]/div/select',
         view_list: '//*[@id="module-sort-list"]',
         advanced_parameters: '#subtab-AdminAdvancedParameters',
-        team: '#subtab-AdminParentEmployees',
-        click_outside_customer: '//*[@id="form-employee"]/div/div[1]/span[1]',
+        team: '//*[@id="subtab-AdminParentEmployees"]/a',
+        click_outside_employee: '//*[@id="form-employee"]/div/div[1]/span[1]',
         nbr_module: '[class="module-sorting-search-wording"]',
         sort_id_desc: '//*[@id="product_catalog_list"]/div[2]/div/table/thead/tr[1]/th[1]/span[2]',
         sort_id_asc: '//*[@id="product_catalog_list"]/div[2]/div/table/thead/tr[1]/th[1]/span[1]',
@@ -186,7 +186,7 @@ module.exports = {
         create_account_lastname: '[name="lastname"]',
         create_account_email: '[name="email"]',
         create_account_password: '[name="password"]',
-        create_account_info_validate: '[data-link-action="save-customer"]',
+        create_account_info_validate: '[data-link-action="save-employee"]',
         logo_home_pageFO: '.logo.img-responsive',
         first_product_home_page: '.thumbnail.product-thumbnail',
         add_to_cart: '.btn.btn-primary.add-to-cart',

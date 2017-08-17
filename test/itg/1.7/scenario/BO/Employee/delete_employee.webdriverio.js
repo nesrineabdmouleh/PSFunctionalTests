@@ -39,11 +39,11 @@ describe('Delete employee ', function(){
         it('should search the employee by email', function (done) {
             global.fctname = this.test.title;
             this.client
-                .waitForExist(this.selector.customer_filter_by_email, 90000)
-                .setValue(this.selector.customer_filter_by_email, 'testgmqa@testgmaqa.fr')
-                .click(this.selector.click_outside_customer)
+                .waitForExist(this.selector.employee_filter_by_email, 90000)
+                .setValue(this.selector.employee_filter_by_email, 'testgmqa@testgmaqa.fr')
+                .click(this.selector.click_outside_employee)
                 .pause(2000)
-                .click(this.selector.customer_submit_filter)
+                .click(this.selector.employee_submit_filter)
                 .call(done);
         });
 
@@ -51,8 +51,8 @@ describe('Delete employee ', function(){
             global.fctname = this.test.title;
             this.client
                 .pause(1000)
-                .waitForExist(this.selector.customers_select_customer, 90000)
-                .click(this.selector.customers_select_customer)
+                .waitForExist(this.selector.employees_select_employee, 90000)
+                .click(this.selector.employees_select_employee)
                 .call(done);
         });
 
@@ -60,11 +60,11 @@ describe('Delete employee ', function(){
             global.fctname = this.test.title;
             this.client
                 .pause(1000)
-                .waitForExist(this.selector.customer_bulk_action_button, 90000)
-                .click(this.selector.customer_bulk_action_button)
+                .waitForExist(this.selector.employee_bulk_action_button, 90000)
+                .click(this.selector.employee_bulk_action_button)
                 .pause(1000)
-                .waitForExist(this.selector.customer_bulk_action_delete_option, 90000)
-                .click(this.selector.customer_bulk_action_delete_option)
+                .waitForExist(this.selector.employee_bulk_action_delete_option, 90000)
+                .click(this.selector.employee_bulk_action_delete_option)
                 .alertAccept()
                 .call(done);
         });
@@ -72,7 +72,7 @@ describe('Delete employee ', function(){
         it("should check delete employee", function (done) {
             global.fctname = this.test.title;
             this.client
-                .waitForExist(this.selector.customer_green_block_validation, 90000)
+                .waitForExist(this.selector.employee_green_block_validation, 90000)
                 .call(done);
         });
     });

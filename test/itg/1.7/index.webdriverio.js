@@ -27,7 +27,7 @@ describe('Allscenario', function () {
     }
 
     //search module
-    /*require('./scenario/BO/Module/search_module.webdriverio');
+    require('./scenario/BO/Module/search_module.webdriverio');
 
     //sort module
     require('./scenario/BO/Module/sort_modules.webdriverio');
@@ -38,7 +38,7 @@ describe('Allscenario', function () {
     //create product
     require('./scenario/BO/Product/create_standard_product.webdriverio');
     require('./scenario/BO/Product/create_pack_product.webdriverio');
-    require('./scenario/BO/Product/create_virtual_product.webdriverio');*/
+    require('./scenario/BO/Product/create_virtual_product.webdriverio');
 
     //create employee
     require('./scenario/BO/Employee/create_employee.webdriverio');
@@ -47,7 +47,7 @@ describe('Allscenario', function () {
     require('./scenario/BO/Employee/delete_employee.webdriverio');
 
     //create a product in BO and check it in FO
-   /* require('./scenario/BO/Product/create_product.webdriverio');
+    require('./scenario/BO/Product/create_product.webdriverio');
     require('./scenario/FO/check_product.webdriverio');
 
     //create an order in FO and check it in BO
@@ -55,7 +55,7 @@ describe('Allscenario', function () {
     require('./scenario/BO/Order/check_order.webdriverio');
 
     //create an account in FO
-    require('./scenario/FO/create_account.webdriverio');*/
+    require('./scenario/FO/create_account.webdriverio');
 
     if (typeof module_tech_name !== 'undefined' && module_tech_name != "None") {
         require('./scenario/BO/Module/uninstall_module.js');

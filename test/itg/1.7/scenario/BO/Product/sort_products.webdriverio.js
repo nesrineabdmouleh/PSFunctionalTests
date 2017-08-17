@@ -3,10 +3,10 @@ var should = require('should');
 var common = require('../../../common.webdriverio');
 var globals = require('../../../globals.webdriverio.js');
 
-describe('Sort products', function(){
+describe('Sort products', function () {
     common.initMocha.call(this);
 
-    before(function(done){
+    before(function (done) {
         this.selector = globals.selector;
         this.client.call(done);
     });
@@ -18,18 +18,18 @@ describe('Sort products', function(){
     function getProductsId(browser, sort_mode, done) {
         var i = 1, j = 1;
         browser
-            .waitUntil(function() {
-                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+i+']', 'data-product-id').then(function (productIds) {
+            .waitUntil(function () {
+                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']', 'data-product-id').then(function (productIds) {
                     product_id_table[i] = productIds;
                     i++;
-                    return i === productNumber+1;
+                    return i === productNumber + 1;
                 });
             }, 10000)
-            .waitUntil(function() {
+            .waitUntil(function () {
                 global.sortProductsById = getSortProductsId(product_id_table, sort_mode);
-                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+j+']', 'data-product-id').then(function () {
+                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']', 'data-product-id').then(function () {
                     j++;
-                    return j === productNumber+1;
+                    return j === productNumber + 1;
                 });
             }, 10000)
             .call(done);
@@ -38,48 +38,52 @@ describe('Sort products', function(){
     function getProductsIdAfterSort(browser, done) {
         var i = 1, j = 1;
         browser
-            .waitUntil(function() {
-                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+i+']', 'data-product-id').then(function (productIds) {
+            .waitUntil(function () {
+                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']', 'data-product-id').then(function (productIds) {
                     product_id_table_after_sort[i] = productIds;
                     i++;
-                    return i === productNumber+1;
+                    return i === productNumber + 1;
                 });
             }, 10000)
 
-            .waitUntil(function() {
-                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+j+']', 'data-product-id').then(function () {
-                    if(product_id_table_after_sort[j] === sortProductsById[j]) {
+            .waitUntil(function () {
+                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']', 'data-product-id').then(function () {
+                    if (product_id_table_after_sort[j] === sortProductsById[j]) {
                         j++;
-                    }else{
+                    } else {
                         return done(new Error("something wrong in the sort by id"));
                     }
-                    return j === productNumber+1;
+                    return j === productNumber + 1;
                 });
             }, 10000)
             .call(done);
     }
 
     function getSortProductsId(table, sort_mode) {
-        if(sort_mode === 'ASC') return table.sort(function (a, b) {  return b - a; }).reverse();
-        if(sort_mode === 'DESC') return table.sort(function (a, b) {  return a - b; }).reverse();
+        if (sort_mode === 'ASC') return table.sort(function (a, b) {
+            return b - a;
+        }).reverse();
+        if (sort_mode === 'DESC') return table.sort(function (a, b) {
+            return a - b;
+        }).reverse();
     }
 
     /****************************Sort product by name**********************************/
     function getProductsName(browser, sort_mode, done) {
         var i = 1, j = 1;
         browser
-            .waitUntil(function() {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+i+']/td[3]').then(function (productName) {
+            .waitUntil(function () {
+                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']/td[3]').then(function (productName) {
                     product_name_table[i] = productName.toLowerCase();
                     i++;
-                    return i === productNumber+1;
+                    return i === productNumber + 1;
                 });
             }, 10000)
-            .waitUntil(function() {
+            .waitUntil(function () {
                 global.sortProductsByName = getSortProductsName(product_name_table, sort_mode);
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+j+']/td[3]').then(function () {
+                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']/td[3]').then(function () {
                     j++;
-                    return j === productNumber+1;
+                    return j === productNumber + 1;
                 });
             }, 10000)
             .call(done);
@@ -88,48 +92,50 @@ describe('Sort products', function(){
     function getProductsNameAfterSort(browser, done) {
         var i = 1, j = 1;
         browser
-            .waitUntil(function() {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+i+']/td[3]').then(function (productName) {
+            .waitUntil(function () {
+                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']/td[3]').then(function (productName) {
                     product_name_table_after_sort[i] = productName.toLowerCase();
                     i++;
-                    return i === productNumber+1;
+                    return i === productNumber + 1;
                 });
             }, 10000)
 
-            .waitUntil(function() {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+j+']/td[3]').then(function () {
-                    if(product_name_table_after_sort[j] === sortProductsByName[j]) {
+            .waitUntil(function () {
+                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']/td[3]').then(function () {
+                    if (product_name_table_after_sort[j] === sortProductsByName[j]) {
                         j++;
-                    }else{
+                    } else {
                         return done(new Error("something wrong in the sort by name"));
                     }
-                    return j === productNumber+1;
+                    return j === productNumber + 1;
                 });
             }, 10000)
             .call(done);
     }
 
     function getSortProductsName(table, sort_mode) {
-        if(sort_mode === 'ASC') return table.sort(function (a, b) {  return a < b; }).reverse();
-        if(sort_mode === 'DESC') return table.sort().reverse();
+        if (sort_mode === 'ASC') return table.sort(function (a, b) {
+            return a < b;
+        }).reverse();
+        if (sort_mode === 'DESC') return table.sort().reverse();
     }
 
     /****************************Sort product by reference**********************************/
     function getProductsReference(browser, sort_mode, done) {
         var i = 1, j = 1;
         browser
-            .waitUntil(function() {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+i+']/td[4]').then(function (productReference) {
+            .waitUntil(function () {
+                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']/td[4]').then(function (productReference) {
                     product_reference_table[i] = productReference.toLowerCase();
                     i++;
-                    return i === productNumber+1;
+                    return i === productNumber + 1;
                 });
             }, 10000)
-            .waitUntil(function() {
+            .waitUntil(function () {
                 global.sortProductsByReference = getSortProductsReference(product_reference_table, sort_mode);
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+j+']/td[4]').then(function () {
+                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']/td[4]').then(function () {
                     j++;
-                    return j === productNumber+1;
+                    return j === productNumber + 1;
                 });
             }, 10000)
             .call(done);
@@ -138,30 +144,34 @@ describe('Sort products', function(){
     function getProductsReferenceAfterSort(browser, done) {
         var i = 1, j = 1;
         browser
-            .waitUntil(function() {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+i+']/td[4]').then(function (productReference) {
+            .waitUntil(function () {
+                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']/td[4]').then(function (productReference) {
                     product_reference_table_after_sort[i] = productReference.toLowerCase();
                     i++;
-                    return i === productNumber+1;
+                    return i === productNumber + 1;
                 });
             }, 10000)
 
-            .waitUntil(function() {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr['+j+']/td[4]').then(function () {
-                    if(product_reference_table_after_sort[j] === sortProductsByReference[j]) {
+            .waitUntil(function () {
+                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']/td[4]').then(function () {
+                    if (product_reference_table_after_sort[j] === sortProductsByReference[j]) {
                         j++;
-                    }else{
+                    } else {
                         return done(new Error("something wrong in the sort by reference"));
                     }
-                    return j === productNumber+1;
+                    return j === productNumber + 1;
                 });
             }, 10000)
             .call(done);
     }
 
     function getSortProductsReference(table, sort_mode) {
-        if(sort_mode === 'ASC') return table.sort(function (a, b) {  return a < b; }).reverse();
-        if(sort_mode === 'DESC') return table.sort(function (a, b) {  return a > b; }).reverse();
+        if (sort_mode === 'ASC') return table.sort(function (a, b) {
+            return a < b;
+        }).reverse();
+        if (sort_mode === 'DESC') return table.sort(function (a, b) {
+            return a > b;
+        }).reverse();
     }
 
     function countProduct(browser, done) {
@@ -174,8 +184,8 @@ describe('Sort products', function(){
         })
     }
 
-    describe('Log in in Back Office', function(done){
-        it('should log in successfully in BO', function(done){
+    describe('Log in in Back Office', function (done) {
+        it('should log in successfully in BO', function (done) {
             global.fctname = this.test.title;
             this.client
                 .signinBO()
@@ -320,8 +330,8 @@ describe('Sort products', function(){
 
     });
 
-    describe('Log out in Back Office', function(done){
-        it('should log out successfully in BO', function(done){
+    describe('Log out in Back Office', function (done) {
+        it('should log out successfully in BO', function (done) {
             global.fctname = this.test.title;
             this.client
                 .signoutBO()

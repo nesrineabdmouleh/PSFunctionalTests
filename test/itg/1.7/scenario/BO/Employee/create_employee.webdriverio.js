@@ -3,10 +3,10 @@ var should = require('should');
 var common = require('../../../common.webdriverio');
 var globals = require('../../../globals.webdriverio.js');
 
-describe('Add employee ', function(){
+describe('Add employee ', function () {
     common.initMocha.call(this);
 
-    before(function(done){
+    before(function (done) {
         this.selector = globals.selector;
         this.client.call(done);
     });
@@ -14,8 +14,8 @@ describe('Add employee ', function(){
     process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
-    describe('Log in in Back Office', function(done){
-        it('should log in successfully in BO', function(done){
+    describe('Log in in Back Office', function (done) {
+        it('should log in successfully in BO', function (done) {
             global.fctname = this.test.title;
             this.client
                 .signinBO()
@@ -87,8 +87,8 @@ describe('Add employee ', function(){
         it('should select a profile ', function (done) {
             global.fctname = this.test.title;
             this.client
-                .waitForExist(this.selector.employee_profile_select, 90000)
-                .selectByValue(this.selector.employee_profile_select, 1)
+                .waitForExist(this.selector.employee_profile, 90000)
+                .selectByValue(this.selector.employee_profile, 1)
                 .call(done);
         });
 
@@ -101,27 +101,27 @@ describe('Add employee ', function(){
                 .call(done);
         });
 
-        it("should check the previous customer added", function (done) {
+        it("should check the customer", function (done) {
             global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.employees_firstname, 90000)
                 .getText(this.selector.employees_firstname).then(function (first_name) {
-                    should(first_name).be.equal('testfirstname');
-                })
+                should(first_name).be.equal('testfirstname');
+            })
                 .waitForExist(this.selector.employees_lastname, 90000)
                 .getText(this.selector.employees_lastname).then(function (last_name) {
-                    should(last_name).be.equal('testlastname');
-                })
+                should(last_name).be.equal('testlastname');
+            })
                 .waitForExist(this.selector.employees_email, 90000)
                 .getText(this.selector.employees_email).then(function (email) {
-                    should(email).be.equal('testgmqa@testgmaqa.fr');
-                })
+                should(email).be.equal('testgmqa@testgmaqa.fr');
+            })
                 .call(done);
         });
     });
 
-    describe('Log out in Back Office', function(done){
-        it('should log out successfully in BO', function(done){
+    describe('Log out in Back Office', function (done) {
+        it('should log out successfully in BO', function (done) {
             global.fctname = this.test.title;
             this.client
                 .signoutBO()

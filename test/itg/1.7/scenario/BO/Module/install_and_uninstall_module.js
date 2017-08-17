@@ -56,7 +56,7 @@ describe('The Install of a Module and its Uninstall', function () {
 
         it('should click on install button', function (done) {
             global.fctname = this.test.title;
-            
+
             this.client
                 .setValue(this.selector.modules_search, module_tech_name)
                 .click(this.selector.modules_search_button)

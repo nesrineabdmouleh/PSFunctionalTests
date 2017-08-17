@@ -4,10 +4,10 @@ var common = require('../../../common.webdriverio');
 var globals = require('../../../globals.webdriverio.js');
 var exit_welcome = false;
 
-describe('Delete employee ', function(){
+describe('Delete employee ', function () {
     common.initMocha.call(this);
 
-    before(function(done){
+    before(function (done) {
         this.selector = globals.selector;
         this.client.call(done);
     });
@@ -15,8 +15,8 @@ describe('Delete employee ', function(){
     process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
-    describe('Log in in Back Office', function(done){
-        it('should log in successfully in BO', function(done){
+    describe('Log in in Back Office', function (done) {
+        it('should log in successfully in BO', function (done) {
             global.fctname = this.test.title;
             this.client
                 .signinBO()
@@ -51,8 +51,8 @@ describe('Delete employee ', function(){
             global.fctname = this.test.title;
             this.client
                 .pause(1000)
-                .waitForExist(this.selector.employees_select_employee, 90000)
-                .click(this.selector.employees_select_employee)
+                .waitForExist(this.selector.employee_id, 90000)
+                .click(this.selector.employee_id)
                 .call(done);
         });
 
@@ -77,8 +77,8 @@ describe('Delete employee ', function(){
         });
     });
 
-    describe('Log out in Back Office', function(done){
-        it('should log out successfully in BO', function(done){
+    describe('Log out in Back Office', function (done) {
+        it('should log out successfully in BO', function (done) {
             global.fctname = this.test.title;
             this.client
                 .signoutBO()

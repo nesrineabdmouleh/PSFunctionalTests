@@ -11,25 +11,25 @@ global.saucelabs = argv.SAUCELABS;
 global._projectdir = path.join(__dirname, '..', '..');
 global.product_id = new Date().getTime();
 global.new_customer_email = 'pub' + date_time + '@prestashop.com';
-global.name_table= [];
-global.nameTableAfterSort= [];
-global.price_table= [];
-global.priceTableAfterSort= [];
-global.decreasingPrice_table= [];
-global.decreasingPriceTableAfterSort= [];
+global.name_table = [];
+global.nameTableAfterSort = [];
+global.price_table = [];
+global.priceTableAfterSort = [];
+global.decreasingPrice_table = [];
+global.decreasingPriceTableAfterSort = [];
 global.product_id_table = [];
 global.product_id_table_after_sort = [];
 global.product_name_table = [];
 global.product_name_table_after_sort = [];
 global.product_reference_table = [];
 global.product_reference_table_after_sort = [];
-global.author_table= [];
-global.description_table= [];
-global.tech_name_table= [];
-global.child_categories_table= [];
-global.categories_table= [];
-global.type_table= [];
-global.check_module= new Array();
+global.author_table = [];
+global.description_table = [];
+global.tech_name_table = [];
+global.child_categories_table = [];
+global.categories_table = [];
+global.type_table = [];
+global.check_module = new Array();
 
 module.exports = {
     selector: {
@@ -106,7 +106,7 @@ module.exports = {
         product_online: '.switch-input ',
         catalogue_filter_by_name: '//input[@name="filter_column_name"]',
         catalogue_submit_filter: '//button[@name="products_filter_submit"]',
-        catalogue_filter_reset:  '//button[@type="reset" and @name="products_filter_reset"]',
+        catalogue_filter_reset: '//button[@type="reset" and @name="products_filter_reset"]',
         orders: '#subtab-AdminParentOrders',
         orders_form: '#form-order',
         order_product_name: '.productName',
@@ -120,7 +120,7 @@ module.exports = {
         modules_search_button: '.input-group-addon.module-search-icon',
         //For 1.7.2.1
         /*modules_search: '//!*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[4]/div/div[1]/div/div/div[2]/input',
-        modules_search_button: '.btn.btn-primary.pull-right.search-button',*/
+         modules_search_button: '.btn.btn-primary.pull-right.search-button',*/
         modules_page_loaded: '.module-search-result-wording',
         modules_installed: '(//div[@class="page-head-tabs"]/a)[2]',
         modules_validate_uninstall: '//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]',
@@ -132,7 +132,7 @@ module.exports = {
         //For 1.7.2.1
         //uninstall_module_list: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="btn btn-primary-outline  dropdown-toggle"]',
         uninstall_module_btn: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="dropdown-item module_action_menu_uninstall"]',
-        modal_confirm_uninstall : '//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]',
+        modal_confirm_uninstall: '//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]',
         catalogue_select_product: '//input[@name="bulk_action_selected_products[]"]',
         catalogue_bulk_action_button: '#product_bulk_menu',
         catalogue_bulk_action_delete_option: '//div[@class="btn-group dropup open"]/div[1]/a[4]',
@@ -143,14 +143,14 @@ module.exports = {
         employee_email: '//*[@id="email"]',
         employee_passwd: '//*[@id="passwd"]',
         employee_subscribe_newsletter: '//*[@id="fieldset_0"]/div[2]/div[6]/div/span/label[2]',
-        employee_profile_select: '//*[@id="id_profile"]',
+        employee_profile: '//*[@id="id_profile"]',
         employee_save_button: '//*[@id="employee_form_submit_btn"]',
         employees_firstname: '//*[@id="form-employee"]/div/div[2]/table/tbody/tr[2]/td[3]',
         employees_lastname: '//*[@id="form-employee"]/div/div[2]/table/tbody/tr[2]/td[4]',
         employees_email: '//*[@id="form-employee"]/div/div[2]/table/tbody/tr[2]/td[5]',
         employee_filter_by_email: '//input[@name="employeeFilter_email"]',
         employee_submit_filter: '//button[@id="submitFilterButtonemployee"]',
-        employees_select_employee: '//input[@name="employeeBox[]"]',
+        employee_id: '//input[@name="employeeBox[]"]',
         employee_bulk_action_button: '//div[@class="btn-group bulk-actions dropup"]/button',
         employee_bulk_action_delete_option: '//div[@class="btn-group bulk-actions dropup open"]/ul/li[7]/a',
         employee_delete_mode: '#deleteMode_deleted',
@@ -367,19 +367,19 @@ module.exports = {
 
 
         //virtual product
-        virtual_product_tab : '//*[@id="tab_step3"]/a',
-        virtual_product_associated_file : '//*[@id="form_step3_virtual_product_is_virtual_file_0"]',
-        virtual_product_file : '//*[@id="form_step3_virtual_product_file"]',
-        virtual_product_file_name : '//*[@id="form_step3_virtual_product_name"]',
-        virtual_product_file_nb_download : '//*[@id="form_step3_virtual_product_nb_downloadable"]',
-        virtual_product_file_exp_date : '//*[@id="form_step3_virtual_product_expiration_date"]',
-        virtual_product_file_nb_days : '//*[@id="form_step3_virtual_product_nb_days"]',
-        virtual_product_save_button : '//*[@id="form_step3_virtual_product_save"]',
-        virtual_product_availability_preferences : '//*[@id="form_step3_out_of_stock_0"]',
+        virtual_product_tab: '//*[@id="tab_step3"]/a',
+        virtual_product_associated_file: '//*[@id="form_step3_virtual_product_is_virtual_file_0"]',
+        virtual_product_file: '//*[@id="form_step3_virtual_product_file"]',
+        virtual_product_file_name: '//*[@id="form_step3_virtual_product_name"]',
+        virtual_product_file_nb_download: '//*[@id="form_step3_virtual_product_nb_downloadable"]',
+        virtual_product_file_exp_date: '//*[@id="form_step3_virtual_product_expiration_date"]',
+        virtual_product_file_nb_days: '//*[@id="form_step3_virtual_product_nb_days"]',
+        virtual_product_save_button: '//*[@id="form_step3_virtual_product_save"]',
+        virtual_product_availability_preferences: '//*[@id="form_step3_out_of_stock_0"]',
         virtual_product_label_in_stock: '//*[@id="form_step3_available_now_1"]',
         virtual_product_label_out_stock: '//*[@id="form_step3_available_later_1"]',
         virtual_product_availability_date: '//*[@id="form_step3_available_date"]',
-        virtual_product_type : '//*[@id="form"]/div[1]/div[1]/div[1]/div[2]',
+        virtual_product_type: '//*[@id="form"]/div[1]/div[1]/div[1]/div[2]',
 
 
     },

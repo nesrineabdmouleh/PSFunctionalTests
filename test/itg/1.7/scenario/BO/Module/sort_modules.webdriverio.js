@@ -3,10 +3,10 @@ var should = require('should');
 var common = require('../../../common.webdriverio');
 var globals = require('../../../globals.webdriverio.js');
 
-describe('Sort modules', function(){
+describe('Sort modules', function () {
     common.initMocha.call(this);
 
-    before(function(done){
+    before(function (done) {
         this.selector = globals.selector;
         this.client.call(done);
     });
@@ -17,18 +17,18 @@ describe('Sort modules', function(){
     function getAllModulesName(browser, pathSortModule, done) {
         var i = 1, j = 0;
         browser
-            .waitUntil(function() {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div['+i+']', 'data-name').then(function (name) {
+            .waitUntil(function () {
+                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-name').then(function (name) {
                     name_table[i] = name.toLowerCase();
                     i++;
-                    return i === nb_module+1;
+                    return i === nb_module + 1;
                 });
             }, 100000)
-            .waitUntil(function() {
+            .waitUntil(function () {
                 return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function () {
                     global.nameTable = sortModule(name_table, 'name');
                     j++;
-                    return j === nb_module+1;
+                    return j === nb_module + 1;
                 });
             }, 100000)
             .waitForExist(pathSortModule, 90000)
@@ -40,46 +40,52 @@ describe('Sort modules', function(){
     function getAllModulesNameAfterSort(browser, done) {
         var i = 1, j = 1;
         browser
-            .waitUntil(function() {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div['+i+']', 'data-name').then(function (name) {
+            .waitUntil(function () {
+                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-name').then(function (name) {
                     nameTableAfterSort[i] = name.toLowerCase();
                     i++;
-                    return i === nb_module+1;
+                    return i === nb_module + 1;
                 });
             }, 100000)
-            .waitUntil(function() {
+            .waitUntil(function () {
                 return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function () {
-                    if(nameTableAfterSort[j] === nameTable[j-1]){
+                    if (nameTableAfterSort[j] === nameTable[j - 1]) {
                         j++;
-                    }else{
+                    } else {
                         done(new Error("something wrong in the sort by name"));
                     }
-                    return j === nb_module+1;
+                    return j === nb_module + 1;
                 });
             }, 100000).call(done);
     }
 
     function sortModule(table, sortBy) {
-        if(sortBy === 'name') return table.sort();
-        if(sortBy === 'increasing_price') return table.sort(function (a, b) {  return a - b; });
-        if(sortBy === 'decreasing_price') { return table.sort(function (a, b) {  return a - b;  }).reverse();}
+        if (sortBy === 'name') return table.sort();
+        if (sortBy === 'increasing_price') return table.sort(function (a, b) {
+            return a - b;
+        });
+        if (sortBy === 'decreasing_price') {
+            return table.sort(function (a, b) {
+                return a - b;
+            }).reverse();
+        }
     }
 
     function getAllModulesIncreasingPrice(browser, pathSortModule, done) {
         var i = 1, j = 0;
         browser
-            .waitUntil(function() {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div['+i+']', 'data-price').then(function (price) {
+            .waitUntil(function () {
+                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-price').then(function (price) {
                     price_table[i] = price;
                     i++;
-                    return i === nb_module+1;
+                    return i === nb_module + 1;
                 });
             }, 100000)
-            .waitUntil(function() {
+            .waitUntil(function () {
                 return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function () {
                     global.priceIncreasingTable = sortModule(price_table, 'increasing_price');
                     j++;
-                    return j === nb_module+1;
+                    return j === nb_module + 1;
                 });
             }, 100000)
             .waitForExist(pathSortModule, 90000)
@@ -91,21 +97,21 @@ describe('Sort modules', function(){
     function getAllModulesIncreasingPriceAfterSort(browser, done) {
         var i = 1, j = 1;
         browser
-            .waitUntil(function() {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div['+i+']', 'data-price').then(function (price) {
+            .waitUntil(function () {
+                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-price').then(function (price) {
                     priceTableAfterSort[i] = price;
                     i++;
-                    return i === nb_module+1;
+                    return i === nb_module + 1;
                 });
             }, 100000)
-            .waitUntil(function() {
+            .waitUntil(function () {
                 return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function (name) {
-                    if(priceTableAfterSort[j] === priceIncreasingTable[j-1]){
+                    if (priceTableAfterSort[j] === priceIncreasingTable[j - 1]) {
                         j++;
-                    }else{
+                    } else {
                         done(new Error("something wrong in the sort by increasing price"));
                     }
-                    return j === nb_module+1;
+                    return j === nb_module + 1;
                 });
             }, 100000).call(done);
     }
@@ -113,18 +119,18 @@ describe('Sort modules', function(){
     function getAllModulesDecreasingPrice(browser, pathSortModule, done) {
         var i = 1, j = 0;
         browser
-            .waitUntil(function() {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div['+i+']', 'data-price').then(function (price) {
+            .waitUntil(function () {
+                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-price').then(function (price) {
                     decreasingPrice_table[i] = price;
                     i++;
-                    return i === nb_module+1;
+                    return i === nb_module + 1;
                 });
             }, 100000)
-            .waitUntil(function() {
+            .waitUntil(function () {
                 return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function () {
                     global.priceDecreasingTable = sortModule(decreasingPrice_table, 'decreasing_price');
                     j++;
-                    return j === nb_module+1;
+                    return j === nb_module + 1;
                 });
             }, 100000)
             .waitForExist(pathSortModule, 90000)
@@ -136,27 +142,27 @@ describe('Sort modules', function(){
     function getAllModulesDecreasingPriceAfterSort(browser, done) {
         var i = 1, j = 1;
         browser
-            .waitUntil(function() {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div['+i+']', 'data-price').then(function (price) {
+            .waitUntil(function () {
+                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-price').then(function (price) {
                     decreasingPriceTableAfterSort[i] = price;
                     i++;
-                    return i === nb_module+1;
+                    return i === nb_module + 1;
                 });
             }, 100000)
-            .waitUntil(function() {
+            .waitUntil(function () {
                 return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function () {
-                    if(decreasingPriceTableAfterSort[j] === priceDecreasingTable[j]){
+                    if (decreasingPriceTableAfterSort[j] === priceDecreasingTable[j]) {
                         j++;
-                    }else{
+                    } else {
                         done(new Error("something wrong in the sort by decreasing price"));
                     }
-                    return j === nb_module+1;
+                    return j === nb_module + 1;
                 });
             }, 100000).call(done);
     }
 
-    describe('Log in in Back Office', function(done){
-        it('should log in successfully in BO', function(done){
+    describe('Log in in Back Office', function (done) {
+        it('should log in successfully in BO', function (done) {
             global.fctname = this.test.title;
             this.client
                 .signinBO()
@@ -174,18 +180,16 @@ describe('Sort modules', function(){
                 .waitForExist(this.selector.modules_page_loaded, 90000)
                 .pause(3000)
                 .getText(this.selector.nbr_module).then(function (nb) {
-                    global.nb_module = parseInt(nb.match(/[0-9]+/g)[0]);
-                })
+                global.nb_module = parseInt(nb.match(/[0-9]+/g)[0]);
+            })
                 .call(done);
         });
     });
 
-/****************************Sort modules by name**********************************/
-
     describe('sort module by name ', function (done) {
         it('should select sort module by name ', function (done) {
             global.fctname = this.test.title;
-            getAllModulesName(this.client,this.selector.sort_module , done)
+            getAllModulesName(this.client, this.selector.sort_module, done)
         });
 
         it('should check sort modules by name ', function (done) {
@@ -193,8 +197,6 @@ describe('Sort modules', function(){
             getAllModulesNameAfterSort(this.client, done);
         });
     });
-
-/****************************Sort modules by increasing price**********************************/
 
     describe('sort module by increasing price ', function (done) {
         it('should select sort module by increasing price ', function (done) {
@@ -208,8 +210,6 @@ describe('Sort modules', function(){
         });
     });
 
-/****************************Sort modules by decreasing price**********************************/
-
     describe('sort module by decreasing price ', function (done) {
         it('should select sort module by decreasing price ', function (done) {
             global.fctname = this.test.title;
@@ -222,8 +222,8 @@ describe('Sort modules', function(){
         });
     });
 
-    describe('Log out in Back Office', function(done){
-        it('should log out successfully in BO', function(done){
+    describe('Log out in Back Office', function (done) {
+        it('should log out successfully in BO', function (done) {
             global.fctname = this.test.title;
             this.client
                 .signoutBO()

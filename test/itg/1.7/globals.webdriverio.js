@@ -227,6 +227,10 @@ module.exports = {
         options_choose_supplier: '//*[@id="form_step6_suppliers_0"]',
         catalog_product_name: '//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr/td[3]/a',
 
+        //virtual product
+        virtual_product_type: '//*[@id="form"]/div[1]/div[1]/div[1]/div[2]',
+
+
         //FO
         access_loginFO: 'div.user-info > a',
         loginFO: '//*[@id="login-form"]/section/div[1]/div[1]/input',

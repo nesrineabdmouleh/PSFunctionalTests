@@ -230,6 +230,27 @@ module.exports = {
         //virtual product
         virtual_product_type: '//*[@id="form"]/div[1]/div[1]/div[1]/div[2]',
 
+        //pack product
+        product_type: '//*[@id="select2-form_step1_type_product-container"]',
+        product_pack_type: '//*[@id="select2-form_step1_type_product-results"]/li[2]',
+        product_quantity_shortcut: '//*[@id="form_step1_qty_0_shortcut"]',
+        search_product_pack: '//*[@id="form_step1_inputPackItems"]',
+        product_item_pack: '//*[@id="js_form_step1_inputPackItems"]/div/div[1]/span/div/div/div[1]/table/tbody/tr[1]',
+        product_pack_item_quantity: '//*[@id="form_step1_inputPackItems-curPackItemQty"]',
+        product_pack_add_button: '//*[@id="form_step1_inputPackItems-curPackItemAdd"]',
+        product_quantities_tab: '//*[@id="tab_step3"]/a',
+        product_quantity_input: '//*[@id="form_step3_qty_0"]',
+        minimum_quantity_sale: '//*[@id="form_step3_minimal_quantity"]',
+        pack_stock_type: '//*[@id="select2-form_step3_pack_stock_type-container"]',
+        pack_stock_type_option: '//*[@id="select2-form_step3_pack_stock_type-results"]/li[3]',
+        pack_availability_preferences: '//*[@id="form_step3_out_of_stock_0"]',
+        pack_label_in_stock: '//*[@id="form_step3_available_now_1"]',
+        pack_label_out_stock: '//*[@id="form_step3_available_later_1"]',
+        pack_availability_date: '//*[@id="form_step3_available_date"]',
+        pack_unit_price: '//*[@id="form_step2_unit_price"]',
+        options_default_supplier: '//*[@id="form_step6_default_supplier_0"]',
+        options_supplier_reference: '//*[@id="form_step6_supplier_combination_1_0_supplier_reference"]',
+        options_supplier_price: '//*[@id="form_step6_supplier_combination_1_0_product_price"]',
 
         //FO
         access_loginFO: 'div.user-info > a',

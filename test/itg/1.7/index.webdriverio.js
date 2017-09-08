@@ -28,7 +28,8 @@ describe('Allscenario', function () {
 
     //create a product in BO and check it in FO
     //require('./scenario/BO/Product/create_standard_product.webdriverio');
-    require('./scenario/BO/Product/create_virtual_product.webdriverio');
+    //require('./scenario/BO/Product/create_virtual_product.webdriverio');
+    require('./scenario/BO/Product/create_pack_product.webdriverio');
     /*require('./scenario/BO/create_product.webdriverio');
     require('./scenario/FO/check_product.webdriverio');
 

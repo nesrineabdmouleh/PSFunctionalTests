@@ -33,6 +33,10 @@ describe('Allscenario', function () {
     require('./scenario/BO/create_product.webdriverio');
     require('./scenario/FO/check_product.webdriverio');
 
+    //Create and delete employee
+    require('./scenario/BO/Employee/create_employee.webdriverio');
+    require('./scenario/BO/Employee/delete_employee.webdriverio');
+
     //create an order in FO and check it in BO
     require('./scenario/FO/buy_product.webdriverio');
     require('./scenario/BO/check_order.webdriverio');

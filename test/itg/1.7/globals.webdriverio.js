@@ -292,6 +292,8 @@ module.exports = {
         //sort module
         sort_module: '//*[@id="main-div"]/div[3]/div/div/div[2]/div/div[7]/div/div[2]/div/select',
 
+        //search module
+        list_module: '//*[@id="modules-list-container-all"]',
 
         //FO
         access_loginFO: 'div.user-info > a',

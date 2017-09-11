@@ -20,11 +20,12 @@ describe('Allscenario', function () {
     //install prestashop
     //require('./install_prestashop.js');
 
-    //install and uninstall module
+    //install and uninstall module + search and sort modules
     if (typeof module_tech_name !== 'undefined' && module_tech_name != "None") {
         require('./scenario/BO/Module/install_and_uninstall_module.js');
         require('./scenario/BO/Module/install_module.js');
         require('./scenario/BO/Module/sort_modules.webdriverio');
+        require('./scenario/BO/Module/search_module.webdriverio');
     }
 
     //create a product in BO and check it in FO

@@ -22,8 +22,9 @@ describe('Allscenario', function () {
 
     //install and uninstall module
     if (typeof module_tech_name !== 'undefined' && module_tech_name != "None") {
-        require('./scenario/BO/install_and_uninstall_module.js');
-        require('./scenario/BO/install_module.js');
+        require('./scenario/BO/Module/install_and_uninstall_module.js');
+        require('./scenario/BO/Module/install_module.js');
+        require('./scenario/BO/Module/sort_modules.webdriverio');
     }
 
     //create a product in BO and check it in FO
@@ -39,13 +40,13 @@ describe('Allscenario', function () {
 
     //create an order in FO and check it in BO
     require('./scenario/FO/buy_product.webdriverio');
-    require('./scenario/BO/check_order.webdriverio');
+    require('./scenario/BO/Order/check_order.webdriverio');
 
     //create an account in FO
     require('./scenario/FO/create_account.webdriverio');
 
     if (typeof module_tech_name !== 'undefined' && module_tech_name != "None") {
-        require('./scenario/BO/uninstall_module.js');
+        require('./scenario/BO/Module/uninstall_module.js');
     }
 
 });

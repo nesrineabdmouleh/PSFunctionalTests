@@ -12,6 +12,19 @@ global.selenium_url = argv.SELENIUM;
 global._projectdir = path.join(__dirname, '..', '..');
 global.product_id = new Date().getTime();
 global.new_customer_email = 'pub' + date_time + '@prestashop.com';
+global.check_module = new Array();
+global.name_table = [];
+global.author_table = [];
+global.description_table = [];
+global.tech_name_table = [];
+global.child_categories_table = [];
+global.categories_table = [];
+global.type_table = [];
+global.decreasingPriceTableAfterSort = [];
+global.decreasingPrice_table = [];
+global.priceTableAfterSort = [];
+global.price_table = [];
+global.nameTableAfterSort = [];
 
 module.exports = {
     selector: {
@@ -275,6 +288,10 @@ module.exports = {
         employee_delete_button: '//div[@class="alert alert-warning"]/input[@type="submit" and @value="Delete"]',
         employee_green_block_validation: '//div[@class="alert alert-success"]',
         click_outside_employee: '//*[@id="form-employee"]/div/div[1]/span[1]',
+
+        //sort module
+        sort_module: '//*[@id="main-div"]/div[3]/div/div/div[2]/div/div[7]/div/div[2]/div/select',
+
 
         //FO
         access_loginFO: 'div.user-info > a',

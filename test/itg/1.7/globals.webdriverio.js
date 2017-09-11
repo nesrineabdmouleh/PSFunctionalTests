@@ -25,6 +25,12 @@ global.decreasingPrice_table = [];
 global.priceTableAfterSort = [];
 global.price_table = [];
 global.nameTableAfterSort = [];
+global.product_id_table = [];
+global.product_id_table_after_sort = [];
+global.product_name_table = [];
+global.product_name_table_after_sort = [];
+global.product_reference_table = [];
+global.product_reference_table_after_sort = [];
 
 module.exports = {
     selector: {
@@ -294,6 +300,14 @@ module.exports = {
 
         //search module
         list_module: '//*[@id="modules-list-container-all"]',
+
+        //sort product
+        sort_id_desc: '//*[@id="product_catalog_list"]/div[2]/div/table/thead/tr[1]/th[1]/span[2]',
+        sort_id_asc: '//*[@id="product_catalog_list"]/div[2]/div/table/thead/tr[1]/th[1]/span[1]',
+        sort_name_desc: '//*[@id="product_catalog_list"]/div[2]/div/table/thead/tr[1]/th[3]/span[2]',
+        sort_name_asc: '//*[@id="product_catalog_list"]/div[2]/div/table/thead/tr[1]/th[3]/span[1]',
+        sort_reference_desc: '//*[@id="product_catalog_list"]/div[2]/div/table/thead/tr[1]/th[4]/span[2]',
+        sort_reference_asc: '//*[@id="product_catalog_list"]/div[2]/div/table/thead/tr[1]/th[4]/span[1]',
 
         //FO
         access_loginFO: 'div.user-info > a',

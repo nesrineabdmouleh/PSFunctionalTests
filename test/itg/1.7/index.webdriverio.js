@@ -35,6 +35,9 @@ describe('Allscenario', function () {
     require('./scenario/BO/create_product.webdriverio');
     require('./scenario/FO/check_product.webdriverio');
 
+    //sort product
+    require('./scenario/BO/Product/sort_products.webdriverio');
+
     //Create and delete employee
     require('./scenario/BO/Employee/create_employee.webdriverio');
     require('./scenario/BO/Employee/delete_employee.webdriverio');

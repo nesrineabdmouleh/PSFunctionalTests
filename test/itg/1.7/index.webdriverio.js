@@ -24,9 +24,11 @@ describe('Allscenario', function () {
     if (typeof module_tech_name !== 'undefined' && module_tech_name != "None") {
         require('./scenario/BO/Module/install_and_uninstall_module.js');
         require('./scenario/BO/Module/install_module.js');
-        require('./scenario/BO/Module/sort_modules.webdriverio');
-        require('./scenario/BO/Module/search_module.webdriverio');
+
     }
+    //sort and search modules
+    require('./scenario/BO/Module/sort_modules.webdriverio');
+    require('./scenario/BO/Module/search_module.webdriverio');
 
     //sort product
     require('./scenario/BO/Product/sort_products.webdriverio');

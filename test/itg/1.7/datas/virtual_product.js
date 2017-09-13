@@ -3,25 +3,6 @@ var common = require('../common.webdriverio');
 var path = require('path');
 var should = require('should');
 
-function getCustomDate(numberOfDay) {
-    var today = new Date();
-    today.setDate(today.getDate() + numberOfDay);
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    if(dd<10) {
-        dd = '0'+dd;
-    }
-
-    if(mm<10) {
-        mm = '0'+mm;
-    }
-
-    today = yyyy + '-' + mm + '-' + dd;
-    return today;
-}
-
 module.exports =
     {
         name:"AutoNewVirtual",
@@ -64,7 +45,7 @@ module.exports =
         qty_min:"1",
         qty_msg_stock:"Product avalaible",
         qty_msg_unstock:"Product unavalaible",
-        qty_date:getCustomDate(30),
+        qty_date:common.getCustomDate(30),
         variation:"",
         cwidth:"10",
         cheight:"10",
@@ -85,7 +66,7 @@ module.exports =
                 virtual_file:"rouge.png",
                 virtual_file_name:"test_virtual_product",
                 virtual_file_nb_download:"5",
-                virtual_file_exp_date:getCustomDate(60),
+                virtual_file_exp_date:common.getCustomDate(60),
                 file_nb_days:"10"
             },
         pack: {
@@ -98,8 +79,8 @@ module.exports =
             country: "8",
             group: "3",
             variation: "0",
-            start_date: getCustomDate(-30),
-            end_date: getCustomDate(30),
+            start_date: common.getCustomDate(-30),
+            end_date: common.getCustomDate(30),
             quantity: "1",
             price: "20",
             show_price: "1",

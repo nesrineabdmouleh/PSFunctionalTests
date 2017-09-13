@@ -71,6 +71,17 @@ describe('Add new virtual product', function () {
                 .call(done);
         });
 
+        it('should upload the picture of product', function (done) {
+            global.fctname = this.test.title;
+            this.client
+                .execute(function () {
+                    document.getElementsByClassName(this.selector.picture).style = "";
+                })
+                .chooseFile(this.selector.picture, getPicture('1.png'))
+                .waitForExist(this.selector.picture_cover, 90000)
+                .call(done);
+        });
+
         it('should enter the product summary', function (done) {
             global.fctname = this.test.title;
             this.client
@@ -96,22 +107,6 @@ describe('Add new virtual product', function () {
                 .pause(2000)
                 .call(done);
         });
-
-        it('should upload the picture of product', function (done) {
-            global.fctname = this.test.title;
-            this.client
-                .execute(function () {
-                    document.getElementsByClassName("dz-hidden-input").style = "";
-                })
-                .chooseFile(this.selector.picture, getPicture('1.png'))
-                .waitForExist(this.selector.picture_cover, 90000)
-                .getAttribute('.dz-preview.dz-image-preview.ui-sortable-handle.dz-complete', "data-id").then(function (text) {
-                global.image_data_id = text;
-            })
-                .pause(2000)
-                .call(done);
-        });
-
 
         it('should click on create category button', function (done) {
             global.fctname = this.test.title;
@@ -241,7 +236,7 @@ describe('Add new virtual product', function () {
             this.client
                 .waitForExist(this.selector.pricing_unity, 60000)
                 .execute(function () {
-                    document.querySelector('#form_step2_unity').value = "";
+                    document.querySelector("#form_step2_unity").value = "";
                 })
                 .setValue(this.selector.pricing_unity, virtual_product.unity)
                 .call(done);

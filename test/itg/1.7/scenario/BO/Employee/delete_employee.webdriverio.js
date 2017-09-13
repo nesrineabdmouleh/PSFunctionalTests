@@ -2,7 +2,6 @@
 var should = require('should');
 var common = require('../../../common.webdriverio');
 var globals = require('../../../globals.webdriverio.js');
-var exit_welcome = false;
 
 describe('Delete employee ', function () {
     common.initMocha.call(this);

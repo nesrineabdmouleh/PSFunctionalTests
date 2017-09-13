@@ -14,18 +14,18 @@ describe('Sort modules', function () {
     process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
-    function getAllModulesName(browser, pathSortModule, done) {
+    function getAllModulesName(browser, pathSortModule, modulelist, done) {
         var i = 1, j = 0;
         browser
             .waitUntil(function () {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-name').then(function (name) {
+                return browser.getAttribute(modulelist+'/div[' + i + ']', 'data-name').then(function (name) {
                     name_table[i] = name.toLowerCase();
                     i++;
                     return i === nb_module + 1;
                 });
             }, 100000)
             .waitUntil(function () {
-                return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function () {
+                return browser.waitForExist(modulelist).then(function () {
                     global.nameTable = sortModule(name_table, 'name');
                     j++;
                     return j === nb_module + 1;
@@ -37,18 +37,18 @@ describe('Sort modules', function () {
             .call(done);
     }
 
-    function getAllModulesNameAfterSort(browser, done) {
+    function getAllModulesNameAfterSort(browser,modulelist, done) {
         var i = 1, j = 1;
         browser
             .waitUntil(function () {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-name').then(function (name) {
+                return browser.getAttribute(modulelist+'/div[' + i + ']', 'data-name').then(function (name) {
                     nameTableAfterSort[i] = name.toLowerCase();
                     i++;
                     return i === nb_module + 1;
                 });
             }, 100000)
             .waitUntil(function () {
-                return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function () {
+                return browser.waitForExist(modulelist).then(function () {
                     if (nameTableAfterSort[j] === nameTable[j - 1]) {
                         j++;
                     } else {
@@ -71,18 +71,18 @@ describe('Sort modules', function () {
         }
     }
 
-    function getAllModulesIncreasingPrice(browser, pathSortModule, done) {
+    function getAllModulesIncreasingPrice(browser, pathSortModule, modulelist, done) {
         var i = 1, j = 0;
         browser
             .waitUntil(function () {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-price').then(function (price) {
+                return browser.getAttribute(modulelist+'/div[' + i + ']', 'data-price').then(function (price) {
                     price_table[i] = price;
                     i++;
                     return i === nb_module + 1;
                 });
             }, 100000)
             .waitUntil(function () {
-                return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function () {
+                return browser.waitForExist(modulelist).then(function () {
                     global.priceIncreasingTable = sortModule(price_table, 'increasing_price');
                     j++;
                     return j === nb_module + 1;
@@ -94,18 +94,18 @@ describe('Sort modules', function () {
             .call(done);
     }
 
-    function getAllModulesIncreasingPriceAfterSort(browser, done) {
+    function getAllModulesIncreasingPriceAfterSort(browser, modulelist, done) {
         var i = 1, j = 1;
         browser
             .waitUntil(function () {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-price').then(function (price) {
+                return browser.getAttribute(modulelist+'/div[' + i + ']', 'data-price').then(function (price) {
                     priceTableAfterSort[i] = price;
                     i++;
                     return i === nb_module + 1;
                 });
             }, 100000)
             .waitUntil(function () {
-                return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function (name) {
+                return browser.waitForExist(modulelist).then(function (name) {
                     if (priceTableAfterSort[j] === priceIncreasingTable[j - 1]) {
                         j++;
                     } else {
@@ -116,18 +116,18 @@ describe('Sort modules', function () {
             }, 100000).call(done);
     }
 
-    function getAllModulesDecreasingPrice(browser, pathSortModule, done) {
+    function getAllModulesDecreasingPrice(browser, pathSortModule, modulelist, done) {
         var i = 1, j = 0;
         browser
             .waitUntil(function () {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-price').then(function (price) {
+                return browser.getAttribute(modulelist+'/div[' + i + ']', 'data-price').then(function (price) {
                     decreasingPrice_table[i] = price;
                     i++;
                     return i === nb_module + 1;
                 });
             }, 100000)
             .waitUntil(function () {
-                return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function () {
+                return browser.waitForExist(modulelist).then(function () {
                     global.priceDecreasingTable = sortModule(decreasingPrice_table, 'decreasing_price');
                     j++;
                     return j === nb_module + 1;
@@ -139,18 +139,18 @@ describe('Sort modules', function () {
             .call(done);
     }
 
-    function getAllModulesDecreasingPriceAfterSort(browser, done) {
+    function getAllModulesDecreasingPriceAfterSort(browser,modulelist, done) {
         var i = 1, j = 1;
         browser
             .waitUntil(function () {
-                return browser.getAttribute('//*[@id="modules-list-container-all"]/div[' + i + ']', 'data-price').then(function (price) {
+                return browser.getAttribute(modulelist+'/div[' + i + ']', 'data-price').then(function (price) {
                     decreasingPriceTableAfterSort[i] = price;
                     i++;
                     return i === nb_module + 1;
                 });
             }, 100000)
             .waitUntil(function () {
-                return browser.waitForExist('//*[@id="modules-list-container-all"]').then(function () {
+                return browser.waitForExist(modulelist).then(function () {
                     if (decreasingPriceTableAfterSort[j] === priceDecreasingTable[j]) {
                         j++;
                     } else {
@@ -189,36 +189,36 @@ describe('Sort modules', function () {
     describe('sort module by name ', function (done) {
         it('should select sort module by name ', function (done) {
             global.fctname = this.test.title;
-            getAllModulesName(this.client, this.selector.sort_module, done)
+            getAllModulesName(this.client, this.selector.sort_module, this.selector.list_module, done)
         });
 
         it('should check sort modules by name ', function (done) {
             global.fctname = this.test.title;
-            getAllModulesNameAfterSort(this.client, done);
+            getAllModulesNameAfterSort(this.client,this.selector.list_module, done);
         });
     });
 
     describe('sort module by increasing price ', function (done) {
         it('should select sort module by increasing price ', function (done) {
             global.fctname = this.test.title;
-            getAllModulesIncreasingPrice(this.client, this.selector.sort_module, done)
+            getAllModulesIncreasingPrice(this.client, this.selector.sort_module, this.selector.list_module, done)
         });
 
         it('should check sort modules by increasing price ', function (done) {
             global.fctname = this.test.title;
-            getAllModulesIncreasingPriceAfterSort(this.client, done);
+            getAllModulesIncreasingPriceAfterSort(this.client, this.selector.list_module, done);
         });
     });
 
     describe('sort module by decreasing price ', function (done) {
         it('should select sort module by decreasing price ', function (done) {
             global.fctname = this.test.title;
-            getAllModulesDecreasingPrice(this.client, this.selector.sort_module, done);
+            getAllModulesDecreasingPrice(this.client, this.selector.sort_module,this.selector.list_module, done);
         });
 
         it('should check sort modules by decreasing price ', function (done) {
             global.fctname = this.test.title;
-            getAllModulesDecreasingPriceAfterSort(this.client, done);
+            getAllModulesDecreasingPriceAfterSort(this.client, this.selector.list_module, done);
         });
     });
 

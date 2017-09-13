@@ -14,11 +14,11 @@ describe('Sort products', function () {
     process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
-    function getProductsId(browser, sort_mode, done) {
+    function getProductsId(browser, sort_mode, product, done) {
         var i = 1, j = 1;
         browser
             .waitUntil(function () {
-                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']', 'data-product-id').then(function (productIds) {
+                return browser.getAttribute(product+'[' + i + ']', 'data-product-id').then(function (productIds) {
                     product_id_table[i] = productIds;
                     i++;
                     return i === productNumber + 1;
@@ -26,7 +26,7 @@ describe('Sort products', function () {
             }, 10000)
             .waitUntil(function () {
                 global.sortProductsById = getSortProductsId(product_id_table, sort_mode);
-                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']', 'data-product-id').then(function () {
+                return browser.getAttribute(product+'[' + j + ']', 'data-product-id').then(function () {
                     j++;
                     return j === productNumber + 1;
                 });
@@ -34,11 +34,11 @@ describe('Sort products', function () {
             .call(done);
     }
 
-    function getProductsIdAfterSort(browser, done) {
+    function getProductsIdAfterSort(browser, product, done) {
         var i = 1, j = 1;
         browser
             .waitUntil(function () {
-                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']', 'data-product-id').then(function (productIds) {
+                return browser.getAttribute(product+'[' + i + ']', 'data-product-id').then(function (productIds) {
                     product_id_table_after_sort[i] = productIds;
                     i++;
                     return i === productNumber + 1;
@@ -46,7 +46,7 @@ describe('Sort products', function () {
             }, 10000)
 
             .waitUntil(function () {
-                return browser.getAttribute('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']', 'data-product-id').then(function () {
+                return browser.getAttribute(product+'[' + j + ']', 'data-product-id').then(function () {
                     if (product_id_table_after_sort[j] === sortProductsById[j]) {
                         j++;
                     } else {
@@ -67,11 +67,11 @@ describe('Sort products', function () {
         }).reverse();
     }
 
-    function getProductsName(browser, sort_mode, done) {
+    function getProductsName(browser, sort_mode, product, done) {
         var i = 1, j = 1;
         browser
             .waitUntil(function () {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']/td[3]').then(function (productName) {
+                return browser.getText(product+'[' + i + ']/td[3]').then(function (productName) {
                     product_name_table[i] = productName.toLowerCase();
                     i++;
                     return i === productNumber + 1;
@@ -79,7 +79,7 @@ describe('Sort products', function () {
             }, 10000)
             .waitUntil(function () {
                 global.sortProductsByName = getSortProductsName(product_name_table, sort_mode);
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']/td[3]').then(function () {
+                return browser.getText(product+'[' + j + ']/td[3]').then(function () {
                     j++;
                     return j === productNumber + 1;
                 });
@@ -87,11 +87,11 @@ describe('Sort products', function () {
             .call(done);
     }
 
-    function getProductsNameAfterSort(browser, done) {
+    function getProductsNameAfterSort(browser, product, done) {
         var i = 1, j = 1;
         browser
             .waitUntil(function () {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']/td[3]').then(function (productName) {
+                return browser.getText(product+'[' + i + ']/td[3]').then(function (productName) {
                     product_name_table_after_sort[i] = productName.toLowerCase();
                     i++;
                     return i === productNumber + 1;
@@ -99,7 +99,7 @@ describe('Sort products', function () {
             }, 10000)
 
             .waitUntil(function () {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']/td[3]').then(function () {
+                return browser.getText(product+'[' + j + ']/td[3]').then(function () {
                     if (product_name_table_after_sort[j] === sortProductsByName[j]) {
                         j++;
                     } else {
@@ -118,11 +118,11 @@ describe('Sort products', function () {
         if (sort_mode === 'DESC') return table.sort().reverse();
     }
 
-    function getProductsReference(browser, sort_mode, done) {
+    function getProductsReference(browser, sort_mode, product, done) {
         var i = 1, j = 1;
         browser
             .waitUntil(function () {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']/td[4]').then(function (productReference) {
+                return browser.getText(product+'[' + i + ']/td[4]').then(function (productReference) {
                     product_reference_table[i] = productReference.toLowerCase();
                     i++;
                     return i === productNumber + 1;
@@ -130,7 +130,7 @@ describe('Sort products', function () {
             }, 10000)
             .waitUntil(function () {
                 global.sortProductsByReference = getSortProductsReference(product_reference_table, sort_mode);
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']/td[4]').then(function () {
+                return browser.getText(product+'[' + j + ']/td[4]').then(function () {
                     j++;
                     return j === productNumber + 1;
                 });
@@ -138,11 +138,11 @@ describe('Sort products', function () {
             .call(done);
     }
 
-    function getProductsReferenceAfterSort(browser, done) {
+    function getProductsReferenceAfterSort(browser, product, done) {
         var i = 1, j = 1;
         browser
             .waitUntil(function () {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + i + ']/td[4]').then(function (productReference) {
+                return browser.getText(product+'[' + i + ']/td[4]').then(function (productReference) {
                     product_reference_table_after_sort[i] = productReference.toLowerCase();
                     i++;
                     return i === productNumber + 1;
@@ -150,7 +150,7 @@ describe('Sort products', function () {
             }, 10000)
 
             .waitUntil(function () {
-                return browser.getText('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[' + j + ']/td[4]').then(function () {
+                return browser.getText(product+'[' + j + ']/td[4]').then(function () {
                     if (product_reference_table_after_sort[j] === sortProductsByReference[j]) {
                         j++;
                     } else {
@@ -204,7 +204,7 @@ describe('Sort products', function () {
         it("should get All product ids before sort", function (done) {
             global.fctname = this.test.title;
             countProduct(this.client, done);
-            getProductsId(this.client, 'DESC', done);
+            getProductsId(this.client, 'DESC', this.selector.product, done);
         });
 
         it("should click on sort by desc", function (done) {
@@ -218,12 +218,12 @@ describe('Sort products', function () {
 
         it("should check the products sorted by desc", function (done) {
             global.fctname = this.test.title;
-            getProductsIdAfterSort(this.client, done)
+            getProductsIdAfterSort(this.client, this.selector.product, done)
         });
 
         it("should get All product ids before sort", function (done) {
             global.fctname = this.test.title;
-            getProductsId(this.client, 'ASC', done);
+            getProductsId(this.client, 'ASC', this.selector.product, done);
         });
 
         it("should click on sort by asc", function (done) {
@@ -237,7 +237,7 @@ describe('Sort products', function () {
 
         it("should check the products sorted by asc", function (done) {
             global.fctname = this.test.title;
-            getProductsIdAfterSort(this.client, done)
+            getProductsIdAfterSort(this.client, this.selector.product, done)
         });
 
     });
@@ -245,7 +245,7 @@ describe('Sort products', function () {
     describe('sort product by name', function (done) {
         it("should get All product names before sort", function (done) {
             global.fctname = this.test.title;
-            getProductsName(this.client, 'DESC', done);
+            getProductsName(this.client, 'DESC', this.selector.product, done);
         });
 
         it("should click on sort by desc", function (done) {
@@ -259,12 +259,12 @@ describe('Sort products', function () {
 
         it("should check the products name sorted by desc", function (done) {
             global.fctname = this.test.title;
-            getProductsNameAfterSort(this.client, done)
+            getProductsNameAfterSort(this.client, this.selector.product, done)
         });
 
         it("should get All product names before sort", function (done) {
             global.fctname = this.test.title;
-            getProductsName(this.client, 'ASC', done);
+            getProductsName(this.client, 'ASC', this.selector.product, done);
         });
 
         it("should click on sort by asc", function (done) {
@@ -278,7 +278,7 @@ describe('Sort products', function () {
 
         it("should check the product names sorted by asc", function (done) {
             global.fctname = this.test.title;
-            getProductsNameAfterSort(this.client, done)
+            getProductsNameAfterSort(this.client, this.selector.product, done)
         });
 
     });
@@ -286,7 +286,7 @@ describe('Sort products', function () {
     describe('sort product by reference', function (done) {
         it("should get All product references before sort", function (done) {
             global.fctname = this.test.title;
-            getProductsReference(this.client, 'DESC', done);
+            getProductsReference(this.client, 'DESC', this.selector.product, done);
         });
 
         it("should click on sort by desc", function (done) {
@@ -300,12 +300,12 @@ describe('Sort products', function () {
 
         it("should check the products reference sorted by desc", function (done) {
             global.fctname = this.test.title;
-            getProductsReferenceAfterSort(this.client, done)
+            getProductsReferenceAfterSort(this.client, this.selector.product, done)
         });
 
         it("should get All product references before sort", function (done) {
             global.fctname = this.test.title;
-            getProductsReference(this.client, 'ASC', done);
+            getProductsReference(this.client, 'ASC', this.selector.product, done);
         });
 
         it("should click on sort by asc", function (done) {
@@ -319,7 +319,7 @@ describe('Sort products', function () {
 
         it("should check the product references sorted by asc", function (done) {
             global.fctname = this.test.title;
-            getProductsReferenceAfterSort(this.client, done)
+            getProductsReferenceAfterSort(this.client, this.selector.product, done)
         });
 
     });

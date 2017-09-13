@@ -127,6 +127,7 @@ module.exports = {
         onboarding_stop: '.onboarding-button-stop',
 
         //standard product
+        upload_file: '.dz-preview.dz-image-preview.ui-sortable-handle.dz-complete',
         product_create_category_btn: '//*[@id="add-category-button"]',
         product_category_name_input: '//*[@id="form_step1_new_category_name"]',
         category_create_btn: '//*[@id="form_step1_new_category_save"]',
@@ -245,6 +246,7 @@ module.exports = {
         options_file_checkbox: '//*[@id="form_step6_attachments_0"]',
         options_choose_supplier: '//*[@id="form_step6_suppliers_0"]',
         catalog_product_name: '//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr/td[3]/a',
+        product: '//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr',
 
         //virtual product
         virtual_product_type: '//*[@id="form"]/div[1]/div[1]/div[1]/div[2]',

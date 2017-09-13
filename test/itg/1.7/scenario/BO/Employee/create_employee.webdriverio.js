@@ -101,7 +101,7 @@ describe('Add employee ', function () {
                 .call(done);
         });
 
-        it("should check the customer", function (done) {
+        it("should check the employee", function (done) {
             global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.employees_firstname, 90000)

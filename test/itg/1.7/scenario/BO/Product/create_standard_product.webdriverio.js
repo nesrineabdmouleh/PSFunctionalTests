@@ -23,13 +23,13 @@ describe('Add new standard product', function () {
     process.on('ReferenceError', common.take_screenshot);
     after(common.after);
 
-    function uploadFile(browser, fileSelector, fileName, done) {
+    function uploadFile(browser, fileSelector, uploadFile, fileName, done) {
         browser
             .execute(function () {
                 document.getElementsByClassName("dz-hidden-input").style = "";
             })
             .chooseFile(fileSelector, getPicture(fileName))
-            .getAttribute('.dz-preview.dz-image-preview.ui-sortable-handle.dz-complete', "data-id").then(function (text) {
+            .getAttribute(uploadFile, "data-id").then(function (text) {
             global.image_data_id = text;
         })
             .pause(2000)
@@ -116,7 +116,7 @@ describe('Add new standard product', function () {
                 })
                 .chooseFile(this.selector.picture, getPicture('1.png'))
                 .waitForExist(this.selector.picture_cover, 90000)
-                .getAttribute('.dz-preview.dz-image-preview.ui-sortable-handle.dz-complete', "data-id").then(function (text) {
+                .getAttribute(this.selector.picture, "data-id").then(function (text) {
                 global.image_data_id = text;
             })
                 .pause(2000)
@@ -125,27 +125,27 @@ describe('Add new standard product', function () {
 
         it('should upload the picture two of product', function (done) {
             global.fctname = this.test.title;
-            uploadFile(this.client, this.selector.picture, '2.jpg', done);
+            uploadFile(this.client, this.selector.picture, this.selector.upload_file, '2.jpg', done);
         });
 
         it('should upload the picture three of product', function (done) {
             global.fctname = this.test.title;
-            uploadFile(this.client, this.selector.picture, '3.jpg', done);
+            uploadFile(this.client, this.selector.picture, this.selector.upload_file, '3.jpg', done);
         });
 
         it('should upload the picture fore of product', function (done) {
             global.fctname = this.test.title;
-            uploadFile(this.client, this.selector.picture, '4.gif', done);
+            uploadFile(this.client, this.selector.picture, this.selector.upload_file, '4.gif', done);
         });
 
         it('should upload the picture five of product', function (done) {
             global.fctname = this.test.title;
-            uploadFile(this.client, this.selector.picture, '5.jpg', done);
+            uploadFile(this.client, this.selector.picture, this.selector.upload_file, '5.jpg', done);
         });
 
         it('should upload the picture six of product', function (done) {
             global.fctname = this.test.title;
-            uploadFile(this.client, this.selector.picture, '6.jpg', done);
+            uploadFile(this.client, this.selector.picture, this.selector.upload_file, '6.jpg', done);
         });
 
         it('should click on create category button', function (done) {
@@ -694,7 +694,7 @@ describe('Add new standard product', function () {
             this.client
                 .waitForExist(this.selector.pricing_unity, 60000)
                 .execute(function () {
-                    document.querySelector('#form_step2_unity').value = "";
+                    document.querySelector("#form_step2_unity").value = "";
                 })
                 .setValue(this.selector.pricing_unity, standard_product.unity)
                 .call(done);

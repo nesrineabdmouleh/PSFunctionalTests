@@ -28,15 +28,15 @@ describe('Allscenario', function () {
         require('./scenario/BO/Module/search_module.webdriverio');
     }
 
+    //sort product
+    require('./scenario/BO/Product/sort_products.webdriverio');
+
     //create a product in BO and check it in FO
     require('./scenario/BO/Product/create_standard_product.webdriverio');
     require('./scenario/BO/Product/create_virtual_product.webdriverio');
     require('./scenario/BO/Product/create_pack_product.webdriverio');
     require('./scenario/BO/create_product.webdriverio');
     require('./scenario/FO/check_product.webdriverio');
-
-    //sort product
-    require('./scenario/BO/Product/sort_products.webdriverio');
 
     //Create and delete employee
     require('./scenario/BO/Employee/create_employee.webdriverio');

@@ -2,7 +2,7 @@
 var should = require('should');
 var common = require('../../../common.webdriverio');
 var globals = require('../../../globals.webdriverio.js');
-var virtual_product = require('../../../datas/virtual_product');
+var virtual_product = require('../../../datas/product_datas');
 
 var path = require('path');
 var newFile = path.join(__dirname, '../../..', 'datas', 'bleue.jpg');
@@ -55,7 +55,7 @@ describe('Add new virtual product', function () {
             global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_name, 90000)
-                .setValue(this.selector.product_name, virtual_product.name + product_id)
+                .setValue(this.selector.product_name, virtual_product.virtual.name + product_id)
                 .pause(6000)
                 .call(done);
         });
@@ -88,7 +88,7 @@ describe('Add new virtual product', function () {
                 .frame(this.selector.summary, function (err, result) {
                     if (err) console.log(err);
                 })
-                .setValue("#tinymce", virtual_product.resume)
+                .setValue("#tinymce", virtual_product.common.resume)
                 .frameParent()
                 .pause(2000)
                 .call(done);
@@ -102,7 +102,7 @@ describe('Add new virtual product', function () {
                 .frame(this.selector.description, function (err, result) {
                     if (err) console.log(err);
                 })
-                .setValue("#tinymce", virtual_product.desc)
+                .setValue("#tinymce", virtual_product.common.desc)
                 .frameParent()
                 .pause(2000)
                 .call(done);
@@ -122,7 +122,7 @@ describe('Add new virtual product', function () {
             global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_category_name_input, 90000)
-                .setValue(this.selector.product_category_name_input, virtual_product.new_category_name + product_id)
+                .setValue(this.selector.product_category_name_input, virtual_product.virtual.new_category_name + product_id)
                 .pause(2000)
                 .call(done);
         });
@@ -169,7 +169,7 @@ describe('Add new virtual product', function () {
 
         it('should search and add a related product', function (done) {
             global.fctname = this.test.title;
-            var search_products = virtual_product.search_related_products.split('//');
+            var search_products = virtual_product.common.search_related_products.split('//');
             this.client
                 .waitForExist(this.selector.search_add_related_product_input, 90000)
                 .setValue(this.selector.search_add_related_product_input, search_products[0])
@@ -190,7 +190,7 @@ describe('Add new virtual product', function () {
                 .waitForExist(this.selector.priceTE_shortcut, 60000)
                 .click(this.selector.priceTE_shortcut)
                 .pause(2000)
-                .setValue(this.selector.priceTE_shortcut, virtual_product.priceTE)
+                .setValue(this.selector.priceTE_shortcut, virtual_product.common.priceTE)
                 .call(done);
         });
 
@@ -199,7 +199,7 @@ describe('Add new virtual product', function () {
             this.client
                 .waitForExist(this.selector.product_reference, 60000)
                 .click(this.selector.product_reference)
-                .setValue(this.selector.product_reference, virtual_product.product_reference)
+                .setValue(this.selector.product_reference, virtual_product.common.product_reference)
                 .call(done);
         });
 
@@ -238,7 +238,7 @@ describe('Add new virtual product', function () {
                 .execute(function () {
                     document.querySelector("#form_step2_unity").value = "";
                 })
-                .setValue(this.selector.pricing_unity, virtual_product.unity)
+                .setValue(this.selector.pricing_unity, virtual_product.common.unity)
                 .call(done);
         });
 
@@ -260,7 +260,7 @@ describe('Add new virtual product', function () {
                 .waitForExist(this.selector.pricing_wholesale, 60000)
                 .click(this.selector.pricing_wholesale)
                 .pause(2000)
-                .setValue(this.selector.pricing_wholesale, virtual_product.wholesale)
+                .setValue(this.selector.pricing_wholesale, virtual_product.common.wholesale)
                 .call(done);
         });
 
@@ -321,7 +321,7 @@ describe('Add new virtual product', function () {
                 .waitForExist(this.selector.SEO_meta_title, 90000)
                 .click(this.selector.SEO_meta_title)
                 .pause(2000)
-                .setValue(this.selector.SEO_meta_title, virtual_product.metatitle)
+                .setValue(this.selector.SEO_meta_title, virtual_product.common.metatitle)
                 .call(done);
         });
 
@@ -331,7 +331,7 @@ describe('Add new virtual product', function () {
                 .waitForExist(this.selector.SEO_meta_description, 90000)
                 .click(this.selector.SEO_meta_description)
                 .pause(2000)
-                .setValue(this.selector.SEO_meta_description, virtual_product.metadesc)
+                .setValue(this.selector.SEO_meta_description, virtual_product.common.metadesc)
                 .call(done);
         });
 
@@ -341,7 +341,7 @@ describe('Add new virtual product', function () {
                 .waitForExist(this.selector.SEO_friendly_url, 90000)
                 .click(this.selector.SEO_friendly_url)
                 .pause(2000)
-                .setValue(this.selector.SEO_friendly_url, virtual_product.shortlink)
+                .setValue(this.selector.SEO_friendly_url, virtual_product.common.shortlink)
                 .call(done);
         });
 
@@ -401,7 +401,7 @@ describe('Add new virtual product', function () {
                 .waitForExist(this.selector.options_isbn, 90000)
                 .click(this.selector.options_isbn)
                 .pause(2000)
-                .setValue(this.selector.options_isbn, virtual_product.isbn)
+                .setValue(this.selector.options_isbn, virtual_product.common.isbn)
                 .call(done);
         });
 
@@ -411,7 +411,7 @@ describe('Add new virtual product', function () {
                 .waitForExist(this.selector.options_ean13, 90000)
                 .click(this.selector.options_ean13)
                 .pause(2000)
-                .setValue(this.selector.options_ean13, virtual_product.ean13)
+                .setValue(this.selector.options_ean13, virtual_product.common.ean13)
                 .call(done);
         });
 
@@ -421,7 +421,7 @@ describe('Add new virtual product', function () {
                 .scroll(0.600)
                 .pause(5000)
                 .waitForExist(this.selector.options_upc, 90000)
-                .setValue(this.selector.options_upc, virtual_product.upc)
+                .setValue(this.selector.options_upc, virtual_product.common.upc)
                 .call(done);
         });
 
@@ -441,7 +441,7 @@ describe('Add new virtual product', function () {
                 .waitForExist(this.selector.options_first_custom_field_label, 90000)
                 .click(this.selector.options_first_custom_field_label)
                 .pause(2000)
-                .setValue(this.selector.options_first_custom_field_label, virtual_product.personalization.perso_text.name)
+                .setValue(this.selector.options_first_custom_field_label, virtual_product.common.personalization.perso_text.name)
                 .pause(2000)
                 .waitForExist(this.selector.options_first_custom_field_type, 90000)
                 .click(this.selector.options_first_custom_field_type)
@@ -467,7 +467,7 @@ describe('Add new virtual product', function () {
                 .waitForExist(this.selector.options_second_custom_field_label, 90000)
                 .click(this.selector.options_second_custom_field_label)
                 .pause(2000)
-                .setValue(this.selector.options_second_custom_field_label, virtual_product.personalization.perso_file.name)
+                .setValue(this.selector.options_second_custom_field_label, virtual_product.common.personalization.perso_file.name)
                 .pause(2000)
                 .waitForExist(this.selector.options_second_custom_field_type, 90000)
                 .selectByValue(this.selector.options_second_custom_field_type, 0)
@@ -494,12 +494,12 @@ describe('Add new virtual product', function () {
                 .waitForExist(this.selector.options_file_name, 90000)
                 .click(this.selector.options_file_name)
                 .pause(2000)
-                .setValue(this.selector.options_file_name, virtual_product.document_attach.name)
+                .setValue(this.selector.options_file_name, virtual_product.common.document_attach.name)
                 .pause(2000)
                 .waitForExist(this.selector.options_file_description, 90000)
                 .click(this.selector.options_file_description)
                 .pause(2000)
-                .setValue(this.selector.options_file_description, virtual_product.document_attach.desc)
+                .setValue(this.selector.options_file_description, virtual_product.common.document_attach.desc)
                 .pause(2000)
                 .call(done);
         });
@@ -541,7 +541,7 @@ describe('Add new virtual product', function () {
                 .waitForExist(this.selector.catalogue_filter_by_name, 90000)
                 .click(this.selector.catalogue_filter_by_name)
                 .pause(4000)
-                .setValue(this.selector.catalogue_filter_by_name, virtual_product.name + product_id)
+                .setValue(this.selector.catalogue_filter_by_name, virtual_product.virtual.name + product_id)
                 .pause(2000)
                 .click(this.selector.click_outside)
                 .waitForExist(this.selector.catalogue_submit_filter, 60000)
@@ -549,7 +549,7 @@ describe('Add new virtual product', function () {
                 .pause(3000)
                 .waitForExist(this.selector.catalog_product_name, 60000)
                 .getText(this.selector.catalog_product_name).then(function (name) {
-                should(name).be.equal(virtual_product.name + product_id)
+                should(name).be.equal(virtual_product.virtual.name + product_id)
             })
                 .pause(2000)
                 .call(done);

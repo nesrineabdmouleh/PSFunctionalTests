@@ -2,7 +2,7 @@
 var should = require('should');
 var common = require('../../../common.webdriverio');
 var globals = require('../../../globals.webdriverio.js');
-var pack_product = require('../../../datas/pack_product.js');
+var pack_product = require('../../../datas/product_datas.js');
 
 var path = require('path');
 var toUpload = path.join(__dirname, '../../..', 'datas', '1.png');
@@ -63,7 +63,7 @@ describe('Add new pack product', function () {
             global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_name, 90000)
-                .setValue(this.selector.product_name, pack_product.name + product_id)
+                .setValue(this.selector.product_name, pack_product.pack.name + product_id)
                 .pause(6000)
                 .call(done);
         });
@@ -85,7 +85,7 @@ describe('Add new pack product', function () {
                 .frame(this.selector.summary, function (err, result) {
                     if (err) console.log(err);
                 })
-                .setValue("#tinymce", pack_product.resume)
+                .setValue("#tinymce", pack_product.common.resume)
                 .frameParent()
                 .pause(2000)
                 .call(done);
@@ -99,7 +99,7 @@ describe('Add new pack product', function () {
                 .frame(this.selector.description, function (err, result) {
                     if (err) console.log(err);
                 })
-                .setValue("#tinymce", pack_product.desc)
+                .setValue("#tinymce", pack_product.common.desc)
                 .frameParent()
                 .pause(2000)
                 .call(done);
@@ -119,7 +119,7 @@ describe('Add new pack product', function () {
             global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.product_category_name_input, 90000)
-                .setValue(this.selector.product_category_name_input, pack_product.new_category_name + product_id)
+                .setValue(this.selector.product_category_name_input, pack_product.pack.new_category_name + product_id)
                 .pause(2000)
                 .call(done);
         });
@@ -165,7 +165,7 @@ describe('Add new pack product', function () {
         });
 
         it('should search and add a related product', function (done) {
-            var search_products = pack_product.search_related_products.split('//');
+            var search_products = pack_product.common.search_related_products.split('//');
             global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.search_add_related_product_input, 90000)
@@ -187,7 +187,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.priceTE_shortcut, 60000)
                 .click(this.selector.priceTE_shortcut)
                 .pause(2000)
-                .setValue(this.selector.priceTE_shortcut, pack_product.priceTE)
+                .setValue(this.selector.priceTE_shortcut, pack_product.common.priceTE)
                 .call(done);
         });
 
@@ -196,7 +196,7 @@ describe('Add new pack product', function () {
             this.client
                 .waitForExist(this.selector.product_reference, 60000)
                 .click(this.selector.product_reference)
-                .setValue(this.selector.product_reference, pack_product.product_reference)
+                .setValue(this.selector.product_reference, pack_product.common.product_reference)
                 .call(done);
         });
 
@@ -205,7 +205,7 @@ describe('Add new pack product', function () {
             this.client
                 .waitForExist(this.selector.product_quantity_shortcut, 60000)
                 .click(this.selector.product_quantity_shortcut)
-                .setValue(this.selector.product_quantity_shortcut, pack_product.quantity)
+                .setValue(this.selector.product_quantity_shortcut, pack_product.common.quantity)
                 .call(done);
         });
 
@@ -215,7 +215,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.search_product_pack, 60000)
                 .click(this.selector.search_product_pack)
                 .pause(2000)
-                .setValue(this.selector.search_product_pack, pack_product.pack.pack1.search)
+                .setValue(this.selector.search_product_pack, pack_product.pack.pack.pack1.search)
                 .pause(2000)
                 .waitForExist(this.selector.product_item_pack, 60000)
                 .click(this.selector.product_item_pack)
@@ -229,7 +229,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.product_pack_item_quantity, 60000)
                 .click(this.selector.product_pack_item_quantity)
                 .pause(2000)
-                .setValue(this.selector.product_pack_item_quantity, pack_product.pack.pack1.quantity)
+                .setValue(this.selector.product_pack_item_quantity, pack_product.pack.pack.pack1.quantity)
                 .call(done);
         });
 
@@ -248,7 +248,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.search_product_pack, 60000)
                 .click(this.selector.search_product_pack)
                 .pause(2000)
-                .setValue(this.selector.search_product_pack, pack_product.pack.pack2.search)
+                .setValue(this.selector.search_product_pack, pack_product.pack.pack.pack2.search)
                 .pause(2000)
                 .waitForExist(this.selector.product_item_pack, 60000)
                 .click(this.selector.product_item_pack)
@@ -262,7 +262,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.product_pack_item_quantity, 60000)
                 .click(this.selector.product_pack_item_quantity)
                 .pause(2000)
-                .setValue(this.selector.product_pack_item_quantity, pack_product.pack.pack2.quantity)
+                .setValue(this.selector.product_pack_item_quantity, pack_product.pack.pack.pack2.quantity)
                 .call(done);
         });
 
@@ -308,7 +308,7 @@ describe('Add new pack product', function () {
             this.client
                 .waitForExist(this.selector.product_quantity_input, 60000)
                 .click(this.selector.product_quantity_input)
-                .setValue(this.selector.product_quantity_input, pack_product.quantity)
+                .setValue(this.selector.product_quantity_input, pack_product.common.quantity)
                 .call(done);
         });
 
@@ -317,7 +317,7 @@ describe('Add new pack product', function () {
             this.client
                 .waitForExist(this.selector.minimum_quantity_sale, 60000)
                 .click(this.selector.minimum_quantity_sale)
-                .setValue(this.selector.minimum_quantity_sale, pack_product.qty_min)
+                .setValue(this.selector.minimum_quantity_sale, pack_product.common.qty_min)
                 .call(done);
         });
 
@@ -348,7 +348,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.pack_label_in_stock, 90000)
                 .click(this.selector.pack_label_in_stock)
                 .pause(2000)
-                .setValue(this.selector.pack_label_in_stock, pack_product.qty_msg_stock)
+                .setValue(this.selector.pack_label_in_stock, pack_product.common.qty_msg_stock)
                 .pause(2000)
                 .call(done);
         });
@@ -359,7 +359,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.pack_label_out_stock, 90000)
                 .click(this.selector.pack_label_out_stock)
                 .pause(2000)
-                .setValue(this.selector.pack_label_out_stock, pack_product.qty_msg_unstock)
+                .setValue(this.selector.pack_label_out_stock, pack_product.common.qty_msg_unstock)
                 .pause(2000)
                 .call(done);
         });
@@ -370,7 +370,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.pack_availability_date, 90000)
                 .click(this.selector.pack_availability_date)
                 .pause(2000)
-                .setValue(this.selector.pack_availability_date, pack_product.qty_date)
+                .setValue(this.selector.pack_availability_date, pack_product.common.qty_date)
                 .pause(2000)
                 .call(done);
         });
@@ -401,7 +401,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.shipping_width, 90000)
                 .click(this.selector.shipping_width)
                 .pause(2000)
-                .setValue(this.selector.shipping_width, pack_product.cwidth)
+                .setValue(this.selector.shipping_width, pack_product.common.cwidth)
                 .call(done);
         });
 
@@ -411,7 +411,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.shipping_height, 90000)
                 .click(this.selector.shipping_height)
                 .pause(2000)
-                .setValue(this.selector.shipping_height, pack_product.cheight)
+                .setValue(this.selector.shipping_height, pack_product.common.cheight)
                 .call(done);
         });
 
@@ -421,7 +421,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.shipping_depth, 90000)
                 .click(this.selector.shipping_depth)
                 .pause(2000)
-                .setValue(this.selector.shipping_depth, pack_product.cdepth)
+                .setValue(this.selector.shipping_depth, pack_product.common.cdepth)
                 .call(done);
         });
 
@@ -431,7 +431,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.shipping_weight, 90000)
                 .click(this.selector.shipping_weight)
                 .pause(2000)
-                .setValue(this.selector.shipping_weight, pack_product.cweight)
+                .setValue(this.selector.shipping_weight, pack_product.common.cweight)
                 .call(done);
         });
 
@@ -441,7 +441,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.shipping_fees, 90000)
                 .click(this.selector.shipping_fees)
                 .pause(2000)
-                .setValue(this.selector.shipping_fees, pack_product.cadd_ship_coast)
+                .setValue(this.selector.shipping_fees, pack_product.common.cadd_ship_coast)
                 .call(done);
         });
 
@@ -478,7 +478,7 @@ describe('Add new pack product', function () {
             this.client
                 .waitForExist(this.selector.pack_unit_price, 60000)
                 .click(this.selector.pack_unit_price)
-                .setValue(this.selector.pack_unit_price, pack_product.unit)
+                .setValue(this.selector.pack_unit_price, pack_product.common.unit)
                 .call(done);
         });
 
@@ -489,7 +489,7 @@ describe('Add new pack product', function () {
                 .execute(function () {
                     document.querySelector("#form_step2_unity").value = "";
                 })
-                .setValue(this.selector.pricing_unity, pack_product.unity)
+                .setValue(this.selector.pricing_unity, pack_product.common.unity)
                 .call(done);
         });
 
@@ -511,7 +511,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.pricing_wholesale, 60000)
                 .click(this.selector.pricing_wholesale)
                 .pause(2000)
-                .setValue(this.selector.pricing_wholesale, pack_product.wholesale)
+                .setValue(this.selector.pricing_wholesale, pack_product.common.wholesale)
                 .call(done);
         });
 
@@ -572,7 +572,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.SEO_meta_title, 90000)
                 .click(this.selector.SEO_meta_title)
                 .pause(2000)
-                .setValue(this.selector.SEO_meta_title, pack_product.metatitle)
+                .setValue(this.selector.SEO_meta_title, pack_product.common.metatitle)
                 .call(done);
         });
 
@@ -582,7 +582,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.SEO_meta_description, 90000)
                 .click(this.selector.SEO_meta_description)
                 .pause(2000)
-                .setValue(this.selector.SEO_meta_description, pack_product.metadesc)
+                .setValue(this.selector.SEO_meta_description, pack_product.common.metadesc)
                 .call(done);
         });
 
@@ -592,7 +592,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.SEO_friendly_url, 90000)
                 .click(this.selector.SEO_friendly_url)
                 .pause(2000)
-                .setValue(this.selector.SEO_friendly_url, pack_product.shortlink)
+                .setValue(this.selector.SEO_friendly_url, pack_product.common.shortlink)
                 .call(done);
         });
 
@@ -652,7 +652,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.options_isbn, 90000)
                 .click(this.selector.options_isbn)
                 .pause(2000)
-                .setValue(this.selector.options_isbn, pack_product.isbn)
+                .setValue(this.selector.options_isbn, pack_product.common.isbn)
                 .call(done);
         });
 
@@ -662,7 +662,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.options_ean13, 90000)
                 .click(this.selector.options_ean13)
                 .pause(2000)
-                .setValue(this.selector.options_ean13, pack_product.ean13)
+                .setValue(this.selector.options_ean13, pack_product.common.ean13)
                 .call(done);
         });
 
@@ -672,7 +672,7 @@ describe('Add new pack product', function () {
                 .scroll(0.600)
                 .pause(5000)
                 .waitForExist(this.selector.options_upc, 90000)
-                .setValue(this.selector.options_upc, pack_product.upc)
+                .setValue(this.selector.options_upc, pack_product.common.upc)
                 .call(done);
         });
 
@@ -692,7 +692,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.options_first_custom_field_label, 90000)
                 .click(this.selector.options_first_custom_field_label)
                 .pause(2000)
-                .setValue(this.selector.options_first_custom_field_label, pack_product.personalization.perso_text.name)
+                .setValue(this.selector.options_first_custom_field_label, pack_product.common.personalization.perso_text.name)
                 .pause(2000)
                 .waitForExist(this.selector.options_first_custom_field_type, 90000)
                 .click(this.selector.options_first_custom_field_type)
@@ -718,7 +718,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.options_second_custom_field_label, 90000)
                 .click(this.selector.options_second_custom_field_label)
                 .pause(2000)
-                .setValue(this.selector.options_second_custom_field_label, pack_product.personalization.perso_file.name)
+                .setValue(this.selector.options_second_custom_field_label, pack_product.common.personalization.perso_file.name)
                 .pause(2000)
                 .waitForExist(this.selector.options_second_custom_field_type, 90000)
                 .selectByValue(this.selector.options_second_custom_field_type, 0)
@@ -755,12 +755,12 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.options_file_name, 90000)
                 .click(this.selector.options_file_name)
                 .pause(2000)
-                .setValue(this.selector.options_file_name, pack_product.document_attach.name)
+                .setValue(this.selector.options_file_name, pack_product.common.document_attach.name)
                 .pause(2000)
                 .waitForExist(this.selector.options_file_description, 90000)
                 .click(this.selector.options_file_description)
                 .pause(2000)
-                .setValue(this.selector.options_file_description, pack_product.document_attach.desc)
+                .setValue(this.selector.options_file_description, pack_product.common.document_attach.desc)
                 .pause(2000)
                 .call(done);
         });
@@ -803,7 +803,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.options_supplier_reference, 90000)
                 .click(this.selector.options_supplier_reference)
                 .pause(2000)
-                .setValue(this.selector.options_supplier_reference, pack_product.supplier_reference)
+                .setValue(this.selector.options_supplier_reference, pack_product.common.supplier_reference)
                 .call(done);
         });
 
@@ -813,7 +813,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.options_supplier_price, 90000)
                 .click(this.selector.options_supplier_price)
                 .pause(2000)
-                .setValue(this.selector.options_supplier_price, pack_product.product_price)
+                .setValue(this.selector.options_supplier_price, pack_product.common.product_price)
                 .call(done);
         });
 
@@ -843,7 +843,7 @@ describe('Add new pack product', function () {
                 .waitForExist(this.selector.catalogue_filter_by_name, 60000)
                 .click(this.selector.catalogue_filter_by_name)
                 .pause(3000)
-                .setValue(this.selector.catalogue_filter_by_name, pack_product.name + product_id)
+                .setValue(this.selector.catalogue_filter_by_name, pack_product.pack.name + product_id)
                 .pause(2000)
                 .click(this.selector.click_outside)
                 .waitForExist(this.selector.catalogue_submit_filter, 60000)
@@ -851,7 +851,7 @@ describe('Add new pack product', function () {
                 .pause(3000)
                 .waitForExist(this.selector.catalog_product_name, 60000)
                 .getText(this.selector.catalog_product_name).then(function (name) {
-                should(name).be.equal(pack_product.name + product_id)
+                should(name).be.equal(pack_product.pack.name + product_id)
             })
                 .pause(2000)
                 .call(done);
